@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-02-20T14:10:09Z",
+    "generated_at": "2026-02-20T14:23:47Z",
     "source": "https://www.tourmag.com/Annuaire-des-agences-touristiques-locales_r404.html",
     "total_dmc": 104,
     "total_links_found": 104,
@@ -149,7 +149,7 @@
       "image": "https://www.tourmag.com/photo/art/grande/77448680-56299260.jpg?v=1703173558",
       "destinations": [
         "Algérie",
-        "Egypte",
+        "Égypte",
         "Maroc",
         "Tunisie"
       ],
@@ -484,8 +484,8 @@
       "description": "BRAZIL SENSATIONS, agence DMC, offre des programmes sur-mesure au Brésil pour individuels, groupes, séminaires et événements, avec une équipe dédiée et créative.",
       "image": "https://www.tourmag.com/photo/art/grande/85588586-60985474.jpg?v=1736972617",
       "destinations": [
-        "Bresil Date D /",
-        "Bresil"
+        "Bresil",
+        "Brésil"
       ],
       "primary_destinations": [
         "Brésil"
@@ -672,15 +672,14 @@
       "description": "Passion Brazil est un DMC boutique spécialisé dans les voyages sur mesure, les groupes de loisirs et d'affaires, les incentives et les événements dans tout le Brésil.",
       "image": "https://www.tourmag.com/photo/art/grande/84446190-60308448.jpg?v=1764596473",
       "destinations": [
-        "Brésil Date D /",
         "Brésil"
       ],
       "primary_destinations": [
-        "Bresil"
+        "Brésil"
       ],
       "coordinates": [
         {
-          "destination": "Bresil",
+          "destination": "Brésil",
           "lat": -14.235,
           "lng": -51.9253
         }
@@ -796,14 +795,14 @@
       "description": "Terra Bahia est membre de Terra GROUP, réseau d'agences de voyage réceptives, fondé en 1998, qui comprend aujourd'hui 19 DMC en Amérique latine, Afrique australe, Océanie et Europe.",
       "image": "https://www.tourmag.com/photo/art/grande/48001680-37814030.jpg?v=1594302409",
       "destinations": [
-        "Bresil"
+        "Brésil"
       ],
       "primary_destinations": [
-        "Bresil"
+        "Brésil"
       ],
       "coordinates": [
         {
-          "destination": "Bresil",
+          "destination": "Brésil",
           "lat": -14.235,
           "lng": -51.9253
         }
@@ -1072,7 +1071,7 @@
         "Cambodge",
         "Laos /",
         "Laos",
-        "Thailande",
+        "Thaïlande",
         "Vietnam"
       ],
       "primary_destinations": [
@@ -1453,15 +1452,15 @@
       "image": "https://www.tourmag.com/photo/art/grande/88538182-62698891.jpg?v=1747318308",
       "destinations": [
         "Canada",
-        "Etats-unis"
+        "États-Unis"
       ],
       "primary_destinations": [
-        "Etats-unis",
+        "États-Unis",
         "Canada"
       ],
       "coordinates": [
         {
-          "destination": "Etats-unis",
+          "destination": "États-Unis",
           "lat": 37.0902,
           "lng": -95.7129
         },
@@ -2128,15 +2127,15 @@
       "description": "Cap Corée est une agence réceptive basée à Séoul, spécialisée dans l’organisation de circuits touristiques et d’activités de découvertes culturelles en Corée du sud. Ne manquez rien de cette fascinante destination en vous en remettant à une équipe francophone compétente qui saura vous proposer...",
       "image": "https://www.tourmag.com/photo/art/grande/57735200-42738192.jpg?v=1626699209",
       "destinations": [
-        "Coree du Sud",
+        "Corée du Sud",
         "Japon"
       ],
       "primary_destinations": [
-        "Coree du Sud"
+        "Corée du Sud"
       ],
       "coordinates": [
         {
-          "destination": "Coree du Sud",
+          "destination": "Corée du Sud",
           "lat": 35.9078,
           "lng": 127.7669
         }
@@ -2809,8 +2808,8 @@
         "Bulgarie",
         "Croatie",
         "Kosovo",
-        "Macedoine du Nord",
-        "Montenegro",
+        "Macédoine du Nord",
+        "Monténégro",
         "Roumanie",
         "Slovénie"
       ],
@@ -3146,16 +3145,16 @@
       "description": "Abbey Group est un groupe privé d’agences réceptives basées à Edimbourg, Londres et Dublin. Depuis 1978, Abbey est votre partenaire B2B pour des expériences de voyage inoubliables au Royaume-Uni et en Irlande. Nous créons des itinéraires personnalisés adaptés aux préférences uniques de chaque...",
       "image": "https://www.tourmag.com/photo/art/grande/48215368-37917812.jpg?v=1737030953",
       "destinations": [
-        "Ecosse",
+        "Écosse",
         "Irlande",
         "Royaume-uni"
       ],
       "primary_destinations": [
-        "Ecosse"
+        "Écosse"
       ],
       "coordinates": [
         {
-          "destination": "Ecosse",
+          "destination": "Écosse",
           "lat": 56.4907,
           "lng": -4.2026
         }
@@ -3219,14 +3218,14 @@
       "description": "Agence de voyages égyptienne fondée en 1981 qui offre une variété de prestations et services aussi bien pour les individuels que les groupes. DESTINATION : &gt; EGYPTE",
       "image": "https://www.tourmag.com/photo/art/grande/48241168-37930242.jpg?v=1594981563",
       "destinations": [
-        "Egypte"
+        "Égypte"
       ],
       "primary_destinations": [
-        "Egypte"
+        "Égypte"
       ],
       "coordinates": [
         {
-          "destination": "Egypte",
+          "destination": "Égypte",
           "lat": 26.8206,
           "lng": 30.8025
         }
@@ -3291,16 +3290,16 @@
       "image": "https://www.tourmag.com/photo/art/grande/77711092-56455918.jpg?v=1704877904",
       "destinations": [
         "Algérie",
-        "Egypte",
+        "Égypte",
         "Maroc",
         "Tunisie"
       ],
       "primary_destinations": [
-        "Egypte"
+        "Égypte"
       ],
       "coordinates": [
         {
-          "destination": "Egypte",
+          "destination": "Égypte",
           "lat": 26.8206,
           "lng": 30.8025
         }
@@ -3372,16 +3371,16 @@
         "Égypte"
       ],
       "primary_destinations": [
-        "Emirats Arabes Unis",
+        "Émirats Arabes Unis",
         "Arabie Saoudite",
         "Jordanie",
-        "Egypte",
+        "Égypte",
         "Qatar",
         "Oman"
       ],
       "coordinates": [
         {
-          "destination": "Emirats Arabes Unis",
+          "destination": "Émirats Arabes Unis",
           "lat": 23.4241,
           "lng": 53.8478
         },
@@ -3396,7 +3395,7 @@
           "lng": 36.2384
         },
         {
-          "destination": "Egypte",
+          "destination": "Égypte",
           "lat": 26.8206,
           "lng": 30.8025
         },
@@ -3596,11 +3595,11 @@
         "Equateur /"
       ],
       "primary_destinations": [
-        "Equateur"
+        "Équateur"
       ],
       "coordinates": [
         {
-          "destination": "Equateur",
+          "destination": "Équateur",
           "lat": -1.8312,
           "lng": -78.1834
         }
@@ -4004,7 +4003,7 @@
       "description": "Promethea Voyages est une agence francophone basée en Géorgien à Tbilissi, à taille humaine, et capable de d'offrir un accompagnement personnalisé. Agence spécialisée dans les parcours sur-mesure, Promethea Voyages se fixe l’objectif de présenter non seulement la Géorgie, mais les deux autre...",
       "image": "https://www.tourmag.com/photo/art/grande/89634626-63346313.jpg?v=1751271995",
       "destinations": [
-        "Georgie",
+        "Géorgie",
         "Armenie",
         "Azerbaidjan"
       ],
@@ -4359,14 +4358,14 @@
       "description": "Hellenic Kosmos DMC est une agence réceptive francophone spécialisée en voyages sur mesure pour groupes, mini-groupes et incentives en Grèce. DESTINATION : &gt; GRÈCE",
       "image": "https://www.tourmag.com/photo/art/grande/48323349-37961796.jpg?v=1595256377",
       "destinations": [
-        "Grece"
+        "Grèce"
       ],
       "primary_destinations": [
-        "Grece"
+        "Grèce"
       ],
       "coordinates": [
         {
-          "destination": "Grece",
+          "destination": "Grèce",
           "lat": 39.0742,
           "lng": 21.8243
         }
@@ -4944,16 +4943,16 @@
       "description": "Ancrée au cœur de l’océan Indien, Connections Réunion organise et propose des séjours clés en main à La Réunion pour les voyageurs individuels, les groupes loisirs ou les entreprises. Forte de son expertise locale et de ses partenariats avec des prestataires engagés, Connections Réunion prome...",
       "image": "https://www.tourmag.com/photo/art/grande/92553717-64869179.jpg?v=1765871563",
       "destinations": [
-        "Ile de la Réunion",
+        "Île de la Réunion",
         "Ile Maurice"
       ],
       "primary_destinations": [
-        "Ile de la Réunion",
+        "Île de la Réunion",
         "Réunion"
       ],
       "coordinates": [
         {
-          "destination": "Ile de la Réunion",
+          "destination": "Île de la Réunion",
           "lat": -21.1151,
           "lng": 55.5364
         },
@@ -5262,16 +5261,16 @@
       "description": "TERRES Métisses, agence réceptive spécialisée dans le sur-mesure pour les individuels, les groupes et les incentives, met en avant tout son savoir-faire afin de répondre aux attentes de la clientèle. Ses maîtres mots : authenticité créole et qualité de service. Le patrimoine de l’île est valoris...",
       "image": "https://www.tourmag.com/photo/art/grande/63065163-45554338.jpg?v=1648208984",
       "destinations": [
-        "Ile de la Réunion",
+        "Île de la Réunion",
         "La Réunion",
         "Réunion"
       ],
       "primary_destinations": [
-        "Ile de la Réunion"
+        "Île de la Réunion"
       ],
       "coordinates": [
         {
-          "destination": "Ile de la Réunion",
+          "destination": "Île de la Réunion",
           "lat": -21.1151,
           "lng": 55.5364
         }
@@ -5560,7 +5559,7 @@
       "description": "Abbey Group est un groupe privé d’agences réceptives basées à Dublin, Edimbourg et Londres. Depuis 1978, Abbey est votre partenaire B2B pour des expériences de voyage inoubliables au Royaume-Uni et en Irlande. Nous créons des itinéraires personnalisés adaptés aux préférences uniques de chaque...",
       "image": "https://www.tourmag.com/photo/art/grande/48219539-37921008.jpg?v=1728998359",
       "destinations": [
-        "Ecosse",
+        "Écosse",
         "Irlande",
         "Royaume-uni"
       ],
@@ -5708,7 +5707,7 @@
       "description": "Au fil du Japon est une agence francophone basée au Japon à Tokyo, à taille humaine, et capable de d'offrir un accompagnement personnalisé. Agence spécialisée dans les parcours sur-mesure, Au fil du Japon se fixe l’objectif de présenter l’archipel de long en large, et bien sûr sous toutes ses...",
       "image": "https://www.tourmag.com/photo/art/grande/57717961-42726477.jpg?v=1626443721",
       "destinations": [
-        "Coree du Sud",
+        "Corée du Sud",
         "Japon"
       ],
       "primary_destinations": [
@@ -6099,7 +6098,7 @@
         "Cambodge",
         "Laos",
         "Thailande /",
-        "Thailande",
+        "Thaïlande",
         "Vietnam"
       ],
       "primary_destinations": [
@@ -6532,7 +6531,7 @@
       "image": "https://www.tourmag.com/photo/art/grande/77733221-56470630.jpg?v=1704894269",
       "destinations": [
         "Algérie",
-        "Egypte",
+        "Égypte",
         "Maroc",
         "Tunisie"
       ],
@@ -7199,7 +7198,7 @@
       "description": "MySilkWayTrips représente l'Asie centrale avec ses 5 pays différents mais de mêmes traditions et cultures. Le plus connu parmi eux est l'Ouzbékistan avec ses monuments historiques, ses dômes bleus, les anciens arrêts de la Route de la Soie Samarkand, Boukhara et Khiva pour le voyage culturel....",
       "image": "https://www.tourmag.com/photo/art/grande/84769942-60514367.jpg?v=1733760708",
       "destinations": [
-        "Ouzbekistan",
+        "Ouzbékistan",
         "Kirghizistan",
         "Kazakhstan",
         "Tadjikistan",
@@ -8231,7 +8230,7 @@
       "description": "Abbey Group est un groupe privé d’agences réceptives basées à Londres, Edimbourg et Dublin. Depuis 1978, Abbey est votre partenaire B2B pour des expériences de voyage inoubliables au Royaume-Uni et en Irlande. Nous créons des itinéraires personnalisés adaptés aux préférences uniques de chaque...",
       "image": "https://www.tourmag.com/photo/art/grande/48213244-37916129.jpg?v=1737058738",
       "destinations": [
-        "Ecosse",
+        "Écosse",
         "Irlande",
         "Royaume-uni"
       ],
@@ -8307,7 +8306,7 @@
         "Royaume-uni",
         "Londres",
         "Sud-est et Sud-ouest de L’angleterre",
-        "Ecosse",
+        "Écosse",
         "Irlande"
       ],
       "primary_destinations": [
@@ -8795,15 +8794,15 @@
         "Cambodge",
         "Laos",
         "Thailande /",
-        "Thailande",
+        "Thaïlande",
         "Vietnam"
       ],
       "primary_destinations": [
-        "Thailande"
+        "Thaïlande"
       ],
       "coordinates": [
         {
-          "destination": "Thailande",
+          "destination": "Thaïlande",
           "lat": 15.87,
           "lng": 100.9925
         }
@@ -8966,7 +8965,7 @@
       "image": "https://www.tourmag.com/photo/art/grande/77737110-56473270.jpg?v=1704902274",
       "destinations": [
         "Algérie",
-        "Egypte",
+        "Égypte",
         "Maroc",
         "Tunisie"
       ],
@@ -9379,7 +9378,7 @@
       "destinations": [
         "Cambodge",
         "Laos",
-        "Thailande",
+        "Thaïlande",
         "Vietna /",
         "Vietnam"
       ],
