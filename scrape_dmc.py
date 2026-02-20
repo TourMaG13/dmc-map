@@ -22,118 +22,159 @@ from datetime import datetime, timezone
 ANNUAIRE_URL = "https://www.tourmag.com/Annuaire-des-agences-touristiques-locales_r404.html"
 BASE_URL = "https://www.tourmag.com"
 OUTPUT_FILE = "data/dmc_data.json"
-REQUEST_DELAY = 1.5  # Délai entre chaque requête (en secondes) pour ne pas surcharger le serveur
+REQUEST_DELAY = 1.5
 USER_AGENT = "Mozilla/5.0 (compatible; DMCMap-Scraper/1.0; TourMaG)"
 
-# Coordonnées GPS centrales pour chaque pays/destination
+# URLs d'articles d'actualité connus qui se mélangent dans l'annuaire
+NEWS_PATTERNS = [
+    "Action-Visas", "Actualites-dans", "Chine-l-Annee", "Cyclisme-F1",
+    "DITEX-2026", "Distribution-la-guerre", "Evantia-Giumba", "GreenGo",
+    "La-Compagnie-aux", "Le-Wow-Safari", "MSC-Croisieres", "Oceania-Cruises",
+    "Passager-bloque", "Prodesti-decouvrez", "Reims-les-ambitions",
+    "Rivages-du-Monde", "SNCF-La-FNAUT", "Transavia-renforce",
+    "Travel-Agents-Cup", "Travelib-la-plateforme", "VVF-prend",
+    "Webinaire-Iceland", "Webinaire-Tourisme", "Assur-Travel",
+    "A-Puylaurens", "A-Venise", "Accor-des-resultats", "Air-Canada",
+    "Air-France", "Audit-de-l-Etat", "Belambra-Exotismes",
+    "Charleville-Mezieres", "Club-Med-Todd", "Le-Centre-spatial",
+    "Le-Club-des-Hoteliers", "Office-de-Tourisme", "Comite-du-Tourisme",
+]
+
+# Coordonnées GPS (clés en MINUSCULES)
 COUNTRY_COORDS = {
-    "Açores": (38.7222, -27.2206),
-    "Afrique du Sud": (-30.5595, 22.9375),
-    "Albanie": (41.1533, 20.1683),
-    "Algérie": (28.0339, 1.6596),
-    "Allemagne": (51.1657, 10.4515),
-    "Arabie Saoudite": (23.8859, 45.0792),
-    "Argentine": (-38.4161, -63.6167),
-    "Autriche": (47.5162, 14.5501),
-    "Belize": (17.1899, -88.4976),
-    "Birmanie": (21.9162, 95.956),
-    "Brésil": (-14.235, -51.9253),
-    "Bulgarie": (42.7339, 25.4858),
-    "Cambodge": (12.5657, 104.991),
-    "Canada": (56.1304, -106.3468),
-    "Cap-Vert": (16.5388, -23.0418),
-    "Cap Vert": (16.5388, -23.0418),
-    "Chine": (35.8617, 104.1954),
-    "Chypre": (35.1264, 33.4299),
-    "Colombie": (4.5709, -74.2973),
-    "Corée du Nord": (40.3399, 127.5101),
-    "Corée du Sud": (35.9078, 127.7669),
-    "Costa Rica": (9.7489, -83.7534),
-    "Croatie": (45.1, 15.2),
-    "Cuba": (21.5218, -77.7812),
-    "Danemark": (56.2639, 9.5018),
-    "Ecosse": (56.4907, -4.2026),
-    "Égypte": (26.8206, 30.8025),
-    "Egypte": (26.8206, 30.8025),
-    "Émirats Arabes Unis": (23.4241, 53.8478),
-    "Emirats Arabes Unis": (23.4241, 53.8478),
-    "Equateur": (-1.8312, -78.1834),
-    "Équateur": (-1.8312, -78.1834),
-    "Espagne": (40.4637, -3.7492),
-    "Etats-Unis": (37.0902, -95.7129),
-    "États-Unis": (37.0902, -95.7129),
-    "USA": (37.0902, -95.7129),
-    "Finlande": (61.9241, 25.7482),
-    "Géorgie": (42.3154, 43.3569),
-    "Grèce": (39.0742, 21.8243),
-    "Guatemala": (15.7835, -90.2308),
-    "Guyane": (3.9339, -53.1258),
-    "Ile de la Réunion": (-21.1151, 55.5364),
-    "Inde": (20.5937, 78.9629),
-    "Indonésie": (-0.7893, 113.9213),
-    "Irlande": (53.1424, -7.6921),
-    "Islande": (64.9631, -19.0208),
-    "Italie": (41.8719, 12.5674),
-    "Japon": (36.2048, 138.2529),
-    "Jordanie": (30.5852, 36.2384),
-    "Kenya": (-0.0236, 37.9062),
-    "Kosovo": (42.6026, 20.903),
-    "Laos": (19.8563, 102.4955),
-    "Madagascar": (-18.7669, 46.8691),
-    "Madère": (32.7607, -16.9595),
-    "MADÈRE": (32.7607, -16.9595),
-    "Malaisie": (4.2105, 101.9758),
-    "Malte": (35.9375, 14.3754),
-    "Maroc": (31.7917, -7.0926),
-    "Mexique": (23.6345, -102.5528),
-    "Mongolie": (46.8625, 104.1917),
-    "Myanmar": (21.9162, 95.956),
-    "Nicaragua": (12.8654, -85.2072),
-    "Norvège": (60.472, 8.4689),
-    "Oman": (21.4735, 55.9754),
-    "Ouzbékistan": (41.3775, 64.5853),
-    "Panama": (8.538, -80.7821),
-    "Philippines": (12.8797, 121.774),
-    "Polynésie Française": (-17.6797, -149.4068),
-    "Polynésie française": (-17.6797, -149.4068),
-    "Portugal": (39.3999, -8.2245),
-    "Pouilles": (41.0, 16.5),
-    "Qatar": (25.3548, 51.1839),
-    "Roumanie": (45.9432, 24.9668),
-    "Royaume-Uni": (55.3781, -3.436),
-    "Sardaigne": (40.1209, 9.0129),
-    "Serbie": (44.0165, 21.0059),
-    "Sicile": (37.6, 14.0154),
-    "Sri Lanka": (7.8731, 80.7718),
-    "Suisse": (46.8182, 8.2275),
-    "Tahiti": (-17.6509, -149.426),
-    "Tanzanie": (-6.369, 34.8888),
-    "Thaïlande": (15.87, 100.9925),
-    "Tunisie": (33.8869, 9.5375),
-    "Turquie": (38.9637, 35.2433),
-    "Vietnam": (14.0583, 108.2772),
-    "Zanzibar": (-6.1659, 39.1989),
-    # Régions / zones
-    "Asie": (34.0479, 100.6197),
-    "Asie du Sud-Est": (10.0, 106.0),
-    "Afrique": (8.7832, 34.5085),
-    "Amérique latine": (-8.7832, -55.4915),
-    "Europe de l'Est": (50.0, 25.0),
-    "Océanie": (-22.7359, 140.0188),
-    "Océan Indien": (-12.0, 55.0),
-    "Sous-Continent Indien": (20.0, 78.0),
+    "açores": (38.7222, -27.2206),
+    "afrique": (8.7832, 34.5085),
+    "afrique du sud": (-30.5595, 22.9375),
+    "alaska": (64.2008, -152.4937),
+    "albanie": (41.1533, 20.1683),
+    "algérie": (28.0339, 1.6596),
+    "algerie": (28.0339, 1.6596),
+    "allemagne": (51.1657, 10.4515),
+    "arabie saoudite": (23.8859, 45.0792),
+    "argentine": (-38.4161, -63.6167),
+    "asie": (34.0479, 100.6197),
+    "asie du sud-est": (10.0, 106.0),
+    "autriche": (47.5162, 14.5501),
+    "belize": (17.1899, -88.4976),
+    "birmanie": (21.9162, 95.956),
+    "bolivie": (-16.2902, -63.5887),
+    "bosnie": (43.9159, 17.6791),
+    "bosnie-herzégovine": (43.9159, 17.6791),
+    "brésil": (-14.235, -51.9253),
+    "bresil": (-14.235, -51.9253),
+    "bulgarie": (42.7339, 25.4858),
+    "cambodge": (12.5657, 104.991),
+    "canada": (56.1304, -106.3468),
+    "cap-vert": (16.5388, -23.0418),
+    "cap vert": (16.5388, -23.0418),
+    "chili": (-35.6751, -71.543),
+    "chine": (35.8617, 104.1954),
+    "chypre": (35.1264, 33.4299),
+    "colombie": (4.5709, -74.2973),
+    "corée du nord": (40.3399, 127.5101),
+    "coree du nord": (40.3399, 127.5101),
+    "corée du sud": (35.9078, 127.7669),
+    "coree du sud": (35.9078, 127.7669),
+    "costa rica": (9.7489, -83.7534),
+    "croatie": (45.1, 15.2),
+    "cuba": (21.5218, -77.7812),
+    "danemark": (56.2639, 9.5018),
+    "ecosse": (56.4907, -4.2026),
+    "écosse": (56.4907, -4.2026),
+    "egypte": (26.8206, 30.8025),
+    "égypte": (26.8206, 30.8025),
+    "émirats arabes unis": (23.4241, 53.8478),
+    "emirats arabes unis": (23.4241, 53.8478),
+    "equateur": (-1.8312, -78.1834),
+    "équateur": (-1.8312, -78.1834),
+    "espagne": (40.4637, -3.7492),
+    "etats-unis": (37.0902, -95.7129),
+    "états-unis": (37.0902, -95.7129),
+    "usa": (37.0902, -95.7129),
+    "finlande": (61.9241, 25.7482),
+    "georgie": (42.3154, 43.3569),
+    "géorgie": (42.3154, 43.3569),
+    "grèce": (39.0742, 21.8243),
+    "grece": (39.0742, 21.8243),
+    "guatemala": (15.7835, -90.2308),
+    "guyane": (3.9339, -53.1258),
+    "ile de la réunion": (-21.1151, 55.5364),
+    "ile de la reunion": (-21.1151, 55.5364),
+    "la réunion": (-21.1151, 55.5364),
+    "réunion": (-21.1151, 55.5364),
+    "reunion": (-21.1151, 55.5364),
+    "inde": (20.5937, 78.9629),
+    "indochine": (16.0, 107.0),
+    "indonésie": (-0.7893, 113.9213),
+    "indonesie": (-0.7893, 113.9213),
+    "irlande": (53.1424, -7.6921),
+    "irlande du nord": (54.7877, -6.4923),
+    "islande": (64.9631, -19.0208),
+    "italie": (41.8719, 12.5674),
+    "japon": (36.2048, 138.2529),
+    "jordanie": (30.5852, 36.2384),
+    "kenya": (-0.0236, 37.9062),
+    "kosovo": (42.6026, 20.903),
+    "laos": (19.8563, 102.4955),
+    "macédoine": (41.5122, 21.7453),
+    "macédoine du nord": (41.5122, 21.7453),
+    "macedoine du nord": (41.5122, 21.7453),
+    "madagascar": (-18.7669, 46.8691),
+    "madère": (32.7607, -16.9595),
+    "madere": (32.7607, -16.9595),
+    "malaisie": (4.2105, 101.9758),
+    "malte": (35.9375, 14.3754),
+    "maroc": (31.7917, -7.0926),
+    "mexique": (23.6345, -102.5528),
+    "mongolie": (46.8625, 104.1917),
+    "monténégro": (42.7087, 19.3744),
+    "montenegro": (42.7087, 19.3744),
+    "myanmar": (21.9162, 95.956),
+    "nicaragua": (12.8654, -85.2072),
+    "norvège": (60.472, 8.4689),
+    "norvege": (60.472, 8.4689),
+    "océan indien": (-12.0, 55.0),
+    "océanie": (-22.7359, 140.0188),
+    "oman": (21.4735, 55.9754),
+    "ouzbékistan": (41.3775, 64.5853),
+    "ouzbekistan": (41.3775, 64.5853),
+    "panama": (8.538, -80.7821),
+    "pérou": (-9.19, -75.0152),
+    "perou": (-9.19, -75.0152),
+    "philippines": (12.8797, 121.774),
+    "polynésie française": (-17.6797, -149.4068),
+    "polynesie francaise": (-17.6797, -149.4068),
+    "polynésie": (-17.6797, -149.4068),
+    "portugal": (39.3999, -8.2245),
+    "pouilles": (41.0, 16.5),
+    "qatar": (25.3548, 51.1839),
+    "roumanie": (45.9432, 24.9668),
+    "royaume-uni": (55.3781, -3.436),
+    "sardaigne": (40.1209, 9.0129),
+    "serbie": (44.0165, 21.0059),
+    "sicile": (37.6, 14.0154),
+    "slovénie": (46.1512, 14.9955),
+    "slovenie": (46.1512, 14.9955),
+    "sous-continent indien": (20.0, 78.0),
+    "sri lanka": (7.8731, 80.7718),
+    "suisse": (46.8182, 8.2275),
+    "tahiti": (-17.6509, -149.426),
+    "tanzanie": (-6.369, 34.8888),
+    "thaïlande": (15.87, 100.9925),
+    "thailande": (15.87, 100.9925),
+    "tunisie": (33.8869, 9.5375),
+    "turquie": (38.9637, 35.2433),
+    "vietnam": (14.0583, 108.2772),
+    "zanzibar": (-6.1659, 39.1989),
 }
 
-# Mapping des noms de pictogrammes vers des labels lisibles et des catégories
 PICTO_CATEGORIES = {
-    # Clientèle
     "amoureux": {"label": "En couple", "category": "clientele"},
     "famille": {"label": "En famille", "category": "clientele"},
     "groupes": {"label": "Groupes", "category": "clientele"},
     "incentive": {"label": "Incentive", "category": "clientele"},
     "individuel": {"label": "En solo", "category": "clientele"},
     "gay-friendly": {"label": "Gay friendly", "category": "clientele"},
-    # Prestations
     "acceuil": {"label": "Accueil", "category": "prestations"},
     "adaptabilite": {"label": "Adaptabilité", "category": "prestations"},
     "assistance": {"label": "Assistance", "category": "prestations"},
@@ -153,7 +194,6 @@ PICTO_CATEGORIES = {
     "transferts": {"label": "Transferts", "category": "prestations"},
     "visite_guidee": {"label": "Visite guidée", "category": "prestations"},
     "vtc": {"label": "VTC", "category": "prestations"},
-    # Activités
     "attractions": {"label": "Attractions", "category": "activites"},
     "aventure": {"label": "Aventure", "category": "activites"},
     "carnaval": {"label": "Carnaval", "category": "activites"},
@@ -182,93 +222,49 @@ PICTO_CATEGORIES = {
     "voyage": {"label": "Voyage", "category": "activites"},
 }
 
-# Mapping des destinations vers leur continent/zone
 CONTINENT_MAP = {
-    "Açores": "Europe",
-    "Afrique du Sud": "Afrique",
-    "Albanie": "Europe",
-    "Algérie": "Afrique",
-    "Allemagne": "Europe",
-    "Arabie Saoudite": "Moyen-Orient",
-    "Argentine": "Amériques",
-    "Autriche": "Europe",
-    "Belize": "Amériques",
-    "Brésil": "Amériques",
-    "Bulgarie": "Europe",
-    "Cambodge": "Asie",
-    "Canada": "Amériques",
-    "Cap-Vert": "Afrique",
-    "Cap Vert": "Afrique",
-    "Chine": "Asie",
-    "Chypre": "Europe",
-    "Colombie": "Amériques",
-    "Corée du Nord": "Asie",
-    "Corée du Sud": "Asie",
-    "Costa Rica": "Amériques",
-    "Croatie": "Europe",
-    "Cuba": "Amériques",
-    "Danemark": "Europe",
-    "Ecosse": "Europe",
-    "Égypte": "Afrique",
-    "Egypte": "Afrique",
-    "Émirats Arabes Unis": "Moyen-Orient",
-    "Emirats Arabes Unis": "Moyen-Orient",
-    "Equateur": "Amériques",
-    "Équateur": "Amériques",
-    "Espagne": "Europe",
-    "Etats-Unis": "Amériques",
-    "États-Unis": "Amériques",
-    "USA": "Amériques",
-    "Finlande": "Europe",
-    "Géorgie": "Europe",
-    "Grèce": "Europe",
-    "Guatemala": "Amériques",
-    "Guyane": "Amériques",
-    "Ile de la Réunion": "Océan Indien",
-    "Inde": "Asie",
-    "Indonésie": "Asie",
-    "Irlande": "Europe",
-    "Islande": "Europe",
-    "Italie": "Europe",
-    "Japon": "Asie",
-    "Jordanie": "Moyen-Orient",
-    "Kenya": "Afrique",
-    "Kosovo": "Europe",
-    "Laos": "Asie",
-    "Madagascar": "Afrique",
-    "Madère": "Europe",
-    "MADÈRE": "Europe",
-    "Malaisie": "Asie",
-    "Malte": "Europe",
-    "Maroc": "Afrique",
-    "Mexique": "Amériques",
-    "Mongolie": "Asie",
-    "Myanmar": "Asie",
-    "Nicaragua": "Amériques",
-    "Norvège": "Europe",
-    "Oman": "Moyen-Orient",
-    "Ouzbékistan": "Asie",
-    "Panama": "Amériques",
-    "Philippines": "Asie",
-    "Polynésie Française": "Océanie",
-    "Polynésie française": "Océanie",
-    "Portugal": "Europe",
-    "Pouilles": "Europe",
-    "Qatar": "Moyen-Orient",
-    "Roumanie": "Europe",
-    "Royaume-Uni": "Europe",
-    "Sardaigne": "Europe",
-    "Serbie": "Europe",
-    "Sicile": "Europe",
-    "Sri Lanka": "Asie",
-    "Suisse": "Europe",
-    "Tahiti": "Océanie",
-    "Tanzanie": "Afrique",
-    "Thaïlande": "Asie",
-    "Tunisie": "Afrique",
-    "Turquie": "Europe",
-    "Vietnam": "Asie",
-    "Zanzibar": "Afrique",
+    "açores": "Europe", "afrique du sud": "Afrique", "alaska": "Amériques",
+    "albanie": "Europe", "algérie": "Afrique", "algerie": "Afrique",
+    "allemagne": "Europe", "arabie saoudite": "Moyen-Orient",
+    "argentine": "Amériques", "autriche": "Europe", "belize": "Amériques",
+    "bolivie": "Amériques", "bosnie": "Europe", "bosnie-herzégovine": "Europe",
+    "brésil": "Amériques", "bresil": "Amériques", "bulgarie": "Europe",
+    "cambodge": "Asie", "canada": "Amériques", "cap-vert": "Afrique",
+    "cap vert": "Afrique", "chili": "Amériques", "chine": "Asie",
+    "chypre": "Europe", "colombie": "Amériques", "corée du nord": "Asie",
+    "coree du nord": "Asie", "corée du sud": "Asie", "coree du sud": "Asie",
+    "costa rica": "Amériques", "croatie": "Europe", "cuba": "Amériques",
+    "danemark": "Europe", "ecosse": "Europe", "écosse": "Europe",
+    "egypte": "Afrique", "égypte": "Afrique",
+    "émirats arabes unis": "Moyen-Orient", "emirats arabes unis": "Moyen-Orient",
+    "equateur": "Amériques", "équateur": "Amériques", "espagne": "Europe",
+    "etats-unis": "Amériques", "états-unis": "Amériques", "usa": "Amériques",
+    "finlande": "Europe", "georgie": "Europe", "géorgie": "Europe",
+    "grèce": "Europe", "grece": "Europe", "guatemala": "Amériques",
+    "guyane": "Amériques", "ile de la réunion": "Océan Indien",
+    "ile de la reunion": "Océan Indien", "la réunion": "Océan Indien",
+    "réunion": "Océan Indien", "reunion": "Océan Indien",
+    "inde": "Asie", "indochine": "Asie",
+    "indonésie": "Asie", "indonesie": "Asie", "irlande": "Europe",
+    "irlande du nord": "Europe", "islande": "Europe", "italie": "Europe",
+    "japon": "Asie", "jordanie": "Moyen-Orient", "kenya": "Afrique",
+    "kosovo": "Europe", "laos": "Asie", "macédoine": "Europe",
+    "macédoine du nord": "Europe", "macedoine du nord": "Europe",
+    "madagascar": "Afrique", "madère": "Europe", "madere": "Europe",
+    "malaisie": "Asie", "malte": "Europe", "maroc": "Afrique",
+    "mexique": "Amériques", "mongolie": "Asie", "monténégro": "Europe",
+    "montenegro": "Europe", "myanmar": "Asie", "nicaragua": "Amériques",
+    "norvège": "Europe", "norvege": "Europe", "oman": "Moyen-Orient",
+    "ouzbékistan": "Asie", "ouzbekistan": "Asie", "panama": "Amériques",
+    "pérou": "Amériques", "perou": "Amériques", "philippines": "Asie",
+    "polynésie française": "Océanie", "polynesie francaise": "Océanie",
+    "polynésie": "Océanie", "portugal": "Europe", "pouilles": "Europe",
+    "qatar": "Moyen-Orient", "roumanie": "Europe", "royaume-uni": "Europe",
+    "sardaigne": "Europe", "serbie": "Europe", "sicile": "Europe",
+    "slovénie": "Europe", "slovenie": "Europe", "sri lanka": "Asie",
+    "suisse": "Europe", "tahiti": "Océanie", "tanzanie": "Afrique",
+    "thaïlande": "Asie", "thailande": "Asie", "tunisie": "Afrique",
+    "turquie": "Europe", "vietnam": "Asie", "zanzibar": "Afrique",
 }
 
 
@@ -292,111 +288,136 @@ def fetch_page(url, retries=3):
     return None
 
 
+def is_news_article(url):
+    """Vérifie si une URL correspond à un article d'actualité."""
+    slug = url.split("/")[-1]
+    for pattern in NEWS_PATTERNS:
+        if pattern in slug:
+            return True
+    return False
+
+
 def extract_dmc_links(html):
-    """
-    Extrait les liens vers les fiches DMC depuis la page annuaire.
-    Filtre les articles d'actualité qui ne sont pas des fiches DMC.
-    """
-    # Trouver tous les blocs article (div class="art-XXXXX ...")
+    """Extrait les liens vers les fiches DMC depuis la page annuaire."""
     blocks = re.finditer(
         r'<div\s+class="art-(\d+)\s+cel1[^"]*"[^>]*>(.*?)(?=<div\s+class="art-\d+\s+cel1|$)',
-        html,
-        re.DOTALL,
+        html, re.DOTALL,
     )
-
     dmc_links = []
     seen_urls = set()
-
     for match in blocks:
-        art_id = match.group(1)
         content = match.group(2)
-
-        # Extraire le premier lien _aXXXXX.html dans ce bloc
         link_match = re.search(r'href="(/[^"]*_a(\d+)\.html)"', content)
         if not link_match:
             continue
-
         url_path = link_match.group(1)
-
-        # Éviter les doublons
         if url_path in seen_urls:
             continue
         seen_urls.add(url_path)
-
         full_url = BASE_URL + url_path
+        if is_news_article(full_url):
+            continue
         dmc_links.append(full_url)
-
     return dmc_links
+
+
+def get_coords(destination):
+    """Trouve les coordonnées GPS (insensible à la casse + correspondance partielle)."""
+    dest_lower = destination.lower().strip()
+    if dest_lower in COUNTRY_COORDS:
+        return COUNTRY_COORDS[dest_lower]
+    for key, coords in COUNTRY_COORDS.items():
+        if key in dest_lower or dest_lower in key:
+            return coords
+    return None, None
+
+
+def get_continent(destination):
+    """Trouve le continent (insensible à la casse + correspondance partielle)."""
+    dest_lower = destination.lower().strip()
+    if dest_lower in CONTINENT_MAP:
+        return CONTINENT_MAP[dest_lower]
+    for key, continent in CONTINENT_MAP.items():
+        if key in dest_lower or dest_lower in key:
+            return continent
+    return None
+
+
+def extract_destinations(html):
+    """Extrait les destinations depuis une fiche DMC (plusieurs méthodes de fallback)."""
+    destinations = []
+
+    # Méthode 1 : bloc "DESTINATIONS :" standard
+    dest_match = re.search(
+        r"DESTINATIONS\s*:\s*(.*?)(?:Date de cr|<div class=\"clear\"|</div>)",
+        html, re.DOTALL | re.IGNORECASE,
+    )
+    if dest_match:
+        dest_text = re.sub(r"<[^>]+>", " ", dest_match.group(1))
+        dest_text = dest_text.replace("&gt;", ">").replace("&amp;", "&").replace("&nbsp;", " ")
+        dests_raw = re.findall(r">\s*([A-ZÀ-Üa-zà-ü][^>]*?)(?=\s*>|\s*$)", dest_text)
+        for d in dests_raw:
+            d = d.strip().rstrip(".,;: ")
+            if d and len(d) > 1:
+                destinations.append(d)
+
+    # Méthode 2 : chercher dans og:title ("DMC Pays Nom" ou similaire)
+    if not destinations:
+        title_match = re.search(r'og:title"\s*content="([^"]*)"', html)
+        if title_match:
+            title = title_match.group(1).lower()
+            for key in sorted(COUNTRY_COORDS.keys(), key=len, reverse=True):
+                if key in title:
+                    destinations.append(key.title())
+
+    # Méthode 3 : chercher les pays connus dans l'URL
+    if not destinations:
+        url_match = re.search(r'canonical"\s*href="([^"]*)"', html)
+        url_str = url_match.group(1).lower() if url_match else ""
+        for key in sorted(COUNTRY_COORDS.keys(), key=len, reverse=True):
+            key_slug = key.replace(" ", "-").replace("'", "-")
+            if key_slug in url_str:
+                destinations.append(key.title())
+                break
+
+    return destinations
 
 
 def extract_dmc_data(html, url):
     """Extrait les données structurées d'une fiche DMC."""
     data = {"url": url}
 
-    # Titre (og:title)
+    # Titre
     title_match = re.search(r'og:title"\s*content="([^"]*)"', html)
-    if title_match:
-        title = title_match.group(1).strip()
-        # Nettoyer le préfixe "DMC Pays" si présent, sinon garder tel quel
-        data["title"] = title
-    else:
-        data["title"] = ""
+    data["title"] = title_match.group(1).strip() if title_match else ""
 
-    # Description (og:description)
+    # Description
     desc_match = re.search(r'og:description"\s*content="([^"]*)"', html)
     data["description"] = desc_match.group(1).strip() if desc_match else ""
 
-    # Image principale (og:image)
+    # Image
     img_match = re.search(r'og:image"\s*content="([^"]*)"', html)
     data["image"] = img_match.group(1).strip() if img_match else ""
 
     # Destinations
-    dest_match = re.search(r"DESTINATIONS\s*:\s*(.*?)Date de cr", html, re.DOTALL)
-    destinations = []
-    if dest_match:
-        dest_text = re.sub(r"<[^>]+>", " ", dest_match.group(1))
-        dest_text = dest_text.replace("&gt;", ">").replace("&amp;", "&")
-        # Extraire chaque destination après ">"
-        dests_raw = re.findall(r">\s*([A-ZÀ-Ü][^>]*?)(?=\s*>|\s*$)", dest_text)
-        for d in dests_raw:
-            d = d.strip().rstrip(".")
-            if d:
-                destinations.append(d)
-
+    destinations = extract_destinations(html)
     data["destinations"] = destinations
 
-    # Coordonnées GPS (basées sur les destinations)
+    # Coordonnées GPS
     coords_list = []
     for dest in destinations:
-        dest_clean = dest.strip()
-        if dest_clean in COUNTRY_COORDS:
-            lat, lng = COUNTRY_COORDS[dest_clean]
-            coords_list.append({"destination": dest_clean, "lat": lat, "lng": lng})
-        else:
-            # Essayer une correspondance partielle
-            found = False
-            for key, (lat, lng) in COUNTRY_COORDS.items():
-                if key.lower() in dest_clean.lower() or dest_clean.lower() in key.lower():
-                    coords_list.append({"destination": dest_clean, "lat": lat, "lng": lng})
-                    found = True
-                    break
-            if not found:
-                print(f"  [WARN] Destination inconnue (pas de coordonnées GPS): '{dest_clean}'")
-                coords_list.append({"destination": dest_clean, "lat": None, "lng": None})
-
+        lat, lng = get_coords(dest)
+        coords_list.append({"destination": dest, "lat": lat, "lng": lng})
+        if lat is None:
+            print(f"  [WARN] Pas de coordonnées pour: '{dest}'")
     data["coordinates"] = coords_list
 
-    # Continents / zones
+    # Continents
     continents = set()
     for dest in destinations:
-        dest_clean = dest.strip()
-        if dest_clean in CONTINENT_MAP:
-            continents.add(CONTINENT_MAP[dest_clean])
-        else:
-            for key, continent in CONTINENT_MAP.items():
-                if key.lower() in dest_clean.lower() or dest_clean.lower() in key.lower():
-                    continents.add(continent)
-                    break
+        continent = get_continent(dest)
+        if continent:
+            continents.add(continent)
     data["continents"] = sorted(list(continents))
 
     # Date de création
@@ -412,7 +433,6 @@ def extract_dmc_data(html, url):
 
     # Pictogrammes / Tags
     pictos_raw = re.findall(r"docs/FicheDMC/picto_([^\"\.]+)", html)
-    # Dédoublonner tout en gardant l'ordre
     seen = set()
     pictos = []
     for p in pictos_raw:
@@ -420,27 +440,16 @@ def extract_dmc_data(html, url):
             seen.add(p)
             pictos.append(p)
 
-    # Organiser par catégorie
     tags = {"clientele": [], "prestations": [], "activites": []}
     for picto_id in pictos:
         if picto_id in PICTO_CATEGORIES:
             info = PICTO_CATEGORIES[picto_id]
-            cat = info["category"]
-            tags[cat].append(
-                {
-                    "id": picto_id,
-                    "label": info["label"],
-                }
-            )
+            tags[info["category"]].append({"id": picto_id, "label": info["label"]})
         else:
-            # Picto inconnu, on l'ajoute quand même dans activités
-            tags["activites"].append(
-                {
-                    "id": picto_id,
-                    "label": picto_id.replace("_", " ").title(),
-                }
-            )
-
+            tags["activites"].append({
+                "id": picto_id,
+                "label": picto_id.replace("_", " ").replace("-", " ").title(),
+            })
     data["tags"] = tags
 
     return data
@@ -448,12 +457,16 @@ def extract_dmc_data(html, url):
 
 def is_dmc_fiche(html):
     """
-    Vérifie qu'une page est bien une fiche DMC et non un article d'actualité.
-    Une fiche DMC contient la section DESTINATIONS et des pictogrammes.
+    Vérifie qu'une page est bien une fiche DMC.
+    Accepte si la page a DESTINATIONS, des pictos, ou des mots-clés DMC.
     """
-    has_destinations = bool(re.search(r"DESTINATIONS\s*:", html))
+    has_destinations = bool(re.search(r"DESTINATIONS\s*:", html, re.IGNORECASE))
     has_pictos = bool(re.search(r"docs/FicheDMC/picto_", html))
-    return has_destinations and has_pictos
+    has_dmc_keywords = bool(re.search(
+        r"(agence\s+r[ée]ceptive|DMC|r[ée]ceptif|voyage[s]?\s+sur[- ]mesure)",
+        html, re.IGNORECASE,
+    ))
+    return has_destinations or has_pictos or has_dmc_keywords
 
 
 # =============================================================================
@@ -466,22 +479,20 @@ def main():
     print(f"Démarré le {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}")
     print("=" * 60)
 
-    # Étape 1 : Charger la page annuaire
     print("\n[1/3] Chargement de la page annuaire...")
     annuaire_html = fetch_page(ANNUAIRE_URL)
     if not annuaire_html:
         print("ERREUR: Impossible de charger la page annuaire. Abandon.")
         sys.exit(1)
 
-    # Étape 2 : Extraire les liens des fiches DMC
     print("[2/3] Extraction des liens vers les fiches DMC...")
     all_links = extract_dmc_links(annuaire_html)
-    print(f"  → {len(all_links)} liens trouvés dans l'annuaire")
+    print(f"  → {len(all_links)} liens trouvés (après exclusion des articles d'actu)")
 
-    # Étape 3 : Scraper chaque fiche
     print(f"[3/3] Scraping de chaque fiche DMC (délai de {REQUEST_DELAY}s entre chaque)...")
     dmc_list = []
     skipped = 0
+    skipped_urls = []
 
     for i, link in enumerate(all_links, 1):
         print(f"  [{i}/{len(all_links)}] {link}")
@@ -490,17 +501,19 @@ def main():
         html = fetch_page(link)
         if not html:
             skipped += 1
+            skipped_urls.append({"url": link, "reason": "Erreur de chargement"})
             continue
 
-        # Vérifier que c'est bien une fiche DMC
         if not is_dmc_fiche(html):
-            print(f"    → Pas une fiche DMC (article d'actu ?), ignoré.")
+            print(f"    → Pas une fiche DMC, ignoré.")
             skipped += 1
+            skipped_urls.append({"url": link, "reason": "Pas identifié comme fiche DMC"})
             continue
 
         dmc_data = extract_dmc_data(html, link)
         dmc_list.append(dmc_data)
-        print(f"    → OK: {dmc_data['title']} ({', '.join(dmc_data['destinations'])})")
+        dest_str = ", ".join(dmc_data["destinations"]) if dmc_data["destinations"] else "(aucune destination)"
+        print(f"    → OK: {dmc_data['title']} ({dest_str})")
 
     # Générer le JSON
     output = {
@@ -510,21 +523,24 @@ def main():
             "total_dmc": len(dmc_list),
             "total_links_found": len(all_links),
             "skipped": skipped,
+            "skipped_urls": skipped_urls,
         },
         "dmc": dmc_list,
     }
 
-    # Écrire le fichier
     import os
     os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
-
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
     print("\n" + "=" * 60)
     print(f"TERMINÉ !")
     print(f"  → {len(dmc_list)} fiches DMC extraites")
-    print(f"  → {skipped} liens ignorés (articles d'actu ou erreurs)")
+    print(f"  → {skipped} liens ignorés")
+    if skipped_urls:
+        print(f"  → URLs ignorées :")
+        for s in skipped_urls:
+            print(f"      {s['url']} ({s['reason']})")
     print(f"  → Fichier généré : {OUTPUT_FILE}")
     print("=" * 60)
 
