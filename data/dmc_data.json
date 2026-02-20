@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-02-20T14:23:47Z",
+    "generated_at": "2026-02-20T14:41:05Z",
     "source": "https://www.tourmag.com/Annuaire-des-agences-touristiques-locales_r404.html",
     "total_dmc": 104,
     "total_links_found": 104,
@@ -360,8 +360,7 @@
       "destinations": [
         "Allemagne",
         "Autriche",
-        "Suisse",
-        "Europe de L'est"
+        "Suisse"
       ],
       "primary_destinations": [
         "Allemagne"
@@ -1885,7 +1884,7 @@
         "Belize",
         "Canada",
         "Colombie",
-        "Costa /"
+        "Costa Rica"
       ],
       "primary_destinations": [
         "Colombie"
@@ -4417,7 +4416,7 @@
         "Belize",
         "Canada",
         "Colombie",
-        "Costa /"
+        "Costa Rica"
       ],
       "primary_destinations": [
         "Guatemala",
@@ -5652,7 +5651,7 @@
       "description": "Iceland Travel est un réceptif basé à Reykjavík offrant une gamme d'expériences premium soigneusement sélectionnées pour ses visiteurs. De l'observation des aurores boréales à naviguer des paysages d’un autre monde, Iceland Travel est la plus ancienne entreprise en Islande proposant des circuits...",
       "image": "https://www.tourmag.com/photo/art/grande/82858975-59383366.jpg?v=1726582875",
       "destinations": [
-        "Toute L'islande, des Fjords Aux Glaciers, en Passant Par les Volcans et les Villages de Pêcheurs"
+        "Islande"
       ],
       "primary_destinations": [
         "Islande"
@@ -6733,7 +6732,7 @@
         "Belize",
         "Canada",
         "Colombie",
-        "Costa Rica /"
+        "Costa Rica"
       ],
       "primary_destinations": [
         "Mexique"
@@ -6835,14 +6834,7 @@
       "title": "DMC Mexique Xplore Voyages",
       "description": "Depuis sa création, Xplore Mexique s’affirme comme un réceptif engagé, local et francophone, dédié à concevoir des voyages sur mesure au Mexique. Nous sommes une équipe de passionnés, de vrais « Xplorers », profondément attachés à partager les richesses naturelles, culturelles et humaines de ce...",
       "image": "https://www.tourmag.com/photo/art/grande/91196378-64155658.jpg?v=1758614937",
-      "destinations": [
-        "Yucatan",
-        "Chiapas",
-        "Mexico City",
-        "Quintana Roo",
-        "Oaxaca",
-        "Baja California"
-      ],
+      "destinations": [],
       "primary_destinations": [
         "Mexique"
       ],
@@ -7017,7 +7009,7 @@
         "Belize",
         "Canada",
         "Colombie",
-        "Costa /"
+        "Costa Rica"
       ],
       "primary_destinations": [
         "Nicaragua"
@@ -7374,7 +7366,7 @@
         "Belize",
         "Canada",
         "Colombie",
-        "Costa /"
+        "Costa Rica"
       ],
       "primary_destinations": [
         "Panama"
@@ -7483,7 +7475,6 @@
       "destinations": [
         "Colombie",
         "Costa Rica",
-        "Equateur - Amazonie - Galapagos",
         "Panama",
         "Venezuela"
       ],
@@ -7601,8 +7592,6 @@
       "description": "Tahiti Nui Travel fut créée en 1965 avec l’ambition de partager avec nos visiteurs la culture, les traditions, et l’authenticité de nos îles, mais aussi de leur apporter tous les services nécessaires qui assureront un séjour inoubliable et unique dans les îles de la Polynésie. Reconnu en tant...",
       "image": "https://www.tourmag.com/photo/art/grande/76100244-53858669.jpg?v=1698224937",
       "destinations": [
-        "Polynésie Française",
-        "Polynésie",
         "Tahiti"
       ],
       "primary_destinations": [
@@ -7664,8 +7653,6 @@
       "description": "A Tahiti Travel Services, nous vous révélons notre Polynésie telle qu’elle est, mais aussi telle que nous l’aimons. Nous vous guiderons dans la création des meilleurs itinéraires sur mesure pour vos clients. DESTINATION : &gt; POLYNÉSIE FRANÇAISE",
       "image": "https://www.tourmag.com/photo/art/grande/75282674-52667019.jpg?v=1732015973",
       "destinations": [
-        "Polynésie Française",
-        "Polynésie",
         "Tahiti"
       ],
       "primary_destinations": [
@@ -8304,7 +8291,6 @@
       "image": "https://www.tourmag.com/photo/art/grande/84261419-60195908.jpg?v=1731661550",
       "destinations": [
         "Royaume-uni",
-        "Londres",
         "Sud-est et Sud-ouest de L’angleterre",
         "Écosse",
         "Irlande"
@@ -8522,8 +8508,7 @@
       "image": "https://www.tourmag.com/photo/art/grande/71181179-49607250.jpg?v=1677852897",
       "destinations": [
         "Sicile",
-        "Sardaigne",
-        "Pouilles"
+        "Sardaigne"
       ],
       "primary_destinations": [
         "Sardaigne",
@@ -9285,7 +9270,7 @@
       "destinations": [
         "Vietnam",
         "Laos",
-        "Cambodge Dat /"
+        "Cambodge"
       ],
       "primary_destinations": [
         "Vietnam"
@@ -9379,7 +9364,6 @@
         "Cambodge",
         "Laos",
         "Thaïlande",
-        "Vietna /",
         "Vietnam"
       ],
       "primary_destinations": [
