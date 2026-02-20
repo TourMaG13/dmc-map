@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-02-20T11:53:02Z",
+    "generated_at": "2026-02-20T13:55:43Z",
     "source": "https://www.tourmag.com/Annuaire-des-agences-touristiques-locales_r404.html",
     "total_dmc": 104,
     "total_links_found": 104,
@@ -14,61 +14,24 @@
       "description": "Breathe in Travel est une agence francophone et anglophone basée au Kosovo et en Albanie. Notre proximité avec les destinations que nous offrons et notamment l’Albanie, nous permet de vous accompagner au mieux lors de vos séjours créés sur-mesure. Joyau des Balkans encore méconnu, votre séjour en...",
       "image": "https://www.tourmag.com/photo/art/grande/67242974-47598518.jpg?v=1663076546",
       "destinations": [
-        "ALBANIE",
-        "BOSNIE",
-        "BULGARIE",
-        "CROATIE",
-        "KOSOVO",
-        "MACÉDOINE DU NORD",
-        "MONTÉNÉGRO",
-        "ROUMANIE",
-        "SLOVÉNIE"
+        "Albanie",
+        "Bosnie",
+        "Bulgarie",
+        "Croatie",
+        "Kosovo",
+        "Macédoine du Nord",
+        "Monténégro",
+        "Roumanie",
+        "Slovénie"
+      ],
+      "primary_destinations": [
+        "Albanie"
       ],
       "coordinates": [
         {
-          "destination": "ALBANIE",
+          "destination": "Albanie",
           "lat": 41.1533,
           "lng": 20.1683
-        },
-        {
-          "destination": "BOSNIE",
-          "lat": 43.9159,
-          "lng": 17.6791
-        },
-        {
-          "destination": "BULGARIE",
-          "lat": 42.7339,
-          "lng": 25.4858
-        },
-        {
-          "destination": "CROATIE",
-          "lat": 45.1,
-          "lng": 15.2
-        },
-        {
-          "destination": "KOSOVO",
-          "lat": 42.6026,
-          "lng": 20.903
-        },
-        {
-          "destination": "MACÉDOINE DU NORD",
-          "lat": 41.5122,
-          "lng": 21.7453
-        },
-        {
-          "destination": "MONTÉNÉGRO",
-          "lat": 42.7087,
-          "lng": 19.3744
-        },
-        {
-          "destination": "ROUMANIE",
-          "lat": 45.9432,
-          "lng": 24.9668
-        },
-        {
-          "destination": "SLOVÉNIE",
-          "lat": 46.1512,
-          "lng": 14.9955
         }
       ],
       "continents": [
@@ -136,6 +99,9 @@
       "destinations": [
         "Algérie"
       ],
+      "primary_destinations": [
+        "Algérie"
+      ],
       "coordinates": [
         {
           "destination": "Algérie",
@@ -182,31 +148,19 @@
       "description": "Envie de Maghreb est DMC spécialisée dans le sur-mesure basé à Auray, en Bretagne. Envie d’un week-end ? un séjour ? Un circuit ? Une randonnée/trekking ? Une thalasso ? Un golf ? Tout est possible avec Envie de Maghreb, nous réalisons vos projets selon vos envies! Notre plus : un seul...",
       "image": "https://www.tourmag.com/photo/art/grande/77448680-56299260.jpg?v=1703173558",
       "destinations": [
-        "ALGÉRIE",
-        "EGYPTE",
-        "MAROC",
-        "TUNISIE"
+        "Algérie",
+        "Egypte",
+        "Maroc",
+        "Tunisie"
+      ],
+      "primary_destinations": [
+        "Algérie"
       ],
       "coordinates": [
         {
-          "destination": "ALGÉRIE",
+          "destination": "Algérie",
           "lat": 28.0339,
           "lng": 1.6596
-        },
-        {
-          "destination": "EGYPTE",
-          "lat": 26.8206,
-          "lng": 30.8025
-        },
-        {
-          "destination": "MAROC",
-          "lat": 31.7917,
-          "lng": -7.0926
-        },
-        {
-          "destination": "TUNISIE",
-          "lat": 33.8869,
-          "lng": 9.5375
         }
       ],
       "continents": [
@@ -268,19 +222,17 @@
       "description": "Bretzel Travel est une agence de voyage réceptive, basée en Allemagne et fondée par 3 français. Elle est spécialiste de conception d'itinéraires sur-mesures afin de faire découvrir l'Allemagne et ses environs. Cette jeune agence concocte des voyages authentiques, durables et mémorables à l'écoute...",
       "image": "https://www.tourmag.com/photo/art/grande/89261643-63143427.jpg?v=1749809697",
       "destinations": [
-        "ALLEMAGNE",
-        "AUTRICHE"
+        "Allemagne",
+        "Autriche"
+      ],
+      "primary_destinations": [
+        "Allemagne"
       ],
       "coordinates": [
         {
-          "destination": "ALLEMAGNE",
+          "destination": "Allemagne",
           "lat": 51.1657,
           "lng": 10.4515
-        },
-        {
-          "destination": "AUTRICHE",
-          "lat": 47.5162,
-          "lng": 14.5501
         }
       ],
       "continents": [
@@ -406,31 +358,19 @@
       "description": "we tours est un réceptif et tour-opérateur allemand spécialisé dans l’organisation de voyages de groupes B2B. Basée à Berlin, l’entreprise propose des circuits touristiques sur mesure en Allemagne, en Autriche, en Suisse et en Europe de l'Est. Forte d’une expertise reconnue dans le secteur du...",
       "image": "https://www.tourmag.com/photo/art/grande/86989319-61787671.jpg?v=1741190083",
       "destinations": [
-        "ALLEMAGNE",
-        "AUTRICHE",
-        "SUISSE",
-        "EUROPE DE L'EST"
+        "Allemagne",
+        "Autriche",
+        "Suisse",
+        "Europe de L'est"
+      ],
+      "primary_destinations": [
+        "Allemagne"
       ],
       "coordinates": [
         {
-          "destination": "ALLEMAGNE",
+          "destination": "Allemagne",
           "lat": 51.1657,
           "lng": 10.4515
-        },
-        {
-          "destination": "AUTRICHE",
-          "lat": 47.5162,
-          "lng": 14.5501
-        },
-        {
-          "destination": "SUISSE",
-          "lat": 46.8182,
-          "lng": 8.2275
-        },
-        {
-          "destination": "EUROPE DE L'EST",
-          "lat": null,
-          "lng": null
         }
       ],
       "continents": [
@@ -541,20 +481,18 @@
     {
       "url": "https://www.tourmag.com/Brazil-Sensations-Receptif-Bresil_a125344.html",
       "title": "DMC Brésil Brazil Sensations",
-      "description": "BRAZIL SENSATIONS, agence DMC, offre des programmes sur-mesure au Brésil pour individuels, groupes, séminaires et événements, avec une équipe dédiée et créative. DESTINATIONS : &gt; BRESIL Date de création : 04/02/2014",
+      "description": "BRAZIL SENSATIONS, agence DMC, offre des programmes sur-mesure au Brésil pour individuels, groupes, séminaires et événements, avec une équipe dédiée et créative.",
       "image": "https://www.tourmag.com/photo/art/grande/85588586-60985474.jpg?v=1736972617",
       "destinations": [
-        "BRESIL Date d...\" /",
-        "BRESIL"
+        "Bresil Date D...\" /",
+        "Bresil"
+      ],
+      "primary_destinations": [
+        "Brésil"
       ],
       "coordinates": [
         {
-          "destination": "BRESIL Date d...\" /",
-          "lat": -14.235,
-          "lng": -51.9253
-        },
-        {
-          "destination": "BRESIL",
+          "destination": "Brésil",
           "lat": -14.235,
           "lng": -51.9253
         }
@@ -731,20 +669,18 @@
     {
       "url": "https://www.tourmag.com/Passion-Brazil-Receptif-Bresil_a124824.html",
       "title": "DMC BRESIL PASSION BRAZIL",
-      "description": "Passion Brazil est un DMC boutique spécialisé dans les voyages sur mesure, les groupes de loisirs et d'affaires, les incentives et les événements dans tout le Brésil. DESTINATIONS : &gt; Brésil Date de création : 2004",
+      "description": "Passion Brazil est un DMC boutique spécialisé dans les voyages sur mesure, les groupes de loisirs et d'affaires, les incentives et les événements dans tout le Brésil.",
       "image": "https://www.tourmag.com/photo/art/grande/84446190-60308448.jpg?v=1764596473",
       "destinations": [
-        "Brésil Date d...\" /",
+        "Brésil Date D...\" /",
         "Brésil"
+      ],
+      "primary_destinations": [
+        "Bresil"
       ],
       "coordinates": [
         {
-          "destination": "Brésil Date d...\" /",
-          "lat": -14.235,
-          "lng": -51.9253
-        },
-        {
-          "destination": "Brésil",
+          "destination": "Bresil",
           "lat": -14.235,
           "lng": -51.9253
         }
@@ -857,9 +793,12 @@
     {
       "url": "https://www.tourmag.com/Terra-Bahia--Receptif-Bresil_a104538.html",
       "title": "DMC NORDESTE BRESIL TERRA BAHIA",
-      "description": "Terra Bahia est membre de Terra GROUP, réseau d'agences de voyage réceptives, fondé en 1998, qui comprend aujourd'hui 19 DMC en Amérique latine, Afrique australe, Océanie et Europe. DESTINATIONS : &gt; AÇORES &gt; AFRIQUE DU SUD &gt; ANTARCTIQUE &gt; ARGENTINE &gt; AUSTRALIE &gt; BOLIVIE &gt; BRÉSIL &gt; CANADA &gt; CHIL...",
+      "description": "Terra Bahia est membre de Terra GROUP, réseau d'agences de voyage réceptives, fondé en 1998, qui comprend aujourd'hui 19 DMC en Amérique latine, Afrique australe, Océanie et Europe.",
       "image": "https://www.tourmag.com/photo/art/grande/48001680-37814030.jpg?v=1594302409",
       "destinations": [
+        "Bresil"
+      ],
+      "primary_destinations": [
         "Bresil"
       ],
       "coordinates": [
@@ -976,25 +915,18 @@
       "description": "Balkania Tour est une agence francophone basée en Bulgarie et spécialisée dans les pays des Balkans, notamment la Bulgarie, la Roumanie et la Serbie. Une équipe à taille humaine dessine des voyages sur mesure, des circuits en groupe et des excursions dans le but de répondre aux envies de ses...",
       "image": "https://www.tourmag.com/photo/art/grande/60269258-44118650.jpg?v=1637591336",
       "destinations": [
-        "BULGARIE",
-        "ROUMANIE",
-        "SERBIE"
+        "Bulgarie",
+        "Roumanie",
+        "Serbie"
+      ],
+      "primary_destinations": [
+        "Bulgarie"
       ],
       "coordinates": [
         {
-          "destination": "BULGARIE",
+          "destination": "Bulgarie",
           "lat": 42.7339,
           "lng": 25.4858
-        },
-        {
-          "destination": "ROUMANIE",
-          "lat": 45.9432,
-          "lng": 24.9668
-        },
-        {
-          "destination": "SERBIE",
-          "lat": 44.0165,
-          "lng": 21.0059
         }
       ],
       "continents": [
@@ -1044,25 +976,18 @@
       "description": "Aurora Travel est un DMC depuis plus de 20 ans, spécialisée dans les voyages sur mesure, les séries/groupes ainsi qu’une sélection de plusieurs de ses propres GIR francophones en petit groupe. Aurora Travel possède des bureaux au Vietnam, au Cambodge, au Laos et en Thaïlande et s’impose comme un...",
       "image": "https://www.tourmag.com/photo/art/grande/47669342-37640160.jpg?v=1685697372",
       "destinations": [
-        "CAMBODGE",
-        "LAOS",
-        "VIETNAM"
+        "Cambodge",
+        "Laos",
+        "Vietnam"
+      ],
+      "primary_destinations": [
+        "Cambodge"
       ],
       "coordinates": [
         {
-          "destination": "CAMBODGE",
+          "destination": "Cambodge",
           "lat": 12.5657,
           "lng": 104.991
-        },
-        {
-          "destination": "LAOS",
-          "lat": 19.8563,
-          "lng": 102.4955
-        },
-        {
-          "destination": "VIETNAM",
-          "lat": 14.0583,
-          "lng": 108.2772
         }
       ],
       "continents": [
@@ -1141,46 +1066,24 @@
     {
       "url": "https://www.tourmag.com/Easia-Travel-Receptif-Cambodge_a123773.html",
       "title": "DMC CAMBODGE EASIA TRAVEL",
-      "description": "Fondé en 2000, Easia Travel, DMC 100% B2B, pionnier du voyage responsable en Asie du Sud Est, se spécialise dans la conception de voyage expérientiel sur mesure. DESTINATIONS : &gt; CAMBODGE &gt; LAOS &gt; THAILANDE &gt; VIETNAM Date de création : 2000",
+      "description": "Fondé en 2000, Easia Travel, DMC 100% B2B, pionnier du voyage responsable en Asie du Sud Est, se spécialise dans la conception de voyage expérientiel sur mesure.",
       "image": "https://www.tourmag.com/photo/art/grande/82473151-59159462.jpg?v=1724938709",
       "destinations": [
-        "CAMBODGE",
-        "LAOS...\" /",
-        "CAMBODGE",
-        "LAOS",
-        "THAILANDE",
-        "VIETNAM"
+        "Cambodge",
+        "Laos...\" /",
+        "Cambodge",
+        "Laos",
+        "Thailande",
+        "Vietnam"
+      ],
+      "primary_destinations": [
+        "Cambodge"
       ],
       "coordinates": [
         {
-          "destination": "CAMBODGE",
+          "destination": "Cambodge",
           "lat": 12.5657,
           "lng": 104.991
-        },
-        {
-          "destination": "LAOS...\" /",
-          "lat": 19.8563,
-          "lng": 102.4955
-        },
-        {
-          "destination": "CAMBODGE",
-          "lat": 12.5657,
-          "lng": 104.991
-        },
-        {
-          "destination": "LAOS",
-          "lat": 19.8563,
-          "lng": 102.4955
-        },
-        {
-          "destination": "THAILANDE",
-          "lat": 15.87,
-          "lng": 100.9925
-        },
-        {
-          "destination": "VIETNAM",
-          "lat": 14.0583,
-          "lng": 108.2772
         }
       ],
       "continents": [
@@ -1255,34 +1158,22 @@
     {
       "url": "https://www.tourmag.com/Phoenix-Voyages-Receptif-Cambodge_a104377.html",
       "title": "Phoenix Voyages, Réceptif Cambodge",
-      "description": "Vingt-trois ans d’expérience en Extrême Orient, c’est la garantie de qualité dont Phoenix Voyages fait bénéficier ses clients. DESTINATIONS : &gt; BHOUTAN &gt; CAMBODGE &gt; CORÉE DU NORD &gt; CORÉE DU SUD &gt; HONG KONG &gt; JAPON &gt; LAOS &gt; MACAO &gt; OUZBEKISTAN &gt; SINGAPOUR &gt; TAÏWAN &gt; THAÏLANDE &gt; TURKMENISTAN &gt;...",
+      "description": "Vingt-trois ans d’expérience en Extrême Orient, c’est la garantie de qualité dont Phoenix Voyages fait bénéficier ses clients.",
       "image": "https://www.tourmag.com/photo/art/grande/47746104-37689258.jpg?v=1593609106",
       "destinations": [
-        "BHOUTAN",
-        "CAMBODGE",
-        "CORÉE DU NORD",
-        "CORÉE DU SUD...\" /"
+        "Bhoutan",
+        "Cambodge",
+        "Corée du Nord",
+        "Corée du Sud...\" /"
+      ],
+      "primary_destinations": [
+        "Cambodge"
       ],
       "coordinates": [
         {
-          "destination": "BHOUTAN",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "CAMBODGE",
+          "destination": "Cambodge",
           "lat": 12.5657,
           "lng": 104.991
-        },
-        {
-          "destination": "CORÉE DU NORD",
-          "lat": 40.3399,
-          "lng": 127.5101
-        },
-        {
-          "destination": "CORÉE DU SUD...\" /",
-          "lat": 35.9078,
-          "lng": 127.7669
         }
       ],
       "continents": [
@@ -1352,11 +1243,14 @@
       "description": "Depuis près de 50 ans, ce réceptif nord-américain imagine des voyages de groupes personnalisables. Marque sœur de Toundra Voyages, Receptour partage le même ADN du sur-mesure. Cette équipe d’experts passionnés polyglottes, basée à Montréal, crée des programmes authentiques et diversifiés pour une...",
       "image": "https://www.tourmag.com/photo/art/grande/88720401-62799456.jpg?v=1748270426",
       "destinations": [
-        "CANADA"
+        "Canada"
+      ],
+      "primary_destinations": [
+        "Canada"
       ],
       "coordinates": [
         {
-          "destination": "CANADA",
+          "destination": "Canada",
           "lat": 56.1304,
           "lng": -106.3468
         }
@@ -1441,26 +1335,25 @@
     {
       "url": "https://www.tourmag.com/TERRA-Canada-Alaska-un-receptif-dans-le-grand-nord_a104550.html",
       "title": "TERRA Canada &amp; Alaska, un réceptif dans le grand nord",
-      "description": "TERRA Canada &amp; Alaska fait partie de TERRA PANAMERICA, un réseau d’agences locales spécialisées dans le voyage sur-mesure et francophone. Nous composons des aventures humaines, immersives et personnalisées depuis l’Alaska jusqu'à la Colombie. DESTINATIONS : &gt; ALASKA &gt; BELIZE &gt; CANADA &gt;...",
+      "description": "TERRA Canada &amp; Alaska fait partie de TERRA PANAMERICA, un réseau d’agences locales spécialisées dans le voyage sur-mesure et francophone. Nous composons des aventures humaines, immersives et personnalisées depuis l’Alaska jusqu'à la Colombie.",
       "image": "https://www.tourmag.com/photo/art/grande/48029454-37824964.jpg?v=1768401378",
       "destinations": [
-        "ALASKA",
-        "BELIZE",
-        "CANADA"
+        "Alaska",
+        "Belize",
+        "Canada"
+      ],
+      "primary_destinations": [
+        "Alaska",
+        "Canada"
       ],
       "coordinates": [
         {
-          "destination": "ALASKA",
+          "destination": "Alaska",
           "lat": 64.2008,
           "lng": -152.4937
         },
         {
-          "destination": "BELIZE",
-          "lat": 17.1899,
-          "lng": -88.4976
-        },
-        {
-          "destination": "CANADA",
+          "destination": "Canada",
           "lat": 56.1304,
           "lng": -106.3468
         }
@@ -1557,22 +1450,26 @@
     {
       "url": "https://www.tourmag.com/Toundra-Voyages-Receptif-Canada-Etats-Unis_a127073.html",
       "title": "DMC Canada et Etats-Unis Toundra Voyages",
-      "description": "Réceptif nord-américain, expert du Canada et des USA, Toundra Voyages conçoit des séjours sur mesure et immersifs pour le marché européen FIT. DESTINATIONS : &gt; CANADA &gt; ETATS-UNIS Date de création : 1998",
+      "description": "Réceptif nord-américain, expert du Canada et des USA, Toundra Voyages conçoit des séjours sur mesure et immersifs pour le marché européen FIT.",
       "image": "https://www.tourmag.com/photo/art/grande/88538182-62698891.jpg?v=1747318308",
       "destinations": [
-        "CANADA",
-        "ETATS-UNIS"
+        "Canada",
+        "Etats-unis"
+      ],
+      "primary_destinations": [
+        "Etats-unis",
+        "Canada"
       ],
       "coordinates": [
         {
-          "destination": "CANADA",
-          "lat": 56.1304,
-          "lng": -106.3468
-        },
-        {
-          "destination": "ETATS-UNIS",
+          "destination": "Etats-unis",
           "lat": 37.0902,
           "lng": -95.7129
+        },
+        {
+          "destination": "Canada",
+          "lat": 56.1304,
+          "lng": -106.3468
         }
       ],
       "continents": [
@@ -1634,6 +1531,9 @@
       "description": "Actour Trekking est une agence de voyages locale basée au Cap Vert, spécialisée dans l'organisation de séjours axés sur le trekking et la randonnée. Nos circuits sont conçus pour offrir aux passionnés de la marche une immersion complète dans les splendeurs des îles du Cap Vert. DESTINATION :...",
       "image": "https://www.tourmag.com/photo/art/grande/79628725-57644606.jpg?v=1713509294",
       "destinations": [
+        "Cap Vert"
+      ],
+      "primary_destinations": [
         "Cap Vert"
       ],
       "coordinates": [
@@ -1726,6 +1626,9 @@
       "description": "Entreprise familiale créée en 1985 par Christophe Chaillou, Creative Tours est la première agence réceptive francophone à Chypre, dédiée aux voyageurs francophones, individuels, groupes et MICE. Notre CEO d’origine Bordelais a su saisir le potentiel touristique unique de Chypre, un carrefou...",
       "image": "https://www.tourmag.com/photo/art/grande/63207124-45615994.jpg?v=1744723547",
       "destinations": [
+        "Chypre"
+      ],
+      "primary_destinations": [
         "Chypre"
       ],
       "coordinates": [
@@ -1839,9 +1742,12 @@
     {
       "url": "https://www.tourmag.com/OLTA-Travel-Cyprus-Receptif-Chypre_a117428.html",
       "title": "DMC Chypre OLTA Travel Cyprus",
-      "description": "Nos produits touristiques vous permettront de découvrir Chypre authentique par le biais d'artisans locaux, de viticulteurs, guides passionnes par le riche patrimoine du pays et des tavernes qui proposent l’expérience gastronomique unique. DESTINATION : &gt; CHYPRE Date de création : 2010",
+      "description": "Nos produits touristiques vous permettront de découvrir Chypre authentique par le biais d'artisans locaux, de viticulteurs, guides passionnes par le riche patrimoine du pays et des tavernes qui proposent l’expérience gastronomique unique. DESTINATION : &gt; CHYPRE",
       "image": "https://www.tourmag.com/photo/art/grande/70705679-49285859.jpg?v=1741965623",
       "destinations": [
+        "Chypre"
+      ],
+      "primary_destinations": [
         "Chypre"
       ],
       "coordinates": [
@@ -1890,6 +1796,9 @@
       "description": "Colombia memories est une agence réceptive basée à Bogota depuis plus de 10 ans qui propose des circuits FIT et groupes pour les marchés européens principalement. Nous sommes positionnés sur les marchés classiques, hauts de gamme et proposons également des voyages hors des sentiers battus,...",
       "image": "https://www.tourmag.com/photo/art/grande/68609038-48230604.jpg?v=1667909378",
       "destinations": [
+        "Colombie"
+      ],
+      "primary_destinations": [
         "Colombie"
       ],
       "coordinates": [
@@ -1971,40 +1880,23 @@
     {
       "url": "https://www.tourmag.com/TERRA-Colombia-Receptif-en-Colombie_a104559.html",
       "title": "TERRA Colombia, Réceptif en Colombie",
-      "description": "TERRA Colombia fait partie de TERRA PANAMERICA, un réseau d’agences locales spécialisées dans le voyage sur-mesure et francophone. Nous composons des aventures humaines, immersives et personnalisées depuis l’Alaska jusqu'à la Colombie. DESTINATIONS : &gt; ALASKA &gt; BELIZE &gt; CANADA &gt; COLOMBIE &gt; COSTA...",
+      "description": "TERRA Colombia fait partie de TERRA PANAMERICA, un réseau d’agences locales spécialisées dans le voyage sur-mesure et francophone. Nous composons des aventures humaines, immersives et personnalisées depuis l’Alaska jusqu'à la Colombie.",
       "image": "https://www.tourmag.com/photo/art/grande/48030665-37826229.jpg?v=1768907023",
       "destinations": [
-        "ALASKA",
-        "BELIZE",
-        "CANADA",
-        "COLOMBIE",
-        "COSTA...\" /"
+        "Alaska",
+        "Belize",
+        "Canada",
+        "Colombie",
+        "Costa...\" /"
+      ],
+      "primary_destinations": [
+        "Colombie"
       ],
       "coordinates": [
         {
-          "destination": "ALASKA",
-          "lat": 64.2008,
-          "lng": -152.4937
-        },
-        {
-          "destination": "BELIZE",
-          "lat": 17.1899,
-          "lng": -88.4976
-        },
-        {
-          "destination": "CANADA",
-          "lat": 56.1304,
-          "lng": -106.3468
-        },
-        {
-          "destination": "COLOMBIE",
+          "destination": "Colombie",
           "lat": 4.5709,
           "lng": -74.2973
-        },
-        {
-          "destination": "COSTA...\" /",
-          "lat": null,
-          "lng": null
         }
       ],
       "continents": [
@@ -2099,28 +1991,21 @@
     {
       "url": "https://www.tourmag.com/Tucaya-Colombia-receptif-Colombie_a121268.html",
       "title": "DMC COLOMBIE TUCAYA TRAVEL",
-      "description": "Créé en 2012, Tucaya Colombia est une agence réceptive basée à Bogota qui opère sur l’ensemble du pays. Une équipe de passionné(e)s vous attend pour vous faire découvrir ce pays haut en couleurs et sa population au sens de la fête légendaire ! DESTINATIONS : &gt; COLOMBIE &gt; COSTA RICA &gt; EQUATEUR...",
+      "description": "Créé en 2012, Tucaya Colombia est une agence réceptive basée à Bogota qui opère sur l’ensemble du pays. Une équipe de passionné(e)s vous attend pour vous faire découvrir ce pays haut en couleurs et sa population au sens de la fête légendaire !",
       "image": "https://www.tourmag.com/photo/art/grande/77847530-56542566.jpg?v=1706180421",
       "destinations": [
-        "COLOMBIE",
-        "COSTA RICA",
-        "EQUATEUR...\" /"
+        "Colombie",
+        "Costa Rica",
+        "Equateur...\" /"
+      ],
+      "primary_destinations": [
+        "Colombie"
       ],
       "coordinates": [
         {
-          "destination": "COLOMBIE",
+          "destination": "Colombie",
           "lat": 4.5709,
           "lng": -74.2973
-        },
-        {
-          "destination": "COSTA RICA",
-          "lat": 9.7489,
-          "lng": -83.7534
-        },
-        {
-          "destination": "EQUATEUR...\" /",
-          "lat": -1.8312,
-          "lng": -78.1834
         }
       ],
       "continents": [
@@ -2159,34 +2044,22 @@
     {
       "url": "https://www.tourmag.com/Phoenix-Voyages-Receptif-Coree-du-Nord_a104383.html",
       "title": "Phoenix Voyages, Réceptif Corée du Nord",
-      "description": "Vingt-trois ans d’expérience en Extrême Orient, c’est la garantie de qualité dont Phoenix Voyages fait bénéficier ses clients. DESTINATIONS : &gt; BHOUTAN &gt; CAMBODGE &gt; CORÉE DU NORD &gt; CORÉE DU SUD &gt; HONG KONG &gt; JAPON &gt; LAOS &gt; MACAO &gt; OUZBEKISTAN &gt; SINGAPOUR &gt; TAÏWAN &gt; THAÏLANDE &gt; TURKMENISTAN &gt;...",
+      "description": "Vingt-trois ans d’expérience en Extrême Orient, c’est la garantie de qualité dont Phoenix Voyages fait bénéficier ses clients.",
       "image": "https://www.tourmag.com/photo/art/grande/47748136-37690612.jpg?v=1593611228",
       "destinations": [
-        "BHOUTAN",
-        "CAMBODGE",
-        "CORÉE DU NORD",
-        "CORÉE DU SUD...\" /"
+        "Bhoutan",
+        "Cambodge",
+        "Corée du Nord",
+        "Corée du Sud...\" /"
+      ],
+      "primary_destinations": [
+        "Corée du Nord"
       ],
       "coordinates": [
         {
-          "destination": "BHOUTAN",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "CAMBODGE",
-          "lat": 12.5657,
-          "lng": 104.991
-        },
-        {
-          "destination": "CORÉE DU NORD",
+          "destination": "Corée du Nord",
           "lat": 40.3399,
           "lng": 127.5101
-        },
-        {
-          "destination": "CORÉE DU SUD...\" /",
-          "lat": 35.9078,
-          "lng": 127.7669
         }
       ],
       "continents": [
@@ -2256,19 +2129,17 @@
       "description": "Cap Corée est une agence réceptive basée à Séoul, spécialisée dans l’organisation de circuits touristiques et d’activités de découvertes culturelles en Corée du sud. Ne manquez rien de cette fascinante destination en vous en remettant à une équipe francophone compétente qui saura vous proposer...",
       "image": "https://www.tourmag.com/photo/art/grande/57735200-42738192.jpg?v=1626699209",
       "destinations": [
-        "COREE DU SUD",
-        "JAPON"
+        "Coree du Sud",
+        "Japon"
+      ],
+      "primary_destinations": [
+        "Coree du Sud"
       ],
       "coordinates": [
         {
-          "destination": "COREE DU SUD",
+          "destination": "Coree du Sud",
           "lat": 35.9078,
           "lng": 127.7669
-        },
-        {
-          "destination": "JAPON",
-          "lat": 36.2048,
-          "lng": 138.2529
         }
       ],
       "continents": [
@@ -2307,14 +2178,17 @@
     {
       "url": "https://www.tourmag.com/Danim-Group-Receptif-Coree-du-Sud_a126077.html",
       "title": "DMC Corée du Sud Danim Group",
-      "description": "Danim Group, réceptif francophone à Séoul, crée des voyages sur mesure en Corée du Sud. Notre équipe franco-coréenne propose des circuits privés, groupés ou organisés, offrant des expériences authentiques et inoubliables. DESTINATIONS : &gt; CORÉE DU SUD Date de création : 2015",
+      "description": "Danim Group, réceptif francophone à Séoul, crée des voyages sur mesure en Corée du Sud. Notre équipe franco-coréenne propose des circuits privés, groupés ou organisés, offrant des expériences authentiques et inoubliables.",
       "image": "https://www.tourmag.com/photo/art/grande/87013713-61802558.jpg?v=1741347053",
       "destinations": [
-        "CORÉE DU SUD"
+        "Corée du Sud"
+      ],
+      "primary_destinations": [
+        "Corée du Sud"
       ],
       "coordinates": [
         {
-          "destination": "CORÉE DU SUD",
+          "destination": "Corée du Sud",
           "lat": 35.9078,
           "lng": 127.7669
         }
@@ -2463,32 +2337,20 @@
     {
       "url": "https://www.tourmag.com/Phoenix-Voyages-Receptif-Coree-du-Sud_a104386.html",
       "title": "Phoenix Voyages, Réceptif Corée du Sud",
-      "description": "Vingt-trois ans d’expérience en Extrême Orient, c’est la garantie de qualité dont Phoenix Voyages fait bénéficier ses clients. DESTINATIONS : &gt; BHOUTAN &gt; CAMBODGE &gt; CORÉE DU NORD &gt; CORÉE DU SUD &gt; HONG KONG &gt; JAPON &gt; LAOS &gt; MACAO &gt; OUZBEKISTAN &gt; SINGAPOUR &gt; TAÏWAN &gt; THAÏLANDE &gt; TURKMENISTAN &gt;...",
+      "description": "Vingt-trois ans d’expérience en Extrême Orient, c’est la garantie de qualité dont Phoenix Voyages fait bénéficier ses clients.",
       "image": "https://www.tourmag.com/photo/art/grande/47748949-37690959.jpg?v=1593612343",
       "destinations": [
-        "BHOUTAN",
-        "CAMBODGE",
-        "CORÉE DU NORD",
-        "CORÉE DU SUD...\" /"
+        "Bhoutan",
+        "Cambodge",
+        "Corée du Nord",
+        "Corée du Sud...\" /"
+      ],
+      "primary_destinations": [
+        "Corée du Sud"
       ],
       "coordinates": [
         {
-          "destination": "BHOUTAN",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "CAMBODGE",
-          "lat": 12.5657,
-          "lng": 104.991
-        },
-        {
-          "destination": "CORÉE DU NORD",
-          "lat": 40.3399,
-          "lng": 127.5101
-        },
-        {
-          "destination": "CORÉE DU SUD...\" /",
+          "destination": "Corée du Sud",
           "lat": 35.9078,
           "lng": 127.7669
         }
@@ -2560,11 +2422,14 @@
       "description": "Tour de Corée est une agence francophone située en Corée du Sud, où travaillent français et coréen main dans la main. Offrant un accompagnement personnalisé pour chaque voyageur et spécialisée dans les circuits sur-mesure en privatif ou en groupe, Tour de Corée a pour mission de vous faire...",
       "image": "https://www.tourmag.com/photo/art/grande/83583891-59814537.jpg?v=1729264134",
       "destinations": [
-        "Corée Du Sud"
+        "Corée du Sud"
+      ],
+      "primary_destinations": [
+        "Corée du Sud"
       ],
       "coordinates": [
         {
-          "destination": "Corée Du Sud",
+          "destination": "Corée du Sud",
           "lat": 35.9078,
           "lng": 127.7669
         }
@@ -2649,9 +2514,12 @@
     {
       "url": "https://www.tourmag.com/Arawak-Experience-Receptif-Costa-Rica_a110469.html",
       "title": "DMC COSTA RICA ARAWAK EXPERIENCE",
-      "description": "Arawak Expérience est une agence réceptive locale francophone établie au Costa Rica, spécialisée dans l’écotourisme solidaire. Arawak s’adapte et concocte des séjours sur-mesure à ses clients, hors des sentiers battus pour un voyage 100% authentique. DESTINATION : &gt; COSTA RICA Date de création :...",
+      "description": "Arawak Expérience est une agence réceptive locale francophone établie au Costa Rica, spécialisée dans l’écotourisme solidaire. Arawak s’adapte et concocte des séjours sur-mesure à ses clients, hors des sentiers battus pour un voyage 100% authentique. DESTINATION : &gt; COSTA RICA",
       "image": "https://www.tourmag.com/photo/art/grande/59212193-43560341.jpg?v=1632927188",
       "destinations": [
+        "Costa Rica"
+      ],
+      "primary_destinations": [
         "Costa Rica"
       ],
       "coordinates": [
@@ -2721,9 +2589,12 @@
     {
       "url": "https://www.tourmag.com/Mon-Voyage-au-Costa-Rica_a104467.html",
       "title": "DMC COSTA RICA MON VOYAGE AU COSTA RICA",
-      "description": "Mon Voyage au Costa Rica est une agence francophone qui organise des circuits sur mesure au Costa Rica depuis 14 ans pour des couples, des familles ou des groupes. DESTINATION : &gt; COSTA RICA Date de création : 2010",
+      "description": "Mon Voyage au Costa Rica est une agence francophone qui organise des circuits sur mesure au Costa Rica depuis 14 ans pour des couples, des familles ou des groupes. DESTINATION : &gt; COSTA RICA",
       "image": "https://www.tourmag.com/photo/art/grande/47894698-37757408.jpg?v=1594045326",
       "destinations": [
+        "Costa Rica"
+      ],
+      "primary_destinations": [
         "Costa Rica"
       ],
       "coordinates": [
@@ -2764,34 +2635,22 @@
     {
       "url": "https://www.tourmag.com/TERRA-Caribea-Receptif-Costa-Rica_a104562.html",
       "title": "TERRA Caribea, Réceptif Costa Rica",
-      "description": "TERRA Caribea fait partie du réseau TERRA PANAMERICA, une tribu de 8 agences locales spécialisées dans le voyage sur-mesure et francophone. Nous composons des aventures humaines, immersives et personnalisées depuis l’Alaska jusqu'à la Colombie. DESTINATIONS : &gt; ALASKA &gt; BELIZE &gt; CANADA &gt; COLOMBIE...",
+      "description": "TERRA Caribea fait partie du réseau TERRA PANAMERICA, une tribu de 8 agences locales spécialisées dans le voyage sur-mesure et francophone. Nous composons des aventures humaines, immersives et personnalisées depuis l’Alaska jusqu'à la Colombie.",
       "image": "https://www.tourmag.com/photo/art/grande/48031057-37826611.jpg?v=1767958210",
       "destinations": [
-        "ALASKA",
-        "BELIZE",
-        "CANADA",
-        "COLOMBIE...\" /"
+        "Alaska",
+        "Belize",
+        "Canada",
+        "Colombie...\" /"
+      ],
+      "primary_destinations": [
+        "Costa Rica"
       ],
       "coordinates": [
         {
-          "destination": "ALASKA",
-          "lat": 64.2008,
-          "lng": -152.4937
-        },
-        {
-          "destination": "BELIZE",
-          "lat": 17.1899,
-          "lng": -88.4976
-        },
-        {
-          "destination": "CANADA",
-          "lat": 56.1304,
-          "lng": -106.3468
-        },
-        {
-          "destination": "COLOMBIE...\" /",
-          "lat": 4.5709,
-          "lng": -74.2973
+          "destination": "Costa Rica",
+          "lat": 9.7489,
+          "lng": -83.7534
         }
       ],
       "continents": [
@@ -2886,28 +2745,21 @@
     {
       "url": "https://www.tourmag.com/Tucaya-Costa-Rica-agence-receptive-au-Costa-Rica_a121664.html",
       "title": "DMC COSTA RICA TUCAYA TRAVEL",
-      "description": "Tucaya Costa Rica est une agence réceptive basée à San José, capitale du Costa Rica. Une équipe de passionné(e)s vous accompagne et vous conseille dans l’élaboration de votre voyage sur l’ensemble du pays. Bienvenue au paradis de la Pura Vida. DESTINATIONS : &gt; COLOMBIE &gt; COSTA RICA &gt; EQUATEUR...",
+      "description": "Tucaya Costa Rica est une agence réceptive basée à San José, capitale du Costa Rica. Une équipe de passionné(e)s vous accompagne et vous conseille dans l’élaboration de votre voyage sur l’ensemble du pays. Bienvenue au paradis de la Pura Vida.",
       "image": "https://www.tourmag.com/photo/art/grande/78474932-56951472.jpg?v=1708443498",
       "destinations": [
-        "COLOMBIE",
-        "COSTA RICA",
-        "EQUATEUR...\" /"
+        "Colombie",
+        "Costa Rica",
+        "Equateur...\" /"
+      ],
+      "primary_destinations": [
+        "Costa Rica"
       ],
       "coordinates": [
         {
-          "destination": "COLOMBIE",
-          "lat": 4.5709,
-          "lng": -74.2973
-        },
-        {
-          "destination": "COSTA RICA",
+          "destination": "Costa Rica",
           "lat": 9.7489,
           "lng": -83.7534
-        },
-        {
-          "destination": "EQUATEUR...\" /",
-          "lat": -1.8312,
-          "lng": -78.1834
         }
       ],
       "continents": [
@@ -2953,61 +2805,24 @@
       "description": "Depuis 2018, l'agence Breathe in Travel organise des voyages sur mesure dans les Balkans, en créant des itinéraires uniques en Albanie, Monténégro, Kosovo et Macédoine du Nord. Aujourd'hui, elle élargit son offre en ouvrant la Croatie à la découverte de ses paysages exceptionnels, de sa cultur...",
       "image": "https://www.tourmag.com/photo/art/grande/84596496-60395283.jpg?v=1732878051",
       "destinations": [
-        "ALBANIE",
-        "BOSNIE",
-        "BULGARIE",
-        "CROATIE",
-        "KOSOVO",
-        "MACEDOINE DU NORD",
-        "MONTENEGRO",
-        "ROUMANIE",
-        "SLOVÉNIE"
+        "Albanie",
+        "Bosnie",
+        "Bulgarie",
+        "Croatie",
+        "Kosovo",
+        "Macedoine du Nord",
+        "Montenegro",
+        "Roumanie",
+        "Slovénie"
+      ],
+      "primary_destinations": [
+        "Croatie"
       ],
       "coordinates": [
         {
-          "destination": "ALBANIE",
-          "lat": 41.1533,
-          "lng": 20.1683
-        },
-        {
-          "destination": "BOSNIE",
-          "lat": 43.9159,
-          "lng": 17.6791
-        },
-        {
-          "destination": "BULGARIE",
-          "lat": 42.7339,
-          "lng": 25.4858
-        },
-        {
-          "destination": "CROATIE",
+          "destination": "Croatie",
           "lat": 45.1,
           "lng": 15.2
-        },
-        {
-          "destination": "KOSOVO",
-          "lat": 42.6026,
-          "lng": 20.903
-        },
-        {
-          "destination": "MACEDOINE DU NORD",
-          "lat": 41.5122,
-          "lng": 21.7453
-        },
-        {
-          "destination": "MONTENEGRO",
-          "lat": 42.7087,
-          "lng": 19.3744
-        },
-        {
-          "destination": "ROUMANIE",
-          "lat": 45.9432,
-          "lng": 24.9668
-        },
-        {
-          "destination": "SLOVÉNIE",
-          "lat": 46.1512,
-          "lng": 14.9955
         }
       ],
       "continents": [
@@ -3110,9 +2925,12 @@
     {
       "url": "https://www.tourmag.com/Sveta-Ana-Receptif-Croatie_a104823.html",
       "title": "DMC CROATIE SVETA ANA",
-      "description": "SVETA ANA est une agence réceptive DMC basée à Dubrovnik en CROATIE, spécialisée sur le marché francophone. DESTINATION : &gt; CROATIE Date de création : 2013",
+      "description": "SVETA ANA est une agence réceptive DMC basée à Dubrovnik en CROATIE, spécialisée sur le marché francophone. DESTINATION : &gt; CROATIE",
       "image": "https://www.tourmag.com/photo/art/grande/48494526-38037217.jpg?v=1656939137",
       "destinations": [
+        "Croatie"
+      ],
+      "primary_destinations": [
         "Croatie"
       ],
       "coordinates": [
@@ -3177,9 +2995,12 @@
     {
       "url": "https://www.tourmag.com/Caraibes-Autrement-receptif-a-Cuba_a117670.html",
       "title": "Caraïbes Autrement, réceptif à Cuba",
-      "description": "DESTINATION : &gt; CUBA Date de création : 1996",
+      "description": "DESTINATION : &gt; CUBA",
       "image": "https://www.tourmag.com/photo/art/grande/71128777-49576278.jpg?v=1677668673",
       "destinations": [
+        "Cuba"
+      ],
+      "primary_destinations": [
         "Cuba"
       ],
       "coordinates": [
@@ -3249,34 +3070,22 @@
     {
       "url": "https://www.tourmag.com/Tarandro-Receptif-Danemark_a104825.html",
       "title": "Tarandro, Réceptif Danemark",
-      "description": "Tarandro, réceptif spécialiste des voyages en Scandinavie, est née de plus de 15 années d’expertise dans la création de voyages sur-mesure dans les pays Nordiques. DESTINATIONS : &gt; DANEMARK &gt; FINLANDE &gt; NORVÈGE Date de création : 2018",
+      "description": "Tarandro, réceptif spécialiste des voyages en Scandinavie, est née de plus de 15 années d’expertise dans la création de voyages sur-mesure dans les pays Nordiques.",
       "image": "https://www.tourmag.com/photo/art/grande/48495631-38038344.jpg?v=1595841110",
       "destinations": [
-        "DANEMARK...\" /",
-        "DANEMARK",
-        "FINLANDE",
-        "NORVÈGE"
+        "Danemark...\" /",
+        "Danemark",
+        "Finlande",
+        "Norvège"
+      ],
+      "primary_destinations": [
+        "Danemark"
       ],
       "coordinates": [
         {
-          "destination": "DANEMARK...\" /",
+          "destination": "Danemark",
           "lat": 56.2639,
           "lng": 9.5018
-        },
-        {
-          "destination": "DANEMARK",
-          "lat": 56.2639,
-          "lng": 9.5018
-        },
-        {
-          "destination": "FINLANDE",
-          "lat": 61.9241,
-          "lng": 25.7482
-        },
-        {
-          "destination": "NORVÈGE",
-          "lat": 60.472,
-          "lng": 8.4689
         }
       ],
       "continents": [
@@ -3338,25 +3147,18 @@
       "description": "Abbey Group est un groupe privé d’agences réceptives basées à Edimbourg, Londres et Dublin. Depuis 1978, Abbey est votre partenaire B2B pour des expériences de voyage inoubliables au Royaume-Uni et en Irlande. Nous créons des itinéraires personnalisés adaptés aux préférences uniques de chaque...",
       "image": "https://www.tourmag.com/photo/art/grande/48215368-37917812.jpg?v=1737030953",
       "destinations": [
-        "ECOSSE",
-        "IRLANDE",
-        "ROYAUME-UNI"
+        "Ecosse",
+        "Irlande",
+        "Royaume-uni"
+      ],
+      "primary_destinations": [
+        "Ecosse"
       ],
       "coordinates": [
         {
-          "destination": "ECOSSE",
+          "destination": "Ecosse",
           "lat": 56.4907,
           "lng": -4.2026
-        },
-        {
-          "destination": "IRLANDE",
-          "lat": 53.1424,
-          "lng": -7.6921
-        },
-        {
-          "destination": "ROYAUME-UNI",
-          "lat": 55.3781,
-          "lng": -3.436
         }
       ],
       "continents": [
@@ -3415,9 +3217,12 @@
     {
       "url": "https://www.tourmag.com/Cheops-Travel-Receptif-Egypte_a104691.html",
       "title": "DMC EGYPTE CHEOPS TRAVEL",
-      "description": "Agence de voyages égyptienne fondée en 1981 qui offre une variété de prestations et services aussi bien pour les individuels que les groupes. DESTINATION : &gt; EGYPTE Date de création : 1981",
+      "description": "Agence de voyages égyptienne fondée en 1981 qui offre une variété de prestations et services aussi bien pour les individuels que les groupes. DESTINATION : &gt; EGYPTE",
       "image": "https://www.tourmag.com/photo/art/grande/48241168-37930242.jpg?v=1594981563",
       "destinations": [
+        "Egypte"
+      ],
+      "primary_destinations": [
         "Egypte"
       ],
       "coordinates": [
@@ -3486,31 +3291,19 @@
       "description": "Envie de Maghreb est DMC spécialisée dans le sur-mesure basé à Auray, en Bretagne. Envie d’un week-end ? un séjour ? Un circuit ? Une randonnée/trekking ? Une thalasso ? Un golf ? Tout est possible avec Envie de Maghreb, nous réalisons vos projets selon vos envies! Notre plus : un seul...",
       "image": "https://www.tourmag.com/photo/art/grande/77711092-56455918.jpg?v=1704877904",
       "destinations": [
-        "ALGÉRIE",
-        "EGYPTE",
-        "MAROC",
-        "TUNISIE"
+        "Algérie",
+        "Egypte",
+        "Maroc",
+        "Tunisie"
+      ],
+      "primary_destinations": [
+        "Egypte"
       ],
       "coordinates": [
         {
-          "destination": "ALGÉRIE",
-          "lat": 28.0339,
-          "lng": 1.6596
-        },
-        {
-          "destination": "EGYPTE",
+          "destination": "Egypte",
           "lat": 26.8206,
           "lng": 30.8025
-        },
-        {
-          "destination": "MAROC",
-          "lat": 31.7917,
-          "lng": -7.0926
-        },
-        {
-          "destination": "TUNISIE",
-          "lat": 33.8869,
-          "lng": 9.5375
         }
       ],
       "continents": [
@@ -3572,43 +3365,51 @@
       "description": "Découvrez le Moyen-Orient avec Dakkak, votre partenaire de confiance pour des voyages d’exception. Des Émirats Arabes Unis à la Jordanie, en passant par l’Arabie Saoudite, l’Égypte et le Qatar, nous vous invitons à explorer des terres riches en culture, histoire et hospitalité. Avec Dakkak, vivez...",
       "image": "https://www.tourmag.com/photo/art/grande/94249111-65744456.jpg?v=1770892198",
       "destinations": [
-        "ÉMIRATS ARABES UNIS",
-        "JORDANIE",
-        "ARABIE SAOUDITE",
-        "OMAN",
-        "QATAR",
-        "ÉGYPTE"
+        "Émirats Arabes Unis",
+        "Jordanie",
+        "Arabie Saoudite",
+        "Oman",
+        "Qatar",
+        "Égypte"
+      ],
+      "primary_destinations": [
+        "Emirats Arabes Unis",
+        "Arabie Saoudite",
+        "Jordanie",
+        "Egypte",
+        "Qatar",
+        "Oman"
       ],
       "coordinates": [
         {
-          "destination": "ÉMIRATS ARABES UNIS",
+          "destination": "Emirats Arabes Unis",
           "lat": 23.4241,
           "lng": 53.8478
         },
         {
-          "destination": "JORDANIE",
-          "lat": 30.5852,
-          "lng": 36.2384
-        },
-        {
-          "destination": "ARABIE SAOUDITE",
+          "destination": "Arabie Saoudite",
           "lat": 23.8859,
           "lng": 45.0792
         },
         {
-          "destination": "OMAN",
-          "lat": 21.4735,
-          "lng": 55.9754
+          "destination": "Jordanie",
+          "lat": 30.5852,
+          "lng": 36.2384
         },
         {
-          "destination": "QATAR",
+          "destination": "Egypte",
+          "lat": 26.8206,
+          "lng": 30.8025
+        },
+        {
+          "destination": "Qatar",
           "lat": 25.3548,
           "lng": 51.1839
         },
         {
-          "destination": "ÉGYPTE",
-          "lat": 26.8206,
-          "lng": 30.8025
+          "destination": "Oman",
+          "lat": 21.4735,
+          "lng": 55.9754
         }
       ],
       "continents": [
@@ -3788,26 +3589,19 @@
     {
       "url": "https://www.tourmag.com/Tucaya-Ecuador-receptif-Equateur_a121249.html",
       "title": "DMC EQUATEUR TUCAYA TRAVEL",
-      "description": "Venez découvrir le pays des 4 mondes avec Tucaya Ecuador ! Agence localisée au coeur de la capitale équatorienne, son objectif est de tout mettre en oeuvre pour faire vivre à ses visiteurs des expériences uniques et insolites. DESTINATIONS : &gt; COLOMBIE &gt; COSTA RICA &gt; EQUATEUR...",
+      "description": "Venez découvrir le pays des 4 mondes avec Tucaya Ecuador ! Agence localisée au coeur de la capitale équatorienne, son objectif est de tout mettre en oeuvre pour faire vivre à ses visiteurs des expériences uniques et insolites.",
       "image": "https://www.tourmag.com/photo/art/grande/77829393-56531637.jpg?v=1706180269",
       "destinations": [
-        "COLOMBIE",
-        "COSTA RICA",
-        "EQUATEUR...\" /"
+        "Colombie",
+        "Costa Rica",
+        "Equateur...\" /"
+      ],
+      "primary_destinations": [
+        "Equateur"
       ],
       "coordinates": [
         {
-          "destination": "COLOMBIE",
-          "lat": 4.5709,
-          "lng": -74.2973
-        },
-        {
-          "destination": "COSTA RICA",
-          "lat": 9.7489,
-          "lng": -83.7534
-        },
-        {
-          "destination": "EQUATEUR...\" /",
+          "destination": "Equateur",
           "lat": -1.8312,
           "lng": -78.1834
         }
@@ -3851,19 +3645,23 @@
       "description": "Calafell Evasión est une agence réceptive spécialisée dans les voyages de groupes et d'individuels qui voyagent dans la péninsule ibérique et ses iles. Depuis 1996, nous avons créé et développé plus d'une centaine de circuits en Espagne et au Portugal, ce qui nous permet de répondre à tous type...",
       "image": "https://www.tourmag.com/photo/art/grande/91564598-64335876.jpg?v=1759841203",
       "destinations": [
-        "ESPAGNE",
-        "PORTUGAL"
+        "Espagne",
+        "Portugal"
+      ],
+      "primary_destinations": [
+        "Portugal",
+        "Espagne"
       ],
       "coordinates": [
         {
-          "destination": "ESPAGNE",
-          "lat": 40.4637,
-          "lng": -3.7492
-        },
-        {
-          "destination": "PORTUGAL",
+          "destination": "Portugal",
           "lat": 39.3999,
           "lng": -8.2245
+        },
+        {
+          "destination": "Espagne",
+          "lat": 40.4637,
+          "lng": -3.7492
         }
       ],
       "continents": [
@@ -3982,9 +3780,12 @@
     {
       "url": "https://www.tourmag.com/Tritravel-Incoming-Receptif-Espagne_a104300.html",
       "title": "DMC ESPAGNE ET SES ILES TRITRAVEL INCOMING",
-      "description": "Tritravel Incoming, réceptif pour l'Espagne et ses îles met à votre disposition son savoir-faire dans le voyage sur mesure, groupes, individuels et incentives. DESTINATION : &gt; ESPAGNE Date de création : 2011",
+      "description": "Tritravel Incoming, réceptif pour l'Espagne et ses îles met à votre disposition son savoir-faire dans le voyage sur mesure, groupes, individuels et incentives. DESTINATION : &gt; ESPAGNE",
       "image": "https://www.tourmag.com/photo/art/grande/47593046-37609487.jpg?v=1593167318",
       "destinations": [
+        "Espagne"
+      ],
+      "primary_destinations": [
         "Espagne"
       ],
       "coordinates": [
@@ -4026,9 +3827,12 @@
     {
       "url": "https://www.tourmag.com/Cali-Fun-agence-receptive-USA_a119831.html",
       "title": "DMC USA Cali’Fun",
-      "description": "Cali’Fun est une marque de la société OnSpot, agence réceptive (DMC) francophone, basée dans le Nevada. Spécialisé dans les expériences de voyages, pour les FIT et petits groupes sur tous les USA. DESTINATION : &gt; ETATS-UNIS Date de création : 2006",
+      "description": "Cali’Fun est une marque de la société OnSpot, agence réceptive (DMC) francophone, basée dans le Nevada. Spécialisé dans les expériences de voyages, pour les FIT et petits groupes sur tous les USA. DESTINATION : &gt; ETATS-UNIS",
       "image": "https://www.tourmag.com/photo/art/grande/75060610-52486883.jpg?v=1694009886",
       "destinations": [
+        "Usa"
+      ],
+      "primary_destinations": [
         "Usa"
       ],
       "coordinates": [
@@ -4068,6 +3872,9 @@
       "description": "Spécialisé dans l’organisation de voyages de groupes sur l’ensemble des Etats-Unis, notre équipe passionnée et dynamique, est à votre écoute pour concevoir sur mesure le voyage à votre image. DESTINATION : &gt; ETATS-UNIS Ouest américain, les Parcs Nationaux, Californie, Arizona, Utah, Nevada,...",
       "image": "https://www.tourmag.com/photo/art/grande/66887697-47422890.jpg?v=1759933368",
       "destinations": [
+        "Usa"
+      ],
+      "primary_destinations": [
         "Usa"
       ],
       "coordinates": [
@@ -4121,34 +3928,22 @@
     {
       "url": "https://www.tourmag.com/Tarandro-Receptif-Finlande_a104827.html",
       "title": "Tarandro, Réceptif Finlande",
-      "description": "Tarandro, réceptif spécialiste des voyages en Scandinavie, est née de plus de 15 années d’expertise dans la création de voyages sur-mesure dans les pays Nordiques. DESTINATIONS : &gt; DANEMARK &gt; FINLANDE &gt; NORVÈGE Date de création : 2018",
+      "description": "Tarandro, réceptif spécialiste des voyages en Scandinavie, est née de plus de 15 années d’expertise dans la création de voyages sur-mesure dans les pays Nordiques.",
       "image": "https://www.tourmag.com/photo/art/grande/48496061-38038609.jpg?v=1595842204",
       "destinations": [
-        "DANEMARK...\" /",
-        "DANEMARK",
-        "FINLANDE",
-        "NORVÈGE"
+        "Danemark...\" /",
+        "Danemark",
+        "Finlande",
+        "Norvège"
+      ],
+      "primary_destinations": [
+        "Finlande"
       ],
       "coordinates": [
         {
-          "destination": "DANEMARK...\" /",
-          "lat": 56.2639,
-          "lng": 9.5018
-        },
-        {
-          "destination": "DANEMARK",
-          "lat": 56.2639,
-          "lng": 9.5018
-        },
-        {
-          "destination": "FINLANDE",
+          "destination": "Finlande",
           "lat": 61.9241,
           "lng": 25.7482
-        },
-        {
-          "destination": "NORVÈGE",
-          "lat": 60.472,
-          "lng": 8.4689
         }
       ],
       "continents": [
@@ -4210,25 +4005,18 @@
       "description": "Promethea Voyages est une agence francophone basée en Géorgien à Tbilissi, à taille humaine, et capable de d'offrir un accompagnement personnalisé. Agence spécialisée dans les parcours sur-mesure, Promethea Voyages se fixe l’objectif de présenter non seulement la Géorgie, mais les deux autre...",
       "image": "https://www.tourmag.com/photo/art/grande/89634626-63346313.jpg?v=1751271995",
       "destinations": [
-        "GEORGIE",
-        "ARMENIE",
-        "AZERBAIDJAN"
+        "Georgie",
+        "Armenie",
+        "Azerbaidjan"
+      ],
+      "primary_destinations": [
+        "Géorgie"
       ],
       "coordinates": [
         {
-          "destination": "GEORGIE",
+          "destination": "Géorgie",
           "lat": 42.3154,
           "lng": 43.3569
-        },
-        {
-          "destination": "ARMENIE",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "AZERBAIDJAN",
-          "lat": null,
-          "lng": null
         }
       ],
       "continents": [
@@ -4454,19 +4242,23 @@
       "description": "Yalos Tours agence réceptive francophone depuis 32 ans spécialisée dans l’accueil des touristes sur différentes régions de la Grèce continentale mais également en Crète dans toutes les autres îles de la Grèce vous offre des services pour des groupes et individuels dans toute la Grèce et à Chypre....",
       "image": "https://www.tourmag.com/photo/art/grande/48526496-38052256.jpg?v=1687355314",
       "destinations": [
-        "GRÈCE",
-        "CHYPRE"
+        "Grèce",
+        "Chypre"
+      ],
+      "primary_destinations": [
+        "Chypre",
+        "Grèce"
       ],
       "coordinates": [
         {
-          "destination": "GRÈCE",
-          "lat": 39.0742,
-          "lng": 21.8243
-        },
-        {
-          "destination": "CHYPRE",
+          "destination": "Chypre",
           "lat": 35.1264,
           "lng": 33.4299
+        },
+        {
+          "destination": "Grèce",
+          "lat": 39.0742,
+          "lng": 21.8243
         }
       ],
       "continents": [
@@ -4570,6 +4362,9 @@
       "destinations": [
         "Grece"
       ],
+      "primary_destinations": [
+        "Grece"
+      ],
       "coordinates": [
         {
           "destination": "Grece",
@@ -4617,40 +4412,29 @@
     {
       "url": "https://www.tourmag.com/TERRA-Guatemala-Receptif-au-Guatemala-et-au-Belize_a104575.html",
       "title": "TERRA Guatemala, Réceptif au Guatemala et au Belize",
-      "description": "TERRA Guatemala fait partie de TERRA PANAMERICA, un réseau d’agences locales spécialisées dans le voyage sur-mesure et francophone. Nous composons des aventures humaines, immersives et personnalisées depuis l’Alaska jusqu'à la Colombie. DESTINATIONS : &gt; ALASKA &gt; BELIZE &gt; CANADA &gt; COLOMBIE &gt; COSTA...",
+      "description": "TERRA Guatemala fait partie de TERRA PANAMERICA, un réseau d’agences locales spécialisées dans le voyage sur-mesure et francophone. Nous composons des aventures humaines, immersives et personnalisées depuis l’Alaska jusqu'à la Colombie.",
       "image": "https://www.tourmag.com/photo/art/grande/48042616-37836470.jpg?v=1768226681",
       "destinations": [
-        "ALASKA",
-        "BELIZE",
-        "CANADA",
-        "COLOMBIE",
-        "COSTA...\" /"
+        "Alaska",
+        "Belize",
+        "Canada",
+        "Colombie",
+        "Costa...\" /"
+      ],
+      "primary_destinations": [
+        "Guatemala",
+        "Belize"
       ],
       "coordinates": [
         {
-          "destination": "ALASKA",
-          "lat": 64.2008,
-          "lng": -152.4937
+          "destination": "Guatemala",
+          "lat": 15.7835,
+          "lng": -90.2308
         },
         {
-          "destination": "BELIZE",
+          "destination": "Belize",
           "lat": 17.1899,
           "lng": -88.4976
-        },
-        {
-          "destination": "CANADA",
-          "lat": 56.1304,
-          "lng": -106.3468
-        },
-        {
-          "destination": "COLOMBIE",
-          "lat": 4.5709,
-          "lng": -74.2973
-        },
-        {
-          "destination": "COSTA...\" /",
-          "lat": null,
-          "lng": null
         }
       ],
       "continents": [
@@ -4744,6 +4528,7 @@
       "description": "AGAMIS est une association qui a pour objet de favoriser la valorisation, la protection et la connaissance du patrimoine historique et naturel des Îles du Salut. Créée par les propriétaires majoritaires du site (Centre Nationale d’Etudes Spatiales et Conservatoire du Littoral), elle regroupe...",
       "image": "https://www.tourmag.com/photo/art/grande/65725226-46831510.jpg?v=1656498038",
       "destinations": [],
+      "primary_destinations": [],
       "coordinates": [],
       "continents": [],
       "date_creation": "1999",
@@ -4834,6 +4619,9 @@
       "description": "Guyane Evasion est une agence de voyages – réceptif spécialisée sur la destination Guyane. Notre spécialité, concepteur de voyages sur mesure (groupes et individuels) pour découvrir la Guyane Française autrement. Notre équipe dynamique, trilingue (Français, Anglais, Espagnol) et expérimenté...",
       "image": "https://www.tourmag.com/photo/art/grande/65873826-46914743.jpg?v=1657103005",
       "destinations": [
+        "Guyane"
+      ],
+      "primary_destinations": [
         "Guyane"
       ],
       "coordinates": [
@@ -5022,6 +4810,7 @@
       "description": "JAL Voyages est une agence réceptive spécialisée dans l’écotourisme en Guyane. Nous vous invitons à découvrir l’ensemble des sites touristiques de la Guyane : Marais de Kaw, Maroni, Approuague, Oyapock, Kourou, Crique Gabriel, Îles-du-Salut, Îlet-la-mère, Cacao… Nos vous accueillerons dans nos...",
       "image": "https://www.tourmag.com/photo/art/grande/65567219-46755242.jpg?v=1655905970",
       "destinations": [],
+      "primary_destinations": [],
       "coordinates": [],
       "continents": [],
       "date_creation": "1980",
@@ -5156,19 +4945,23 @@
       "description": "Ancrée au cœur de l’océan Indien, Connections Réunion organise et propose des séjours clés en main à La Réunion pour les voyageurs individuels, les groupes loisirs ou les entreprises. Forte de son expertise locale et de ses partenariats avec des prestataires engagés, Connections Réunion prome...",
       "image": "https://www.tourmag.com/photo/art/grande/92553717-64869179.jpg?v=1765871563",
       "destinations": [
-        "ILE DE LA RÉUNION",
-        "ILE MAURICE"
+        "Ile de la Réunion",
+        "Ile Maurice"
+      ],
+      "primary_destinations": [
+        "Ile de la Réunion",
+        "Réunion"
       ],
       "coordinates": [
         {
-          "destination": "ILE DE LA RÉUNION",
+          "destination": "Ile de la Réunion",
           "lat": -21.1151,
           "lng": 55.5364
         },
         {
-          "destination": "ILE MAURICE",
-          "lat": null,
-          "lng": null
+          "destination": "Réunion",
+          "lat": -21.1151,
+          "lng": 55.5364
         }
       ],
       "continents": [
@@ -5391,20 +5184,18 @@
     {
       "url": "https://www.tourmag.com/Mille-Tours-Receptif-Ile-de-la-Reunion_a104464.html",
       "title": "Mille Tours, Réceptif Île de la Réunion",
-      "description": "Depuis 1992, Mille Tours est une équipe réceptive spécialisée sur l’île de la Réunion. L’agence module ses services : séjours et circuits authentiques pour individuels et groupes, voyages à thème, activités sportives, incentives… DESTINATION : &gt; LA RÉUNION Date de création : 1992",
+      "description": "Depuis 1992, Mille Tours est une équipe réceptive spécialisée sur l’île de la Réunion. L’agence module ses services : séjours et circuits authentiques pour individuels et groupes, voyages à thème, activités sportives, incentives… DESTINATION : &gt; LA RÉUNION",
       "image": "https://www.tourmag.com/photo/art/grande/47890275-37754147.jpg?v=1740752025",
       "destinations": [
         "La Réunion",
         "Réunion"
       ],
+      "primary_destinations": [
+        "La Réunion"
+      ],
       "coordinates": [
         {
           "destination": "La Réunion",
-          "lat": -21.1151,
-          "lng": 55.5364
-        },
-        {
-          "destination": "Réunion",
           "lat": -21.1151,
           "lng": 55.5364
         }
@@ -5472,23 +5263,16 @@
       "description": "TERRES Métisses, agence réceptive spécialisée dans le sur-mesure pour les individuels, les groupes et les incentives, met en avant tout son savoir-faire afin de répondre aux attentes de la clientèle. Ses maîtres mots : authenticité créole et qualité de service. Le patrimoine de l’île est valoris...",
       "image": "https://www.tourmag.com/photo/art/grande/63065163-45554338.jpg?v=1648208984",
       "destinations": [
-        "Ile De La Réunion",
+        "Ile de la Réunion",
         "La Réunion",
         "Réunion"
       ],
+      "primary_destinations": [
+        "Ile de la Réunion"
+      ],
       "coordinates": [
         {
-          "destination": "Ile De La Réunion",
-          "lat": -21.1151,
-          "lng": 55.5364
-        },
-        {
-          "destination": "La Réunion",
-          "lat": -21.1151,
-          "lng": 55.5364
-        },
-        {
-          "destination": "Réunion",
+          "destination": "Ile de la Réunion",
           "lat": -21.1151,
           "lng": 55.5364
         }
@@ -5640,43 +5424,21 @@
       "description": "Shanti est un groupe de DMC spécialisé dans les voyages sur mesure et GIR en Asie. Nous opérons à travers nos propres bureaux locaux au Sri Lanka, en Inde, au Vietnam, en Indonésie, au Japon et aux Philippines, garantissant ainsi une forte expertise terrain. Nous travaillons également su...",
       "image": "https://www.tourmag.com/photo/art/grande/94509765-65927128.jpg?v=1771327943",
       "destinations": [
-        "INDE",
-        "INDONÉSIE",
-        "JAPON",
-        "PHILIPPINES",
-        "SRI LANKA",
-        "VIETNAM"
+        "Inde",
+        "Indonésie",
+        "Japon",
+        "Philippines",
+        "Sri Lanka",
+        "Vietnam"
+      ],
+      "primary_destinations": [
+        "Asie"
       ],
       "coordinates": [
         {
-          "destination": "INDE",
-          "lat": 20.5937,
-          "lng": 78.9629
-        },
-        {
-          "destination": "INDONÉSIE",
-          "lat": -0.7893,
-          "lng": 113.9213
-        },
-        {
-          "destination": "JAPON",
-          "lat": 36.2048,
-          "lng": 138.2529
-        },
-        {
-          "destination": "PHILIPPINES",
-          "lat": 12.8797,
-          "lng": 121.774
-        },
-        {
-          "destination": "SRI LANKA",
-          "lat": 7.8731,
-          "lng": 80.7718
-        },
-        {
-          "destination": "VIETNAM",
-          "lat": 14.0583,
-          "lng": 108.2772
+          "destination": "Asie",
+          "lat": 34.0479,
+          "lng": 100.6197
         }
       ],
       "continents": [
@@ -5735,28 +5497,21 @@
     {
       "url": "https://www.tourmag.com/Jans-Tours-Receptif-Indonesie_a104326.html",
       "title": "DMC Bali Indonésie Jans Tours",
-      "description": "Nous vous assistons depuis nos bureaux en France et accueillons vos clients sur place avec notre équipe de représentants francophones. DESTINATIONS : &gt; INDONÉSIE &gt; PHILIPPINES &gt; MALAISIE",
+      "description": "Nous vous assistons depuis nos bureaux en France et accueillons vos clients sur place avec notre équipe de représentants francophones.",
       "image": "https://www.tourmag.com/photo/art/grande/47670785-37641543.jpg?v=1709900330",
       "destinations": [
-        "INDONÉSIE",
-        "PHILIPPINES",
-        "MALAISIE\" /"
+        "Indonésie",
+        "Philippines",
+        "Malaisie\" /"
+      ],
+      "primary_destinations": [
+        "Indonésie"
       ],
       "coordinates": [
         {
-          "destination": "INDONÉSIE",
+          "destination": "Indonésie",
           "lat": -0.7893,
           "lng": 113.9213
-        },
-        {
-          "destination": "PHILIPPINES",
-          "lat": 12.8797,
-          "lng": 121.774
-        },
-        {
-          "destination": "MALAISIE\" /",
-          "lat": 4.2105,
-          "lng": 101.9758
         }
       ],
       "continents": [
@@ -5806,25 +5561,18 @@
       "description": "Abbey Group est un groupe privé d’agences réceptives basées à Dublin, Edimbourg et Londres. Depuis 1978, Abbey est votre partenaire B2B pour des expériences de voyage inoubliables au Royaume-Uni et en Irlande. Nous créons des itinéraires personnalisés adaptés aux préférences uniques de chaque...",
       "image": "https://www.tourmag.com/photo/art/grande/48219539-37921008.jpg?v=1728998359",
       "destinations": [
-        "ECOSSE",
-        "IRLANDE",
-        "ROYAUME-UNI"
+        "Ecosse",
+        "Irlande",
+        "Royaume-uni"
+      ],
+      "primary_destinations": [
+        "Irlande"
       ],
       "coordinates": [
         {
-          "destination": "ECOSSE",
-          "lat": 56.4907,
-          "lng": -4.2026
-        },
-        {
-          "destination": "IRLANDE",
+          "destination": "Irlande",
           "lat": 53.1424,
           "lng": -7.6921
-        },
-        {
-          "destination": "ROYAUME-UNI",
-          "lat": 55.3781,
-          "lng": -3.436
         }
       ],
       "continents": [
@@ -5906,11 +5654,14 @@
       "description": "Iceland Travel est un réceptif basé à Reykjavík offrant une gamme d'expériences premium soigneusement sélectionnées pour ses visiteurs. De l'observation des aurores boréales à naviguer des paysages d’un autre monde, Iceland Travel est la plus ancienne entreprise en Islande proposant des circuits...",
       "image": "https://www.tourmag.com/photo/art/grande/82858975-59383366.jpg?v=1726582875",
       "destinations": [
-        "Toute l'Islande, des fjords aux glaciers, en passant par les volcans et les villages de pêcheurs"
+        "Toute L'islande, des Fjords Aux Glaciers, en Passant Par les Volcans et les Villages de Pêcheurs"
+      ],
+      "primary_destinations": [
+        "Islande"
       ],
       "coordinates": [
         {
-          "destination": "Toute l'Islande, des fjords aux glaciers, en passant par les volcans et les villages de pêcheurs",
+          "destination": "Islande",
           "lat": 64.9631,
           "lng": -19.0208
         }
@@ -5958,17 +5709,15 @@
       "description": "Au fil du Japon est une agence francophone basée au Japon à Tokyo, à taille humaine, et capable de d'offrir un accompagnement personnalisé. Agence spécialisée dans les parcours sur-mesure, Au fil du Japon se fixe l’objectif de présenter l’archipel de long en large, et bien sûr sous toutes ses...",
       "image": "https://www.tourmag.com/photo/art/grande/57717961-42726477.jpg?v=1626443721",
       "destinations": [
-        "COREE DU SUD",
-        "JAPON"
+        "Coree du Sud",
+        "Japon"
+      ],
+      "primary_destinations": [
+        "Japon"
       ],
       "coordinates": [
         {
-          "destination": "COREE DU SUD",
-          "lat": 35.9078,
-          "lng": 127.7669
-        },
-        {
-          "destination": "JAPON",
+          "destination": "Japon",
           "lat": 36.2048,
           "lng": 138.2529
         }
@@ -6012,6 +5761,9 @@
       "description": "GTS Jordan / Hajjat Tours est une agence locale basée à Amman avec plus de 20 ans d’expérience. GTS Jordan / Hajjat Tours propose aussi bien des voyages sur mesure qu’en groupes sur toute la Jordanie. Labelisée Travel life Partner elle s’engage en faveur d'un tourisme responsable et respectueu...",
       "image": "https://www.tourmag.com/photo/art/grande/70336564-49067638.jpg?v=1675165320",
       "destinations": [
+        "Jordanie"
+      ],
+      "primary_destinations": [
         "Jordanie"
       ],
       "coordinates": [
@@ -6076,6 +5828,9 @@
       "description": "Millennium Tours est le réceptif Jordanie des francophones depuis 25 ans. Avec son siège à Amman et son bureau commercial à Nice, nous sommes à votre entière disposition pour réaliser les rêves de vos clients. Avec le temps, nos équipes ont su s'adapter à une clientèle française toujours plus...",
       "image": "https://www.tourmag.com/photo/art/grande/81725547-58817012.jpg?v=1721997901",
       "destinations": [
+        "Jordanie"
+      ],
+      "primary_destinations": [
         "Jordanie"
       ],
       "coordinates": [
@@ -6149,16 +5904,25 @@
     {
       "url": "https://www.tourmag.com/Karibuni-Receptif-Afrique-et-Sous-Continent-Indien_a129778.html",
       "title": "DMC Afrique et Sous-Continent Indien Karibuni",
-      "description": "Experts sur toutes nos destinations : Kenya, Tanzanie, Rwanda, Ouganda, Namibie, Madagascar, Inde, Sri Lanka, Népal et Bhoutan. Faites voyager vos clients avec Karibuni ! DESTINATIONS : &gt; KENYA &gt; TANZANIE &gt; RWANDA &gt; OUGANDA &gt; NAMIBIE &gt; MADAGASCAR &gt; INDE &gt; SRI LANKA &gt; NEPAL &gt; BHOUTAN Date de...",
+      "description": "Experts sur toutes nos",
       "image": "https://www.tourmag.com/photo/art/grande/93207358-65187362.jpg?v=1766149628",
       "destinations": [
-        "KENYA...\" /"
+        "Kenya...\" /"
+      ],
+      "primary_destinations": [
+        "Sous-continent Indien",
+        "Afrique"
       ],
       "coordinates": [
         {
-          "destination": "KENYA...\" /",
-          "lat": -0.0236,
-          "lng": 37.9062
+          "destination": "Sous-continent Indien",
+          "lat": 20.0,
+          "lng": 78.0
+        },
+        {
+          "destination": "Afrique",
+          "lat": 8.7832,
+          "lng": 34.5085
         }
       ],
       "continents": [
@@ -6240,25 +6004,18 @@
       "description": "Aurora Travel est un DMC depuis plus de 20 ans, spécialisée dans les voyages sur mesure, les séries/groupes ainsi qu’une sélection de plusieurs de ses propres GIR francophones en petit groupe. Aurora Travel possède des bureaux au Vietnam, au Cambodge, au Laos et en Thaïlande et s’impose comme un...",
       "image": "https://www.tourmag.com/photo/art/grande/47670211-37640942.jpg?v=1685697314",
       "destinations": [
-        "CAMBODGE",
-        "LAOS",
-        "VIETNAM"
+        "Cambodge",
+        "Laos",
+        "Vietnam"
+      ],
+      "primary_destinations": [
+        "Laos"
       ],
       "coordinates": [
         {
-          "destination": "CAMBODGE",
-          "lat": 12.5657,
-          "lng": 104.991
-        },
-        {
-          "destination": "LAOS",
+          "destination": "Laos",
           "lat": 19.8563,
           "lng": 102.4955
-        },
-        {
-          "destination": "VIETNAM",
-          "lat": 14.0583,
-          "lng": 108.2772
         }
       ],
       "continents": [
@@ -6337,52 +6094,25 @@
     {
       "url": "https://www.tourmag.com/Easia-Travel-Receptif-Laos_a123855.html",
       "title": "DMC LAOS EASIA TRAVEL",
-      "description": "Fondé en 2000, Easia Travel est un DMC exclusivement B2B spécialisé dans la conception de voyages au Vietnam, au Laos, au Cambodge et en Thaïlande. DESTINATIONS : &gt; CAMBODGE &gt; LAOS &gt; THAILANDE &gt; VIETNAM Date de création : 2000",
+      "description": "Fondé en 2000, Easia Travel est un DMC exclusivement B2B spécialisé dans la conception de voyages au Vietnam, au Laos, au Cambodge et en Thaïlande.",
       "image": "https://www.tourmag.com/photo/art/grande/82608432-59234703.jpg?v=1725528369",
       "destinations": [
-        "CAMBODGE",
-        "LAOS",
-        "THAILANDE...\" /",
-        "CAMBODGE",
-        "LAOS",
-        "THAILANDE",
-        "VIETNAM"
+        "Cambodge",
+        "Laos",
+        "Thailande...\" /",
+        "Cambodge",
+        "Laos",
+        "Thailande",
+        "Vietnam"
+      ],
+      "primary_destinations": [
+        "Laos"
       ],
       "coordinates": [
         {
-          "destination": "CAMBODGE",
-          "lat": 12.5657,
-          "lng": 104.991
-        },
-        {
-          "destination": "LAOS",
+          "destination": "Laos",
           "lat": 19.8563,
           "lng": 102.4955
-        },
-        {
-          "destination": "THAILANDE...\" /",
-          "lat": 15.87,
-          "lng": 100.9925
-        },
-        {
-          "destination": "CAMBODGE",
-          "lat": 12.5657,
-          "lng": 104.991
-        },
-        {
-          "destination": "LAOS",
-          "lat": 19.8563,
-          "lng": 102.4955
-        },
-        {
-          "destination": "THAILANDE",
-          "lat": 15.87,
-          "lng": 100.9925
-        },
-        {
-          "destination": "VIETNAM",
-          "lat": 14.0583,
-          "lng": 108.2772
         }
       ],
       "continents": [
@@ -6457,34 +6187,22 @@
     {
       "url": "https://www.tourmag.com/Phoenix-Voyages-Receptif-Laos_a104382.html",
       "title": "Phoenix Voyages, Réceptif Laos",
-      "description": "Vingt-trois ans d’expérience en Extrême Orient, c’est la garantie de qualité dont Phoenix Voyages fait bénéficier ses clients. DESTINATIONS : &gt; BHOUTAN &gt; CAMBODGE &gt; CORÉE DU NORD &gt; CORÉE DU SUD &gt; HONG KONG &gt; JAPON &gt; LAOS &gt; MACAO &gt; OUZBEKISTAN &gt; SINGAPOUR &gt; TAÏWAN &gt; TURKMENISTAN &gt; THAÏLANDE &gt;...",
+      "description": "Vingt-trois ans d’expérience en Extrême Orient, c’est la garantie de qualité dont Phoenix Voyages fait bénéficier ses clients.",
       "image": "https://www.tourmag.com/photo/art/grande/47747687-37690344.jpg?v=1593610494",
       "destinations": [
-        "BHOUTAN",
-        "CAMBODGE",
-        "CORÉE DU NORD",
-        "CORÉE DU SUD...\" /"
+        "Bhoutan",
+        "Cambodge",
+        "Corée du Nord",
+        "Corée du Sud...\" /"
+      ],
+      "primary_destinations": [
+        "Laos"
       ],
       "coordinates": [
         {
-          "destination": "BHOUTAN",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "CAMBODGE",
-          "lat": 12.5657,
-          "lng": 104.991
-        },
-        {
-          "destination": "CORÉE DU NORD",
-          "lat": 40.3399,
-          "lng": 127.5101
-        },
-        {
-          "destination": "CORÉE DU SUD...\" /",
-          "lat": 35.9078,
-          "lng": 127.7669
+          "destination": "Laos",
+          "lat": 19.8563,
+          "lng": 102.4955
         }
       ],
       "continents": [
@@ -6554,11 +6272,14 @@
       "description": "Mahay Expédition est une agence de voyage locale basée à Madagascar, spécialisée dans l’organisation de séjours sur mesure à travers l’île. Forte d’une expertise de terrain et d’un réseau de partenaires sélectionnés, elle propose des expériences authentiques et structurées. Une approche...",
       "image": "https://www.tourmag.com/photo/art/grande/93794955-65493425.jpg?v=1768918969",
       "destinations": [
-        "MADAGASCAR"
+        "Madagascar"
+      ],
+      "primary_destinations": [
+        "Madagascar"
       ],
       "coordinates": [
         {
-          "destination": "MADAGASCAR",
+          "destination": "Madagascar",
           "lat": -18.7669,
           "lng": 46.8691
         }
@@ -6731,9 +6452,12 @@
     {
       "url": "https://www.tourmag.com/Robert-Arrigo-Sons-Ltd-Receptif-Malte_a104806.html",
       "title": "Robert Arrigo &amp; Sons Ltd, Réceptif Malte",
-      "description": "Avec plus de 30 ans d’expérience, 1.5 million de visiteurs accueillis et son équipe francophone, Robert Arrigo &amp; Sons Ltd est le réceptif N°1 des agences françaises dans l’archipel Maltais. DESTINATION : &gt; MALTE Date de création : 1973",
+      "description": "Avec plus de 30 ans d’expérience, 1.5 million de visiteurs accueillis et son équipe francophone, Robert Arrigo &amp; Sons Ltd est le réceptif N°1 des agences françaises dans l’archipel Maltais. DESTINATION : &gt; MALTE",
       "image": "https://www.tourmag.com/photo/art/grande/48431974-38015254.jpg?v=1595600743",
       "destinations": [
+        "Malte"
+      ],
+      "primary_destinations": [
         "Malte"
       ],
       "coordinates": [
@@ -6810,31 +6534,19 @@
       "description": "Envie de Maghreb est DMC spécialisée dans le sur-mesure basé à Auray, en Bretagne. Envie d’un week-end ? un séjour ? Un circuit ? Une randonnée/trekking ? Une thalasso ? Un golf ? Tout est possible avec Envie de Maghreb, nous réalisons vos projets selon vos envies! Notre plus : un seul...",
       "image": "https://www.tourmag.com/photo/art/grande/77733221-56470630.jpg?v=1704894269",
       "destinations": [
-        "ALGÉRIE",
-        "EGYPTE",
-        "MAROC",
-        "TUNISIE"
+        "Algérie",
+        "Egypte",
+        "Maroc",
+        "Tunisie"
+      ],
+      "primary_destinations": [
+        "Maroc"
       ],
       "coordinates": [
         {
-          "destination": "ALGÉRIE",
-          "lat": 28.0339,
-          "lng": 1.6596
-        },
-        {
-          "destination": "EGYPTE",
-          "lat": 26.8206,
-          "lng": 30.8025
-        },
-        {
-          "destination": "MAROC",
+          "destination": "Maroc",
           "lat": 31.7917,
           "lng": -7.0926
-        },
-        {
-          "destination": "TUNISIE",
-          "lat": 33.8869,
-          "lng": 9.5375
         }
       ],
       "continents": [
@@ -6898,6 +6610,9 @@
       "destinations": [
         "Maroc"
       ],
+      "primary_destinations": [
+        "Maroc"
+      ],
       "coordinates": [
         {
           "destination": "Maroc",
@@ -6957,14 +6672,17 @@
     {
       "url": "https://www.tourmag.com/Naga-Travel-Maroc-agence-receptive-Maroc_a129587.html",
       "title": "DMC Maroc Naga Travel Maroc",
-      "description": "DMC au Maroc, agence de voyage réceptive, nous sommes ravis de collaborer avec vous sur le Maroc et de répondre à vos demandes soit pour des programmes individuels, groupes, couples ou familles ou encore pour des séjours sur mesure. DESTINATIONS : &gt; MAROC Date de création : 2014",
+      "description": "DMC au Maroc, agence de voyage réceptive, nous sommes ravis de collaborer avec vous sur le Maroc et de répondre à vos demandes soit pour des programmes individuels, groupes, couples ou familles ou encore pour des séjours sur mesure.",
       "image": "https://www.tourmag.com/photo/art/grande/92939689-65042285.jpg?v=1764674941",
       "destinations": [
-        "MAROC"
+        "Maroc"
+      ],
+      "primary_destinations": [
+        "Maroc"
       ],
       "coordinates": [
         {
-          "destination": "MAROC",
+          "destination": "Maroc",
           "lat": 31.7917,
           "lng": -7.0926
         }
@@ -7012,40 +6730,23 @@
     {
       "url": "https://www.tourmag.com/TERRA-Maya-Receptif-au-Mexique_a104579.html",
       "title": "TERRA Maya, Réceptif au Mexique",
-      "description": "TERRA Maya fait partie de TERRA PANAMERICA, un réseau d’agences locales spécialisées dans le voyage sur-mesure et francophone. Nous composons des aventures humaines, immersives et personnalisées depuis l’Alaska jusqu'à la Colombie. DESTINATIONS : &gt; ALASKA &gt; BELIZE &gt; CANADA &gt; COLOMBIE &gt; COSTA RICA...",
+      "description": "TERRA Maya fait partie de TERRA PANAMERICA, un réseau d’agences locales spécialisées dans le voyage sur-mesure et francophone. Nous composons des aventures humaines, immersives et personnalisées depuis l’Alaska jusqu'à la Colombie.",
       "image": "https://www.tourmag.com/photo/art/grande/48044116-37837537.jpg?v=1768477362",
       "destinations": [
-        "ALASKA",
-        "BELIZE",
-        "CANADA",
-        "COLOMBIE",
-        "COSTA RICA...\" /"
+        "Alaska",
+        "Belize",
+        "Canada",
+        "Colombie",
+        "Costa Rica...\" /"
+      ],
+      "primary_destinations": [
+        "Mexique"
       ],
       "coordinates": [
         {
-          "destination": "ALASKA",
-          "lat": 64.2008,
-          "lng": -152.4937
-        },
-        {
-          "destination": "BELIZE",
-          "lat": 17.1899,
-          "lng": -88.4976
-        },
-        {
-          "destination": "CANADA",
-          "lat": 56.1304,
-          "lng": -106.3468
-        },
-        {
-          "destination": "COLOMBIE",
-          "lat": 4.5709,
-          "lng": -74.2973
-        },
-        {
-          "destination": "COSTA RICA...\" /",
-          "lat": 9.7489,
-          "lng": -83.7534
+          "destination": "Mexique",
+          "lat": 23.6345,
+          "lng": -102.5528
         }
       ],
       "continents": [
@@ -7139,43 +6840,21 @@
       "description": "Depuis sa création, Xplore Mexique s’affirme comme un réceptif engagé, local et francophone, dédié à concevoir des voyages sur mesure au Mexique. Nous sommes une équipe de passionnés, de vrais « Xplorers », profondément attachés à partager les richesses naturelles, culturelles et humaines de ce...",
       "image": "https://www.tourmag.com/photo/art/grande/91196378-64155658.jpg?v=1758614937",
       "destinations": [
-        "YUCATAN",
-        "CHIAPAS",
-        "MEXICO CITY",
-        "QUINTANA ROO",
-        "OAXACA",
-        "BAJA CALIFORNIA"
+        "Yucatan",
+        "Chiapas",
+        "Mexico City",
+        "Quintana Roo",
+        "Oaxaca",
+        "Baja California"
+      ],
+      "primary_destinations": [
+        "Mexique"
       ],
       "coordinates": [
         {
-          "destination": "YUCATAN",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "CHIAPAS",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "MEXICO CITY",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "QUINTANA ROO",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "OAXACA",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "BAJA CALIFORNIA",
-          "lat": null,
-          "lng": null
+          "destination": "Mexique",
+          "lat": 23.6345,
+          "lng": -102.5528
         }
       ],
       "continents": [],
@@ -7281,6 +6960,9 @@
       "destinations": [
         "Mongolie"
       ],
+      "primary_destinations": [
+        "Mongolie"
+      ],
       "coordinates": [
         {
           "destination": "Mongolie",
@@ -7332,40 +7014,23 @@
     {
       "url": "https://www.tourmag.com/TERRA-Nicaragua-Receptif-au-Nicaragua_a104602.html",
       "title": "TERRA Nicaragua, Réceptif au Nicaragua",
-      "description": "TERRA Nicaragua fait partie de TERRA PANAMERICA, un réseau d’agences locales spécialisées dans le voyage sur-mesure et francophone. Nous composons des aventures humaines, immersives et personnalisées depuis l’Alaska jusqu'à la Colombie. DESTINATIONS : &gt; ALASKA &gt; BELIZE &gt; CANADA &gt; COLOMBIE &gt; COSTA...",
+      "description": "TERRA Nicaragua fait partie de TERRA PANAMERICA, un réseau d’agences locales spécialisées dans le voyage sur-mesure et francophone. Nous composons des aventures humaines, immersives et personnalisées depuis l’Alaska jusqu'à la Colombie.",
       "image": "https://www.tourmag.com/photo/art/grande/48121789-37873181.jpg?v=1768816231",
       "destinations": [
-        "ALASKA",
-        "BELIZE",
-        "CANADA",
-        "COLOMBIE",
-        "COSTA...\" /"
+        "Alaska",
+        "Belize",
+        "Canada",
+        "Colombie",
+        "Costa...\" /"
+      ],
+      "primary_destinations": [
+        "Nicaragua"
       ],
       "coordinates": [
         {
-          "destination": "ALASKA",
-          "lat": 64.2008,
-          "lng": -152.4937
-        },
-        {
-          "destination": "BELIZE",
-          "lat": 17.1899,
-          "lng": -88.4976
-        },
-        {
-          "destination": "CANADA",
-          "lat": 56.1304,
-          "lng": -106.3468
-        },
-        {
-          "destination": "COLOMBIE",
-          "lat": 4.5709,
-          "lng": -74.2973
-        },
-        {
-          "destination": "COSTA...\" /",
-          "lat": null,
-          "lng": null
+          "destination": "Nicaragua",
+          "lat": 12.8654,
+          "lng": -85.2072
         }
       ],
       "continents": [
@@ -7460,32 +7125,20 @@
     {
       "url": "https://www.tourmag.com/Tarandro-Receptif-Norvege_a104828.html",
       "title": "Tarandro, Réceptif Norvège",
-      "description": "Tarandro, réceptif spécialiste des voyages en Scandinavie, est née de plus de 15 années d’expertise dans la création de voyages sur-mesure dans les pays Nordiques. DESTINATIONS : &gt; DANEMARK &gt; FINLANDE &gt; NORVÈGE Date de création : 2018",
+      "description": "Tarandro, réceptif spécialiste des voyages en Scandinavie, est née de plus de 15 années d’expertise dans la création de voyages sur-mesure dans les pays Nordiques.",
       "image": "https://www.tourmag.com/photo/art/grande/48496194-38038768.jpg?v=1595842589",
       "destinations": [
-        "DANEMARK...\" /",
-        "DANEMARK",
-        "FINLANDE",
-        "NORVÈGE"
+        "Danemark...\" /",
+        "Danemark",
+        "Finlande",
+        "Norvège"
+      ],
+      "primary_destinations": [
+        "Norvège"
       ],
       "coordinates": [
         {
-          "destination": "DANEMARK...\" /",
-          "lat": 56.2639,
-          "lng": 9.5018
-        },
-        {
-          "destination": "DANEMARK",
-          "lat": 56.2639,
-          "lng": 9.5018
-        },
-        {
-          "destination": "FINLANDE",
-          "lat": 61.9241,
-          "lng": 25.7482
-        },
-        {
-          "destination": "NORVÈGE",
+          "destination": "Norvège",
           "lat": 60.472,
           "lng": 8.4689
         }
@@ -7549,37 +7202,20 @@
       "description": "MySilkWayTrips représente l'Asie centrale avec ses 5 pays différents mais de mêmes traditions et cultures. Le plus connu parmi eux est l'Ouzbékistan avec ses monuments historiques, ses dômes bleus, les anciens arrêts de la Route de la Soie Samarkand, Boukhara et Khiva pour le voyage culturel....",
       "image": "https://www.tourmag.com/photo/art/grande/84769942-60514367.jpg?v=1733760708",
       "destinations": [
-        "OUZBEKISTAN",
-        "KIRGHIZISTAN",
-        "KAZAKHSTAN",
-        "TADJIKISTAN",
-        "TURKMENISTAN"
+        "Ouzbekistan",
+        "Kirghizistan",
+        "Kazakhstan",
+        "Tadjikistan",
+        "Turkmenistan"
+      ],
+      "primary_destinations": [
+        "Ouzbékistan"
       ],
       "coordinates": [
         {
-          "destination": "OUZBEKISTAN",
+          "destination": "Ouzbékistan",
           "lat": 41.3775,
           "lng": 64.5853
-        },
-        {
-          "destination": "KIRGHIZISTAN",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "KAZAKHSTAN",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "TADJIKISTAN",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "TURKMENISTAN",
-          "lat": null,
-          "lng": null
         }
       ],
       "continents": [
@@ -7614,9 +7250,12 @@
     {
       "url": "https://www.tourmag.com/Orient-Voyages-Receptif-Ouzbekistan_a105237.html",
       "title": "Orient Voyages, Réceptif Ouzbékistan",
-      "description": "Fort de ses 28 ans d’expérience Orient Voyages est devenue une interface incontournable pour réussir votre voyage en Asie Centrale. DESTINATION : &gt; OUZBÉKISTAN Date de création : 1992",
+      "description": "Fort de ses 28 ans d’expérience Orient Voyages est devenue une interface incontournable pour réussir votre voyage en Asie Centrale. DESTINATION : &gt; OUZBÉKISTAN",
       "image": "https://www.tourmag.com/photo/art/grande/49796108-38620272.jpg?v=1600334933",
       "destinations": [
+        "Ouzbékistan"
+      ],
+      "primary_destinations": [
         "Ouzbékistan"
       ],
       "coordinates": [
@@ -7682,9 +7321,12 @@
     {
       "url": "https://www.tourmag.com/Silk-Road-Destinations-en-Ouzbekistan_a122429.html",
       "title": "DMC Ouzbékistan Silk Road Destinations",
-      "description": "Découvrez dans un seul pays les ethnies les plus représentatives et les plus diverses de la plaque tournante de l’Asie centrale. Des rencontres qui contribueront à enrichir votre expérience voyageur et rendront votre circuit beaucoup plus vivant. DESTINATION : &gt; OUZBEKISTAN Date de création : 2001",
+      "description": "Découvrez dans un seul pays les ethnies les plus représentatives et les plus diverses de la plaque tournante de l’Asie centrale. Des rencontres qui contribueront à enrichir votre expérience voyageur et rendront votre circuit beaucoup plus vivant. DESTINATION : &gt; OUZBEKISTAN",
       "image": "https://www.tourmag.com/photo/art/grande/79637595-57649891.jpg?v=1715673855",
       "destinations": [
+        "Ouzbékistan"
+      ],
+      "primary_destinations": [
         "Ouzbékistan"
       ],
       "coordinates": [
@@ -7729,40 +7371,23 @@
     {
       "url": "https://www.tourmag.com/TERRA-Panama-un-receptif-au-Panama_a104566.html",
       "title": "TERRA Panama, un réceptif au Panama",
-      "description": "TERRA Panama fait partie de TERRA PANAMERICA, un réseau d’agences locales spécialisées dans le voyage sur-mesure et francophone. Nous composons des aventures humaines, immersives et personnalisées depuis l’Alaska jusqu'à la Colombie. DESTINATIONS : &gt; ALASKA &gt; BELIZE &gt; CANADA &gt; COLOMBIE &gt; COSTA...",
+      "description": "TERRA Panama fait partie de TERRA PANAMERICA, un réseau d’agences locales spécialisées dans le voyage sur-mesure et francophone. Nous composons des aventures humaines, immersives et personnalisées depuis l’Alaska jusqu'à la Colombie.",
       "image": "https://www.tourmag.com/photo/art/grande/48032154-37827359.jpg?v=1768902871",
       "destinations": [
-        "ALASKA",
-        "BELIZE",
-        "CANADA",
-        "COLOMBIE",
-        "COSTA...\" /"
+        "Alaska",
+        "Belize",
+        "Canada",
+        "Colombie",
+        "Costa...\" /"
+      ],
+      "primary_destinations": [
+        "Panama"
       ],
       "coordinates": [
         {
-          "destination": "ALASKA",
-          "lat": 64.2008,
-          "lng": -152.4937
-        },
-        {
-          "destination": "BELIZE",
-          "lat": 17.1899,
-          "lng": -88.4976
-        },
-        {
-          "destination": "CANADA",
-          "lat": 56.1304,
-          "lng": -106.3468
-        },
-        {
-          "destination": "COLOMBIE",
-          "lat": 4.5709,
-          "lng": -74.2973
-        },
-        {
-          "destination": "COSTA...\" /",
-          "lat": null,
-          "lng": null
+          "destination": "Panama",
+          "lat": 8.538,
+          "lng": -80.7821
         }
       ],
       "continents": [
@@ -7860,37 +7485,20 @@
       "description": "A la croisée des mondes et des océans, Le Panama, terre de transhumance, d’histoire et traditions a la nature omniprésente peut être fier d’un bilan carbone négatif et de ses presque 30 % de superficie maritime protégée. Tucaya Travel Panama, DMC francophone vous y fera vivre des expériences...",
       "image": "https://www.tourmag.com/photo/art/grande/80635993-58174383.jpg?v=1717076989",
       "destinations": [
-        "COLOMBIE",
-        "COSTA RICA",
-        "EQUATEUR \r\t\t\t\t\t  \n\t\t\t\t\t        - AMAZONIE\r\t\t\t\t\t  \n\t\t\t\t\t        - GALAPAGOS",
-        "PANAMA",
-        "VENEZUELA"
+        "Colombie",
+        "Costa Rica",
+        "Equateur - Amazonie - Galapagos",
+        "Panama",
+        "Venezuela"
+      ],
+      "primary_destinations": [
+        "Panama"
       ],
       "coordinates": [
         {
-          "destination": "COLOMBIE",
-          "lat": 4.5709,
-          "lng": -74.2973
-        },
-        {
-          "destination": "COSTA RICA",
-          "lat": 9.7489,
-          "lng": -83.7534
-        },
-        {
-          "destination": "EQUATEUR \r\t\t\t\t\t  \n\t\t\t\t\t        - AMAZONIE\r\t\t\t\t\t  \n\t\t\t\t\t        - GALAPAGOS",
-          "lat": -1.8312,
-          "lng": -78.1834
-        },
-        {
-          "destination": "PANAMA",
+          "destination": "Panama",
           "lat": 8.538,
           "lng": -80.7821
-        },
-        {
-          "destination": "VENEZUELA",
-          "lat": null,
-          "lng": null
         }
       ],
       "continents": [
@@ -7933,28 +7541,21 @@
     {
       "url": "https://www.tourmag.com/Jans-Tours-receptif-aux-Philippines_a104332.html",
       "title": "DMC Philippines Jans Tours",
-      "description": "Par sa richesse et sa diversité, Les Philippines restent une des destinations appelées à se développer dans les années à venir. DESTINATIONS : &gt; INDONÉSIE &gt; PHILIPPINES &gt; MALAISIE",
+      "description": "Par sa richesse et sa diversité, Les Philippines restent une des destinations appelées à se développer dans les années à venir.",
       "image": "https://www.tourmag.com/photo/art/grande/47675189-37644626.jpg?v=1730282370",
       "destinations": [
-        "INDONÉSIE",
-        "PHILIPPINES",
-        "MALAISIE\" /"
+        "Indonésie",
+        "Philippines",
+        "Malaisie\" /"
+      ],
+      "primary_destinations": [
+        "Philippines"
       ],
       "coordinates": [
         {
-          "destination": "INDONÉSIE",
-          "lat": -0.7893,
-          "lng": 113.9213
-        },
-        {
-          "destination": "PHILIPPINES",
+          "destination": "Philippines",
           "lat": 12.8797,
           "lng": 121.774
-        },
-        {
-          "destination": "MALAISIE\" /",
-          "lat": 4.2105,
-          "lng": 101.9758
         }
       ],
       "continents": [
@@ -8008,14 +7609,13 @@
         "Polynésie",
         "Tahiti"
       ],
+      "primary_destinations": [
+        "Polynésie Française",
+        "Tahiti"
+      ],
       "coordinates": [
         {
           "destination": "Polynésie Française",
-          "lat": -17.6797,
-          "lng": -149.4068
-        },
-        {
-          "destination": "Polynésie",
           "lat": -17.6797,
           "lng": -149.4068
         },
@@ -8065,21 +7665,20 @@
     {
       "url": "https://www.tourmag.com/Tahiti-Travel-Services-Agence-receptive-en-Polynesie-francaise_a119985.html",
       "title": "Tahiti Travel Services, Agence réceptive en Polynésie française",
-      "description": "A Tahiti Travel Services, nous vous révélons notre Polynésie telle qu’elle est, mais aussi telle que nous l’aimons. Nous vous guiderons dans la création des meilleurs itinéraires sur mesure pour vos clients. DESTINATION : &gt; POLYNÉSIE FRANÇAISE Date de création : Avril 2017",
+      "description": "A Tahiti Travel Services, nous vous révélons notre Polynésie telle qu’elle est, mais aussi telle que nous l’aimons. Nous vous guiderons dans la création des meilleurs itinéraires sur mesure pour vos clients. DESTINATION : &gt; POLYNÉSIE FRANÇAISE",
       "image": "https://www.tourmag.com/photo/art/grande/75282674-52667019.jpg?v=1732015973",
       "destinations": [
         "Polynésie Française",
         "Polynésie",
         "Tahiti"
       ],
+      "primary_destinations": [
+        "Polynésie Française",
+        "Tahiti"
+      ],
       "coordinates": [
         {
           "destination": "Polynésie Française",
-          "lat": -17.6797,
-          "lng": -149.4068
-        },
-        {
-          "destination": "Polynésie",
           "lat": -17.6797,
           "lng": -149.4068
         },
@@ -8214,6 +7813,9 @@
       "destinations": [
         "Portugal"
       ],
+      "primary_destinations": [
+        "Portugal"
+      ],
       "coordinates": [
         {
           "destination": "Portugal",
@@ -8269,26 +7871,31 @@
     {
       "url": "https://www.tourmag.com/In-Tours-Portugal-Receptif-Portugal_a104770.html",
       "title": "DMC Portugal Madère et Açores IN TOURS",
-      "description": "IN TOURS PORTUGAL est un réceptif pour le Portugal, Madère et Azores DESTINATIONS : &gt; PORTUGAL &gt; AÇORES &gt; MADÈRE Date de création : 1995",
+      "description": "IN TOURS PORTUGAL est un réceptif pour le Portugal, Madère et Azores",
       "image": "https://www.tourmag.com/photo/art/grande/48399966-37998237.jpg?v=1665753049",
       "destinations": [
-        "PORTUGAL",
-        "AÇORES",
-        "MADÈRE"
+        "Portugal",
+        "Açores",
+        "Madère"
+      ],
+      "primary_destinations": [
+        "Portugal",
+        "Açores",
+        "Madère"
       ],
       "coordinates": [
         {
-          "destination": "PORTUGAL",
+          "destination": "Portugal",
           "lat": 39.3999,
           "lng": -8.2245
         },
         {
-          "destination": "AÇORES",
+          "destination": "Açores",
           "lat": 38.7222,
           "lng": -27.2206
         },
         {
-          "destination": "MADÈRE",
+          "destination": "Madère",
           "lat": 32.7607,
           "lng": -16.9595
         }
@@ -8336,19 +7943,23 @@
       "description": "Travel One Portugal est une agence réceptive, hautement qualifiée, basée sur l’île de Madère à Funchal. Créée en 2000, elle dispose aussi de locaux et équipes à Lisbonne et en Algarve. Fière de ses équipes à destination, son objectif premier est de toujours garantir un service d’excellence, en...",
       "image": "https://www.tourmag.com/photo/art/grande/87431902-62020828.jpg?v=1742984168",
       "destinations": [
-        "MADÈRE",
-        "PORTUGAL"
+        "Madère",
+        "Portugal"
+      ],
+      "primary_destinations": [
+        "Portugal",
+        "Madère"
       ],
       "coordinates": [
         {
-          "destination": "MADÈRE",
-          "lat": 32.7607,
-          "lng": -16.9595
-        },
-        {
-          "destination": "PORTUGAL",
+          "destination": "Portugal",
           "lat": 39.3999,
           "lng": -8.2245
+        },
+        {
+          "destination": "Madère",
+          "lat": 32.7607,
+          "lng": -16.9595
         }
       ],
       "continents": [
@@ -8562,25 +8173,18 @@
       "description": "La Roumanie est une destination de rêve et cela n’a rien d’étonnant ! Imaginez des villes colorées, des plages grandioses, de nombreuses stations de ski, des sites empreints d’histoire, des réserves naturelles, des paysages magiques, des montagnes et des vallées… et tout cela au Nord des Balkans,...",
       "image": "https://www.tourmag.com/photo/art/grande/60206976-44086477.jpg?v=1637588968",
       "destinations": [
-        "BULGARIE",
-        "ROUMANIE",
-        "SERBIE"
+        "Bulgarie",
+        "Roumanie",
+        "Serbie"
+      ],
+      "primary_destinations": [
+        "Roumanie"
       ],
       "coordinates": [
         {
-          "destination": "BULGARIE",
-          "lat": 42.7339,
-          "lng": 25.4858
-        },
-        {
-          "destination": "ROUMANIE",
+          "destination": "Roumanie",
           "lat": 45.9432,
           "lng": 24.9668
-        },
-        {
-          "destination": "SERBIE",
-          "lat": 44.0165,
-          "lng": 21.0059
         }
       ],
       "continents": [
@@ -8630,23 +8234,16 @@
       "description": "Abbey Group est un groupe privé d’agences réceptives basées à Londres, Edimbourg et Dublin. Depuis 1978, Abbey est votre partenaire B2B pour des expériences de voyage inoubliables au Royaume-Uni et en Irlande. Nous créons des itinéraires personnalisés adaptés aux préférences uniques de chaque...",
       "image": "https://www.tourmag.com/photo/art/grande/48213244-37916129.jpg?v=1737058738",
       "destinations": [
-        "ECOSSE",
-        "IRLANDE",
-        "ROYAUME-UNI"
+        "Ecosse",
+        "Irlande",
+        "Royaume-uni"
+      ],
+      "primary_destinations": [
+        "Royaume-uni"
       ],
       "coordinates": [
         {
-          "destination": "ECOSSE",
-          "lat": 56.4907,
-          "lng": -4.2026
-        },
-        {
-          "destination": "IRLANDE",
-          "lat": 53.1424,
-          "lng": -7.6921
-        },
-        {
-          "destination": "ROYAUME-UNI",
+          "destination": "Royaume-uni",
           "lat": 55.3781,
           "lng": -3.436
         }
@@ -8707,40 +8304,23 @@
     {
       "url": "https://www.tourmag.com/Tours-International-receptif-Royaume-Uni_a124734.html",
       "title": "DMC Royaume-Uni Tours International",
-      "description": "Tours International est un DMC spécialisé dans les voyages de groupe organisés au Royaume-Uni, à Londres, dans le Sud-Est et le Sud-Ouest de l’Angleterre, en Écosse, en Irlande et au Pays de Galles. DESTINATIONS : &gt; ROYAUME-UNI &gt; LONDRES &gt; SUD-EST ET SUD-OUEST DE L’ANGLETERRE &gt; ECOSSE &gt; IRLANDE &gt;...",
+      "description": "Tours International est un DMC spécialisé dans les voyages de groupe organisés au Royaume-Uni, à Londres, dans le Sud-Est et le Sud-Ouest de l’Angleterre, en Écosse, en Irlande et au Pays de Galles.",
       "image": "https://www.tourmag.com/photo/art/grande/84261419-60195908.jpg?v=1731661550",
       "destinations": [
-        "ROYAUME-UNI",
-        "LONDRES",
-        "SUD-EST ET SUD-OUEST DE L’ANGLETERRE",
-        "ECOSSE",
-        "IRLANDE"
+        "Royaume-uni",
+        "Londres",
+        "Sud-est et Sud-ouest de L’angleterre",
+        "Ecosse",
+        "Irlande"
+      ],
+      "primary_destinations": [
+        "Royaume-uni"
       ],
       "coordinates": [
         {
-          "destination": "ROYAUME-UNI",
+          "destination": "Royaume-uni",
           "lat": 55.3781,
           "lng": -3.436
-        },
-        {
-          "destination": "LONDRES",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "SUD-EST ET SUD-OUEST DE L’ANGLETERRE",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "ECOSSE",
-          "lat": 56.4907,
-          "lng": -4.2026
-        },
-        {
-          "destination": "IRLANDE",
-          "lat": 53.1424,
-          "lng": -7.6921
         }
       ],
       "continents": [
@@ -8883,16 +8463,19 @@
     {
       "url": "https://www.tourmag.com/Balkania-Tour-Receptif-Serbie_a111218.html",
       "title": "DMC Serbie Balkania Tour",
-      "description": "Membre centrale de l’ex-Yougoslavie, la Serbie est un pays encore relativement méconnu souffrant toujours de l’image médiatique dressée au cours des années 1990. Pourtant, elle n’a rien à envier aux autres pays d’Europe centrale et du Sud-Est en terme de tourisme. DESTINATIONS : &gt; BULGARIE &gt;...",
+      "description": "Membre centrale de l’ex-Yougoslavie, la Serbie est un pays encore relativement méconnu souffrant toujours de l’image médiatique dressée au cours des années 1990. Pourtant, elle n’a rien à envier aux autres pays d’Europe centrale et du Sud-Est en terme de tourisme.",
       "image": "https://www.tourmag.com/photo/art/grande/60454573-44241983.jpg?v=1637595110",
       "destinations": [
-        "BULGARIE"
+        "Bulgarie"
+      ],
+      "primary_destinations": [
+        "Serbie"
       ],
       "coordinates": [
         {
-          "destination": "BULGARIE",
-          "lat": 42.7339,
-          "lng": 25.4858
+          "destination": "Serbie",
+          "lat": 44.0165,
+          "lng": 21.0059
         }
       ],
       "continents": [
@@ -8939,28 +8522,33 @@
     {
       "url": "https://www.tourmag.com/Sicilvision-votre-receptif-en-Sicile-Sardaigne-et-Pouilles_a117701.html",
       "title": "Sicilvision, votre réceptif en Sicile, Sardaigne et Pouilles",
-      "description": "Sicilvision, tour opérateur et DMC italien basé à Palerme, spécialisé dans la création de voyages de groupes auprès des professionnels du tourisme pour les régions de la Sicile, de la Sardaigne et des Pouilles DESTINATIONS : &gt; SICILE &gt; SARDAIGNE &gt; POUILLES Date de création : 2012",
+      "description": "Sicilvision, tour opérateur et DMC italien basé à Palerme, spécialisé dans la création de voyages de groupes auprès des professionnels du tourisme pour les régions de la Sicile, de la Sardaigne et des Pouilles",
       "image": "https://www.tourmag.com/photo/art/grande/71181179-49607250.jpg?v=1677852897",
       "destinations": [
-        "SICILE",
-        "SARDAIGNE",
-        "POUILLES"
+        "Sicile",
+        "Sardaigne",
+        "Pouilles"
+      ],
+      "primary_destinations": [
+        "Sardaigne",
+        "Pouilles",
+        "Sicile"
       ],
       "coordinates": [
         {
-          "destination": "SICILE",
-          "lat": 37.6,
-          "lng": 14.0154
-        },
-        {
-          "destination": "SARDAIGNE",
+          "destination": "Sardaigne",
           "lat": 40.1209,
           "lng": 9.0129
         },
         {
-          "destination": "POUILLES",
+          "destination": "Pouilles",
           "lat": 41.0,
           "lng": 16.5
+        },
+        {
+          "destination": "Sicile",
+          "lat": 37.6,
+          "lng": 14.0154
         }
       ],
       "continents": [
@@ -9003,9 +8591,12 @@
     {
       "url": "https://www.tourmag.com/SAVANNA-TOURS-SAFARIS-Receptif-Tanzanie_a104469.html",
       "title": "SAVANNA TOURS &amp; SAFARIS, Réceptif Tanzanie",
-      "description": "Savanna Tours et Safaris est un ensemble de savoir-faire en Afrique mis au service de vos voyages par le maillage d'un réseau d'agences réceptives africaines indépendantes depuis 1984. DESTINATION : &gt; TANZANIE Date de création : 1984",
+      "description": "Savanna Tours et Safaris est un ensemble de savoir-faire en Afrique mis au service de vos voyages par le maillage d'un réseau d'agences réceptives africaines indépendantes depuis 1984. DESTINATION : &gt; TANZANIE",
       "image": "https://www.tourmag.com/photo/art/grande/47895378-37757788.jpg?v=1594047368",
       "destinations": [
+        "Tanzanie"
+      ],
+      "primary_destinations": [
         "Tanzanie"
       ],
       "coordinates": [
@@ -9059,22 +8650,20 @@
     {
       "url": "https://www.tourmag.com/Tanganyika-Expeditions-Receptif-Tanzanie_a104496.html",
       "title": "Tanganyika Expeditions, Réceptif Tanzanie",
-      "description": "Nous opérons en Tanzanie depuis plus de 25 ans et mettons à votre disposition notre connaissance et notre savoir-faire dans la réalisation de vos programmes « à la carte » individuels et groupe. DESTINATIONS : &gt; TANZANIE &gt; ZANZIBAR Date de création : 1989",
+      "description": "Nous opérons en Tanzanie depuis plus de 25 ans et mettons à votre disposition notre connaissance et notre savoir-faire dans la réalisation de vos programmes « à la carte » individuels et groupe.",
       "image": "https://www.tourmag.com/photo/art/grande/47931427-37779024.jpg?v=1594205059",
       "destinations": [
-        "TANZANIE",
-        "ZANZIBAR"
+        "Tanzanie",
+        "Zanzibar"
+      ],
+      "primary_destinations": [
+        "Tanzanie"
       ],
       "coordinates": [
         {
-          "destination": "TANZANIE",
+          "destination": "Tanzanie",
           "lat": -6.369,
           "lng": 34.8888
-        },
-        {
-          "destination": "ZANZIBAR",
-          "lat": -6.1659,
-          "lng": 39.1989
         }
       ],
       "continents": [
@@ -9111,6 +8700,9 @@
       "description": "Depuis plus de 65 ans, nous créons des voyages inoubliables à travers l’Asie. Nos équipes d’experts, réparties dans 14 pays, offrent une présence continue sur le terrain et assurent la mise en œuvre d’un service personnalisé et la délivrance d’expériences humaines positives. Chaque voyage est le...",
       "image": "https://www.tourmag.com/photo/art/grande/85453580-60903592.jpg?v=1736505355",
       "destinations": [
+        "Thaïlande"
+      ],
+      "primary_destinations": [
         "Thaïlande"
       ],
       "coordinates": [
@@ -9200,52 +8792,25 @@
     {
       "url": "https://www.tourmag.com/Easia-Travel-Receptif-Thailande_a123857.html",
       "title": "DMC THAILANDE EASIA TRAVEL",
-      "description": "Depuis 2000, Easia Travel s’est engagé à mettre l’humain au coeur de son offre et faire découvrir la richesse et la diversité de l’Asie du Sud-Est. DESTINATIONS : &gt; CAMBODGE &gt; LAOS &gt; THAILANDE &gt; VIETNAM Date de création : 2000",
+      "description": "Depuis 2000, Easia Travel s’est engagé à mettre l’humain au coeur de son offre et faire découvrir la richesse et la diversité de l’Asie du Sud-Est.",
       "image": "https://www.tourmag.com/photo/art/grande/82608797-59235087.jpg?v=1725528838",
       "destinations": [
-        "CAMBODGE",
-        "LAOS",
-        "THAILANDE...\" /",
-        "CAMBODGE",
-        "LAOS",
-        "THAILANDE",
-        "VIETNAM"
+        "Cambodge",
+        "Laos",
+        "Thailande...\" /",
+        "Cambodge",
+        "Laos",
+        "Thailande",
+        "Vietnam"
+      ],
+      "primary_destinations": [
+        "Thailande"
       ],
       "coordinates": [
         {
-          "destination": "CAMBODGE",
-          "lat": 12.5657,
-          "lng": 104.991
-        },
-        {
-          "destination": "LAOS",
-          "lat": 19.8563,
-          "lng": 102.4955
-        },
-        {
-          "destination": "THAILANDE...\" /",
+          "destination": "Thailande",
           "lat": 15.87,
           "lng": 100.9925
-        },
-        {
-          "destination": "CAMBODGE",
-          "lat": 12.5657,
-          "lng": 104.991
-        },
-        {
-          "destination": "LAOS",
-          "lat": 19.8563,
-          "lng": 102.4955
-        },
-        {
-          "destination": "THAILANDE",
-          "lat": 15.87,
-          "lng": 100.9925
-        },
-        {
-          "destination": "VIETNAM",
-          "lat": 14.0583,
-          "lng": 108.2772
         }
       ],
       "continents": [
@@ -9320,34 +8885,22 @@
     {
       "url": "https://www.tourmag.com/Phoenix-Voyages-Receptif-Thailande_a104388.html",
       "title": "Phoenix Voyages, Réceptif Thaïlande",
-      "description": "Vingt-trois ans d’expérience en Extrême Orient, c’est la garantie de qualité dont Phoenix Voyages fait bénéficier ses clients. DESTINATIONS : &gt; BHOUTAN &gt; CAMBODGE &gt; CORÉE DU NORD &gt; CORÉE DU SUD &gt; HONG KONG &gt; JAPON &gt; LAOS &gt; MACAO &gt; OUZBEKISTAN &gt; SINGAPOUR &gt; TAÏWAN &gt; THAÏLANDE &gt; TURKMENISTAN &gt;...",
+      "description": "Vingt-trois ans d’expérience en Extrême Orient, c’est la garantie de qualité dont Phoenix Voyages fait bénéficier ses clients.",
       "image": "https://www.tourmag.com/photo/art/grande/47749400-37691198.jpg?v=1593613190",
       "destinations": [
-        "BHOUTAN",
-        "CAMBODGE",
-        "CORÉE DU NORD",
-        "CORÉE DU SUD...\" /"
+        "Bhoutan",
+        "Cambodge",
+        "Corée du Nord",
+        "Corée du Sud...\" /"
+      ],
+      "primary_destinations": [
+        "Thaïlande"
       ],
       "coordinates": [
         {
-          "destination": "BHOUTAN",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "CAMBODGE",
-          "lat": 12.5657,
-          "lng": 104.991
-        },
-        {
-          "destination": "CORÉE DU NORD",
-          "lat": 40.3399,
-          "lng": 127.5101
-        },
-        {
-          "destination": "CORÉE DU SUD...\" /",
-          "lat": 35.9078,
-          "lng": 127.7669
+          "destination": "Thaïlande",
+          "lat": 15.87,
+          "lng": 100.9925
         }
       ],
       "continents": [
@@ -9417,29 +8970,17 @@
       "description": "Envie de Maghreb est DMC spécialisée dans le sur-mesure basé à Auray, en Bretagne. Envie d’un week-end ? un séjour ? Un circuit ? Une randonnée/trekking ? Une thalasso ? Un golf ? Tout est possible avec Envie de Maghreb, nous réalisons vos projets selon vos envies! Notre plus : un seul...",
       "image": "https://www.tourmag.com/photo/art/grande/77737110-56473270.jpg?v=1704902274",
       "destinations": [
-        "ALGÉRIE",
-        "EGYPTE",
-        "MAROC",
-        "TUNISIE"
+        "Algérie",
+        "Egypte",
+        "Maroc",
+        "Tunisie"
+      ],
+      "primary_destinations": [
+        "Tunisie"
       ],
       "coordinates": [
         {
-          "destination": "ALGÉRIE",
-          "lat": 28.0339,
-          "lng": 1.6596
-        },
-        {
-          "destination": "EGYPTE",
-          "lat": 26.8206,
-          "lng": 30.8025
-        },
-        {
-          "destination": "MAROC",
-          "lat": 31.7917,
-          "lng": -7.0926
-        },
-        {
-          "destination": "TUNISIE",
+          "destination": "Tunisie",
           "lat": 33.8869,
           "lng": 9.5375
         }
@@ -9500,22 +9041,20 @@
     {
       "url": "https://www.tourmag.com/Scope-Voyage-receptif-Turquie_a127041.html",
       "title": "DMC Turquie Scope Voyage",
-      "description": "Scope Voyage, spécialiste francophone du voyage sur mesure en Turquie, propose circuits culturels, autotours et séjours personnalisés, fort d’une expérience de plus de 30 ans. DESTINATIONS : &gt; TURQUIE &gt; GRÈCE (circuits combinés Turquie/Grèce) Date de création : 2015 L’agence célèbre ses 10 ans en...",
+      "description": "Scope Voyage, spécialiste francophone du voyage sur mesure en Turquie, propose circuits culturels, autotours et séjours personnalisés, fort d’une expérience de plus de 30 ans.",
       "image": "https://www.tourmag.com/photo/art/grande/88495729-62672609.jpg?v=1747742795",
       "destinations": [
-        "TURQUIE",
-        "GRÈCE (circuits combinés Turquie/Grèce)"
+        "Turquie",
+        "Grèce (circuits Combinés Turquie/grèce)"
+      ],
+      "primary_destinations": [
+        "Turquie"
       ],
       "coordinates": [
         {
-          "destination": "TURQUIE",
+          "destination": "Turquie",
           "lat": 38.9637,
           "lng": 35.2433
-        },
-        {
-          "destination": "GRÈCE (circuits combinés Turquie/Grèce)",
-          "lat": 39.0742,
-          "lng": 21.8243
         }
       ],
       "continents": [
@@ -9657,23 +9196,16 @@
       "description": "Aurora Travel est un DMC depuis plus de 20 ans, spécialisée dans les voyages sur mesure, les séries/groupes ainsi qu’une sélection de plusieurs de ses propres GIR francophones en petit groupe. Aurora Travel possède des bureaux au Vietnam, au Cambodge, au Laos et en Thaïlande et s’impose comme un...",
       "image": "https://www.tourmag.com/photo/art/grande/47670357-37641096.jpg?v=1685697267",
       "destinations": [
-        "CAMBODGE",
-        "LAOS",
-        "VIETNAM"
+        "Cambodge",
+        "Laos",
+        "Vietnam"
+      ],
+      "primary_destinations": [
+        "Vietnam"
       ],
       "coordinates": [
         {
-          "destination": "CAMBODGE",
-          "lat": 12.5657,
-          "lng": 104.991
-        },
-        {
-          "destination": "LAOS",
-          "lat": 19.8563,
-          "lng": 102.4955
-        },
-        {
-          "destination": "VIETNAM",
+          "destination": "Vietnam",
           "lat": 14.0583,
           "lng": 108.2772
         }
@@ -9754,28 +9286,21 @@
     {
       "url": "https://www.tourmag.com/Authentik-Vietnam-specialiste-de-voyages-sur-mesure-en-Indochine_a115984.html",
       "title": "DMC Authentik Vietnam",
-      "description": "Authentik Vietnam est une agence de voyage réceptive locale basée au Vietnam à Hanoi, à taille humaine, qui organise des circuits sur mesure et privatifs au Vietnam, au Cambodge, au Laos pour des couples, des familles ou des petits groupes d'amis. DESTINATIONS : &gt; VIETNAM &gt; LAOS &gt; CAMBODGE Dat...",
+      "description": "Authentik Vietnam est une agence de voyage réceptive locale basée au Vietnam à Hanoi, à taille humaine, qui organise des circuits sur mesure et privatifs au Vietnam, au Cambodge, au Laos pour des couples, des familles ou des petits groupes d'amis.",
       "image": "https://www.tourmag.com/photo/art/grande/68303912-48083149.jpg?v=1666773291",
       "destinations": [
-        "VIETNAM",
-        "LAOS",
-        "CAMBODGE Dat...\" /"
+        "Vietnam",
+        "Laos",
+        "Cambodge Dat...\" /"
+      ],
+      "primary_destinations": [
+        "Vietnam"
       ],
       "coordinates": [
         {
-          "destination": "VIETNAM",
+          "destination": "Vietnam",
           "lat": 14.0583,
           "lng": 108.2772
-        },
-        {
-          "destination": "LAOS",
-          "lat": 19.8563,
-          "lng": 102.4955
-        },
-        {
-          "destination": "CAMBODGE Dat...\" /",
-          "lat": 12.5657,
-          "lng": 104.991
         }
       ],
       "continents": [
@@ -9854,56 +9379,24 @@
     {
       "url": "https://www.tourmag.com/Easia-Travel-Receptif-Vietnam_a123859.html",
       "title": "DMC VIETNAM EASIA TRAVEL",
-      "description": "Depuis 2000, Easia Travel place l'humain au centre de ses itinéraires et fait découvrir la richesse et la diversité du Vietnam à ses voyageurs. DESTINATIONS : &gt; CAMBODGE &gt; LAOS &gt; THAILANDE &gt; VIETNAM Date de création : 2000",
+      "description": "Depuis 2000, Easia Travel place l'humain au centre de ses itinéraires et fait découvrir la richesse et la diversité du Vietnam à ses voyageurs.",
       "image": "https://www.tourmag.com/photo/art/grande/82609459-59235783.jpg?v=1725530830",
       "destinations": [
-        "CAMBODGE",
-        "LAOS",
-        "THAILANDE",
-        "VIETNA...\" /",
-        "CAMBODGE",
-        "LAOS",
-        "THAILANDE",
-        "VIETNAM"
+        "Cambodge",
+        "Laos",
+        "Thailande",
+        "Vietna...\" /",
+        "Cambodge",
+        "Laos",
+        "Thailande",
+        "Vietnam"
+      ],
+      "primary_destinations": [
+        "Vietnam"
       ],
       "coordinates": [
         {
-          "destination": "CAMBODGE",
-          "lat": 12.5657,
-          "lng": 104.991
-        },
-        {
-          "destination": "LAOS",
-          "lat": 19.8563,
-          "lng": 102.4955
-        },
-        {
-          "destination": "THAILANDE",
-          "lat": 15.87,
-          "lng": 100.9925
-        },
-        {
-          "destination": "VIETNA...\" /",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "CAMBODGE",
-          "lat": 12.5657,
-          "lng": 104.991
-        },
-        {
-          "destination": "LAOS",
-          "lat": 19.8563,
-          "lng": 102.4955
-        },
-        {
-          "destination": "THAILANDE",
-          "lat": 15.87,
-          "lng": 100.9925
-        },
-        {
-          "destination": "VIETNAM",
+          "destination": "Vietnam",
           "lat": 14.0583,
           "lng": 108.2772
         }
@@ -9980,34 +9473,22 @@
     {
       "url": "https://www.tourmag.com/Phoenix-Voyages-Receptif-Vietnam_a104390.html",
       "title": "Phoenix Voyages, Réceptif Vietnam",
-      "description": "Vingt-trois ans d’expérience en Extrême Orient, c’est la garantie de qualité dont Phoenix Voyages fait bénéficier ses clients. DESTINATIONS : &gt; BHOUTAN &gt; CAMBODGE &gt; CORÉE DU NORD &gt; CORÉE DU SUD &gt; HONG KONG &gt; JAPON &gt; LAOS &gt; MACAO &gt; OUZBEKISTAN &gt; SINGAPOUR &gt; TAÏWAN &gt; THAÏLANDE &gt; TURKMENISTAN &gt;...",
+      "description": "Vingt-trois ans d’expérience en Extrême Orient, c’est la garantie de qualité dont Phoenix Voyages fait bénéficier ses clients.",
       "image": "https://www.tourmag.com/photo/art/grande/47749463-37691295.jpg?v=1593613565",
       "destinations": [
-        "BHOUTAN",
-        "CAMBODGE",
-        "CORÉE DU NORD",
-        "CORÉE DU SUD...\" /"
+        "Bhoutan",
+        "Cambodge",
+        "Corée du Nord",
+        "Corée du Sud...\" /"
+      ],
+      "primary_destinations": [
+        "Vietnam"
       ],
       "coordinates": [
         {
-          "destination": "BHOUTAN",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "destination": "CAMBODGE",
-          "lat": 12.5657,
-          "lng": 104.991
-        },
-        {
-          "destination": "CORÉE DU NORD",
-          "lat": 40.3399,
-          "lng": 127.5101
-        },
-        {
-          "destination": "CORÉE DU SUD...\" /",
-          "lat": 35.9078,
-          "lng": 127.7669
+          "destination": "Vietnam",
+          "lat": 14.0583,
+          "lng": 108.2772
         }
       ],
       "continents": [
@@ -10077,37 +9558,20 @@
       "description": "VIETNAM ORIGINAL TRAVEL est une agence réceptive basée au Vietnam. Forte de 21 ans d’expérience, ses équipes mettent tout leur savoir-faire à votre disposition pour créer des voyages uniques et sur-mesure au Vietnam, Laos, Cambodge, Thaïlande et en Birmanie selon les envies de vos clients e...",
       "image": "https://www.tourmag.com/photo/art/grande/62573261-45317462.jpg?v=1716381476",
       "destinations": [
-        "VIETNAM",
-        "LAOS",
-        "CAMBODGE",
-        "THAÏLANDE",
-        "BIRMANIE"
+        "Vietnam",
+        "Laos",
+        "Cambodge",
+        "Thaïlande",
+        "Birmanie"
+      ],
+      "primary_destinations": [
+        "Vietnam"
       ],
       "coordinates": [
         {
-          "destination": "VIETNAM",
+          "destination": "Vietnam",
           "lat": 14.0583,
           "lng": 108.2772
-        },
-        {
-          "destination": "LAOS",
-          "lat": 19.8563,
-          "lng": 102.4955
-        },
-        {
-          "destination": "CAMBODGE",
-          "lat": 12.5657,
-          "lng": 104.991
-        },
-        {
-          "destination": "THAÏLANDE",
-          "lat": 15.87,
-          "lng": 100.9925
-        },
-        {
-          "destination": "BIRMANIE",
-          "lat": 21.9162,
-          "lng": 95.956
         }
       ],
       "continents": [
@@ -10186,20 +9650,18 @@
     {
       "url": "https://www.tourmag.com/Tanganyika-Expeditions-Receptif-Zanzibar_a104505.html",
       "title": "Tanganyika Expeditions, Réceptif Zanzibar",
-      "description": "Nous opérons à Zanzibar et en Tanzanie continentale depuis plus de 25 ans. Nous mettons à votre disposition notre connaissance et notre savoir-faire dans la réalisation de vos programmes « à la carte » individuels et groupe. DESTINATIONS : &gt; TANZANIE &gt; ZANZIBAR Date de création : 1989",
+      "description": "Nous opérons à Zanzibar et en Tanzanie continentale depuis plus de 25 ans. Nous mettons à votre disposition notre connaissance et notre savoir-faire dans la réalisation de vos programmes « à la carte » individuels et groupe.",
       "image": "https://www.tourmag.com/photo/art/grande/47958468-37790607.jpg?v=1594206008",
       "destinations": [
-        "TANZANIE",
-        "ZANZIBAR"
+        "Tanzanie",
+        "Zanzibar"
+      ],
+      "primary_destinations": [
+        "Zanzibar"
       ],
       "coordinates": [
         {
-          "destination": "TANZANIE",
-          "lat": -6.369,
-          "lng": 34.8888
-        },
-        {
-          "destination": "ZANZIBAR",
+          "destination": "Zanzibar",
           "lat": -6.1659,
           "lng": 39.1989
         }
