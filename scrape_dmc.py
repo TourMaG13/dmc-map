@@ -425,9 +425,19 @@ def extract_destinations(html):
         dest_text = dest_text.replace("&gt;", ">").replace("&amp;", "&").replace("&nbsp;", " ")
         dests_raw = re.findall(r">\s*([A-ZÀ-Üa-zà-ü][^>]*?)(?=\s*>|\s*$)", dest_text)
         for d in dests_raw:
-            d = d.strip().rstrip(".,;: ")
-            if d and len(d) > 1:
-                destinations.append(d)
+            # Nettoyage agressif des résidus
+            d = d.strip()
+            d = re.sub(r'["\u201c\u201d\u00ab\u00bb]', '', d)  # Guillemets
+            d = re.sub(r'\.{2,}', '', d)  # Points de suspension
+            d = d.rstrip(".,;:!? ")
+            d = d.lstrip(".,;:!? /\\>")
+            # Supprimer les résidus de "Date D..." ou "Date de..."
+            if re.match(r'^Date\b', d, re.IGNORECASE):
+                continue
+            # Ignorer les entrées trop courtes ou qui ressemblent à du bruit
+            if not d or len(d) < 2 or d.lower() in ('d', 'de', 'du', 'et', 'en', 'la', 'le', 'les'):
+                continue
+            destinations.append(d)
 
     # Méthode 2 : chercher dans og:title ("DMC Pays Nom" ou similaire)
     if not destinations:
@@ -453,7 +463,13 @@ def extract_destinations(html):
 
 def normalize_destination(d):
     """Normalise un nom de destination en Title Case avec gestion des petits mots."""
-    words = d.strip().split()
+    # Nettoyage supplémentaire
+    d = re.sub(r'["\u201c\u201d\u00ab\u00bb]', '', d)
+    d = re.sub(r'\.{2,}', '', d)
+    d = d.strip().rstrip(".,;:!? ").lstrip(".,;:!? /\\>")
+    if not d:
+        return ""
+    words = d.split()
     result = []
     for i, w in enumerate(words):
         wl = w.lower()
@@ -488,13 +504,41 @@ def extract_primary_destinations(title):
     return found
 
 
+def normalize_title(title):
+    """
+    Normalise un titre de DMC en Title Case cohérent.
+    Ex: 'DMC BRESIL BRAZIL SENSATIONS' → 'DMC Brésil Brazil Sensations'
+        'Phoenix Voyages Réceptif Vietnam' → 'Phoenix Voyages Réceptif Vietnam'
+    """
+    if not title:
+        return ""
+    # Mots qui restent en minuscule
+    small_words = {'du', 'de', 'la', 'le', 'les', 'et', 'des', 'en', 'au', 'aux', 'un', 'une', 'à', 'a'}
+    # Mots/acronymes qui restent en majuscule
+    upper_words = {'dmc', 'usa', 'vtc', 'mice'}
+    
+    words = title.split()
+    result = []
+    for i, w in enumerate(words):
+        wl = w.lower()
+        if wl in upper_words:
+            result.append(w.upper())
+        elif i > 0 and wl in small_words:
+            result.append(wl)
+        else:
+            result.append(w.capitalize())
+    return ' '.join(result)
+
+
 def extract_dmc_data(html, url):
     """Extrait les données structurées d'une fiche DMC."""
     data = {"url": url}
 
+
     # Titre
     title_match = re.search(r'og:title"\s*content="([^"]*)"', html)
-    data["title"] = title_match.group(1).strip() if title_match else ""
+    raw_title = title_match.group(1).strip() if title_match else ""
+    data["title"] = normalize_title(raw_title)
 
     # Description
     desc_match = re.search(r'og:description"\s*content="([^"]*)"', html)
@@ -512,7 +556,14 @@ def extract_dmc_data(html, url):
     # ---- DESTINATIONS ----
     # 1. Toutes les destinations listées dans la fiche (pour filtrage/affichage)
     all_destinations = extract_destinations(html)
-    data["destinations"] = [normalize_destination(d) for d in all_destinations]
+    normalized_all = []
+    seen_dests = set()
+    for d in all_destinations:
+        nd = normalize_destination(d)
+        if nd and len(nd) > 1 and nd.lower() not in seen_dests:
+            seen_dests.add(nd.lower())
+            normalized_all.append(nd)
+    data["destinations"] = normalized_all
 
     # 2. Destination(s) principale(s) = celle(s) de CETTE fiche spécifique
     #    Extraites du og:title qui contient le nom du pays de la fiche
@@ -532,7 +583,14 @@ def extract_dmc_data(html, url):
     if not primary_raw:
         primary_raw = [d.lower().strip() for d in all_destinations]
 
-    data["primary_destinations"] = [normalize_destination(d) for d in primary_raw]
+    primary_normalized = []
+    seen_primary = set()
+    for d in primary_raw:
+        nd = normalize_destination(d)
+        if nd and len(nd) > 1 and nd.lower() not in seen_primary:
+            seen_primary.add(nd.lower())
+            primary_normalized.append(nd)
+    data["primary_destinations"] = primary_normalized
 
     # Coordonnées GPS = UNIQUEMENT les destinations principales (pour les marqueurs)
     coords_list = []
