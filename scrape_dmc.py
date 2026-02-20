@@ -469,6 +469,64 @@ def normalize_destination(d):
     d = d.strip().rstrip(".,;:!? ").lstrip(".,;:!? /\\>")
     if not d:
         return ""
+    
+    # Mapping canonique pour unifier les variantes avec/sans accents
+    CANONICAL = {
+        "bresil": "Brésil",
+        "egypte": "Égypte",
+        "ecosse": "Écosse",
+        "equateur": "Équateur",
+        "etats-unis": "États-Unis",
+        "états-unis": "États-Unis",
+        "emirats arabes unis": "Émirats Arabes Unis",
+        "émirats arabes unis": "Émirats Arabes Unis",
+        "georgie": "Géorgie",
+        "géorgie": "Géorgie",
+        "grece": "Grèce",
+        "grèce": "Grèce",
+        "madere": "Madère",
+        "madère": "Madère",
+        "coree du nord": "Corée du Nord",
+        "corée du nord": "Corée du Nord",
+        "coree du sud": "Corée du Sud",
+        "corée du sud": "Corée du Sud",
+        "macedoine du nord": "Macédoine du Nord",
+        "macédoine du nord": "Macédoine du Nord",
+        "montenego": "Monténégro",
+        "montenegro": "Monténégro",
+        "monténégro": "Monténégro",
+        "norvege": "Norvège",
+        "norvège": "Norvège",
+        "ouzbekistan": "Ouzbékistan",
+        "ouzbékistan": "Ouzbékistan",
+        "perou": "Pérou",
+        "pérou": "Pérou",
+        "polynesie francaise": "Polynésie Française",
+        "polynésie française": "Polynésie Française",
+        "reunion": "Réunion",
+        "réunion": "Réunion",
+        "ile de la reunion": "Île de la Réunion",
+        "ile de la réunion": "Île de la Réunion",
+        "slovenie": "Slovénie",
+        "slovénie": "Slovénie",
+        "thailande": "Thaïlande",
+        "thaïlande": "Thaïlande",
+        "indonesie": "Indonésie",
+        "indonésie": "Indonésie",
+        "algerie": "Algérie",
+        "algérie": "Algérie",
+    }
+    
+    # Vérifier le mapping canonique d'abord
+    d_lower = d.lower().strip()
+    if d_lower in CANONICAL:
+        return CANONICAL[d_lower]
+    
+    # Supprimer les résidus de "Date" qui auraient pu passer
+    d = re.sub(r'\s*Date\b.*$', '', d, flags=re.IGNORECASE).strip()
+    if not d or len(d) < 2:
+        return ""
+    
     words = d.split()
     result = []
     for i, w in enumerate(words):
