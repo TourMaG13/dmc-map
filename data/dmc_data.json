@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-02-20T11:20:44Z",
+    "generated_at": "2026-02-20T11:53:02Z",
     "source": "https://www.tourmag.com/Annuaire-des-agences-touristiques-locales_r404.html",
     "total_dmc": 104,
     "total_links_found": 104,
@@ -123,7 +123,7 @@
           },
           {
             "id": "oenologie",
-            "label": "Oenologie"
+            "label": "Œnologie"
           }
         ]
       }
@@ -237,7 +237,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "4x4",
@@ -509,7 +509,7 @@
           },
           {
             "id": "concert",
-            "label": "Concert"
+            "label": "Concerts"
           },
           {
             "id": "culture_patrimoine",
@@ -566,6 +566,14 @@
       "tags": {
         "clientele": [
           {
+            "id": "association",
+            "label": "Association"
+          },
+          {
+            "id": "ce_cse",
+            "label": "CE / CSE"
+          },
+          {
             "id": "amoureux",
             "label": "En couple"
           },
@@ -588,6 +596,10 @@
           {
             "id": "individuel",
             "label": "En solo"
+          },
+          {
+            "id": "handicap",
+            "label": "PMR"
           }
         ],
         "prestations": [
@@ -602,6 +614,10 @@
           {
             "id": "city",
             "label": "City-break"
+          },
+          {
+            "id": "concierge",
+            "label": "Conciergerie"
           },
           {
             "id": "conference",
@@ -638,22 +654,6 @@
         ],
         "activites": [
           {
-            "id": "association",
-            "label": "Association"
-          },
-          {
-            "id": "ce_cse",
-            "label": "Ce Cse"
-          },
-          {
-            "id": "handicap",
-            "label": "Handicap"
-          },
-          {
-            "id": "concierge",
-            "label": "Concierge"
-          },
-          {
             "id": "architecture",
             "label": "Architecture"
           },
@@ -687,19 +687,19 @@
           },
           {
             "id": "kite",
-            "label": "Kite"
+            "label": "Kitesurf"
           },
           {
             "id": "bateau",
-            "label": "Bateau"
+            "label": "Navigation"
           },
           {
             "id": "observation_animale",
-            "label": "Observation Animale"
+            "label": "Observation animale"
           },
           {
             "id": "train",
-            "label": "Train"
+            "label": "Petit train"
           },
           {
             "id": "plongee",
@@ -711,7 +711,7 @@
           },
           {
             "id": "safari2",
-            "label": "Safari2"
+            "label": "Safari"
           },
           {
             "id": "snorkeling",
@@ -723,7 +723,7 @@
           },
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           }
         ]
       }
@@ -778,6 +778,10 @@
             "label": "Circuit"
           },
           {
+            "id": "concierge",
+            "label": "Conciergerie"
+          },
+          {
             "id": "eco_responsable",
             "label": "Éco-responsable"
           },
@@ -808,10 +812,6 @@
         ],
         "activites": [
           {
-            "id": "concierge",
-            "label": "Concierge"
-          },
-          {
             "id": "aventure",
             "label": "Aventure"
           },
@@ -837,7 +837,7 @@
           },
           {
             "id": "observation_animale",
-            "label": "Observation Animale"
+            "label": "Observation animale"
           },
           {
             "id": "plongee",
@@ -849,7 +849,7 @@
           },
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           }
         ]
       }
@@ -921,7 +921,7 @@
         "activites": [
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "aventure",
@@ -949,7 +949,7 @@
           },
           {
             "id": "kite",
-            "label": "Kite"
+            "label": "Kitesurf"
           },
           {
             "id": "rando",
@@ -1029,7 +1029,7 @@
           },
           {
             "id": "oenologie",
-            "label": "Oenologie"
+            "label": "Œnologie"
           },
           {
             "id": "sport",
@@ -1105,7 +1105,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "decouverte",
@@ -1113,7 +1113,7 @@
           },
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "croisiere",
@@ -1239,7 +1239,7 @@
           },
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "guide_prive",
@@ -1329,7 +1329,7 @@
           },
           {
             "id": "montgolfiere",
-            "label": "Montgolfiere"
+            "label": "Montgolfière"
           },
           {
             "id": "moto",
@@ -1433,7 +1433,7 @@
           },
           {
             "id": "observation_animale",
-            "label": "Observation Animale"
+            "label": "Observation animale"
           }
         ]
       }
@@ -1517,7 +1517,7 @@
         "activites": [
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "autotour2",
@@ -1592,6 +1592,10 @@
           {
             "id": "individuel",
             "label": "En solo"
+          },
+          {
+            "id": "handicap",
+            "label": "PMR"
           }
         ],
         "prestations": [
@@ -1610,10 +1614,6 @@
         ],
         "activites": [
           {
-            "id": "handicap",
-            "label": "Handicap"
-          },
-          {
             "id": "roadshow",
             "label": "Roadshow"
           },
@@ -1623,7 +1623,7 @@
           },
           {
             "id": "train",
-            "label": "Train"
+            "label": "Petit train"
           }
         ]
       }
@@ -1703,7 +1703,7 @@
           },
           {
             "id": "peche",
-            "label": "Peche"
+            "label": "Pêche en mer"
           },
           {
             "id": "plongee",
@@ -1791,7 +1791,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "autotour2",
@@ -1811,11 +1811,11 @@
           },
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "massage",
-            "label": "Massage"
+            "label": "Bien-être / Thalasso"
           },
           {
             "id": "plongee",
@@ -1827,7 +1827,7 @@
           },
           {
             "id": "avion-2",
-            "label": "Avion 2"
+            "label": "Vol en avion privatisé"
           },
           {
             "id": "village",
@@ -1879,7 +1879,7 @@
           },
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           }
         ]
       }
@@ -1939,7 +1939,7 @@
         "activites": [
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "rando",
@@ -1963,7 +1963,7 @@
           },
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           }
         ]
       }
@@ -2055,7 +2055,7 @@
         "activites": [
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "aventure",
@@ -2151,7 +2151,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           }
         ]
       }
@@ -2233,7 +2233,7 @@
           },
           {
             "id": "montgolfiere",
-            "label": "Montgolfiere"
+            "label": "Montgolfière"
           },
           {
             "id": "moto",
@@ -2299,7 +2299,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           }
         ]
       }
@@ -2336,6 +2336,10 @@
           {
             "id": "groupes",
             "label": "Groupes"
+          },
+          {
+            "id": "groupe-scolaire",
+            "label": "Groupes scolaires"
           },
           {
             "id": "incentive",
@@ -2414,10 +2418,6 @@
         ],
         "activites": [
           {
-            "id": "groupe-scolaire",
-            "label": "Groupe Scolaire"
-          },
-          {
             "id": "architecture",
             "label": "Architecture"
           },
@@ -2443,7 +2443,7 @@
           },
           {
             "id": "shooting_photo",
-            "label": "Shooting Photo"
+            "label": "Photographie"
           },
           {
             "id": "rando",
@@ -2537,7 +2537,7 @@
           },
           {
             "id": "montgolfiere",
-            "label": "Montgolfiere"
+            "label": "Montgolfière"
           },
           {
             "id": "moto",
@@ -2641,7 +2641,7 @@
           },
           {
             "id": "concert",
-            "label": "Concert"
+            "label": "Concerts"
           }
         ]
       }
@@ -2713,7 +2713,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           }
         ]
       }
@@ -2842,7 +2842,7 @@
         "activites": [
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "aventure",
@@ -2942,7 +2942,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           }
         ]
       }
@@ -3029,12 +3029,20 @@
             "label": "Groupes"
           },
           {
+            "id": "groupe-scolaire",
+            "label": "Groupes scolaires"
+          },
+          {
             "id": "incentive",
             "label": "Incentive"
           },
           {
             "id": "individuel",
             "label": "En solo"
+          },
+          {
+            "id": "handicap",
+            "label": "PMR"
           }
         ],
         "prestations": [
@@ -3076,14 +3084,6 @@
           }
         ],
         "activites": [
-          {
-            "id": "groupe-scolaire",
-            "label": "Groupe Scolaire"
-          },
-          {
-            "id": "handicap",
-            "label": "Handicap"
-          },
           {
             "id": "aventure",
             "label": "Aventure"
@@ -3241,7 +3241,7 @@
           },
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           }
         ]
       }
@@ -3541,7 +3541,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "4x4",
@@ -3637,6 +3637,10 @@
           {
             "id": "individuel",
             "label": "En solo"
+          },
+          {
+            "id": "handicap",
+            "label": "PMR"
           }
         ],
         "prestations": [
@@ -3659,6 +3663,10 @@
           {
             "id": "city",
             "label": "City-break"
+          },
+          {
+            "id": "concierge",
+            "label": "Conciergerie"
           },
           {
             "id": "conference",
@@ -3703,14 +3711,6 @@
         ],
         "activites": [
           {
-            "id": "handicap",
-            "label": "Handicap"
-          },
-          {
-            "id": "concierge",
-            "label": "Concierge"
-          },
-          {
             "id": "architecture",
             "label": "Architecture"
           },
@@ -3740,11 +3740,11 @@
           },
           {
             "id": "bateau",
-            "label": "Bateau"
+            "label": "Navigation"
           },
           {
             "id": "observation_animale",
-            "label": "Observation Animale"
+            "label": "Observation animale"
           },
           {
             "id": "plongee",
@@ -3772,11 +3772,11 @@
           },
           {
             "id": "video",
-            "label": "Video"
+            "label": "Vidéo"
           },
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "yoga",
@@ -3840,7 +3840,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           }
         ]
       }
@@ -3875,6 +3875,10 @@
           {
             "id": "groupes",
             "label": "Groupes"
+          },
+          {
+            "id": "groupe-scolaire",
+            "label": "Groupes scolaires"
           },
           {
             "id": "incentive",
@@ -3925,12 +3929,8 @@
         ],
         "activites": [
           {
-            "id": "groupe-scolaire",
-            "label": "Groupe Scolaire"
-          },
-          {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "astronomie",
@@ -3950,7 +3950,7 @@
           },
           {
             "id": "concert",
-            "label": "Concert"
+            "label": "Concerts"
           },
           {
             "id": "culture",
@@ -4053,11 +4053,11 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "surpris",
-            "label": "Surpris"
+            "label": "Insolite"
           }
         ]
       }
@@ -4109,11 +4109,11 @@
           },
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "surpris",
-            "label": "Surpris"
+            "label": "Insolite"
           }
         ]
       }
@@ -4250,6 +4250,10 @@
             "label": "Groupes"
           },
           {
+            "id": "groupe-scolaire",
+            "label": "Groupes scolaires"
+          },
+          {
             "id": "incentive",
             "label": "Incentive"
           },
@@ -4282,6 +4286,10 @@
           {
             "id": "city",
             "label": "City-break"
+          },
+          {
+            "id": "concierge",
+            "label": "Conciergerie"
           },
           {
             "id": "conference",
@@ -4334,16 +4342,8 @@
         ],
         "activites": [
           {
-            "id": "groupe-scolaire",
-            "label": "Groupe Scolaire"
-          },
-          {
-            "id": "concierge",
-            "label": "Concierge"
-          },
-          {
             "id": "archeologie",
-            "label": "Archeologie"
+            "label": "Archéologie"
           },
           {
             "id": "architecture",
@@ -4363,7 +4363,7 @@
           },
           {
             "id": "concert",
-            "label": "Concert"
+            "label": "Concerts"
           },
           {
             "id": "culture",
@@ -4379,7 +4379,7 @@
           },
           {
             "id": "equitation",
-            "label": "Equitation"
+            "label": "Équitation"
           },
           {
             "id": "resto",
@@ -4391,15 +4391,15 @@
           },
           {
             "id": "observation_animale",
-            "label": "Observation Animale"
+            "label": "Observation animale"
           },
           {
             "id": "oenologie",
-            "label": "Oenologie"
+            "label": "Œnologie"
           },
           {
             "id": "shooting_photo",
-            "label": "Shooting Photo"
+            "label": "Photographie"
           },
           {
             "id": "rafting",
@@ -4415,7 +4415,7 @@
           },
           {
             "id": "safari2",
-            "label": "Safari2"
+            "label": "Safari"
           },
           {
             "id": "ski",
@@ -4435,11 +4435,11 @@
           },
           {
             "id": "video",
-            "label": "Video"
+            "label": "Vidéo"
           },
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "yoga",
@@ -4549,7 +4549,7 @@
           },
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "vtc-02",
@@ -4705,7 +4705,7 @@
         "activites": [
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "thematique_0",
@@ -4762,6 +4762,10 @@
             "label": "Groupes"
           },
           {
+            "id": "groupe-scolaire",
+            "label": "Groupes scolaires"
+          },
+          {
             "id": "individuel",
             "label": "En solo"
           }
@@ -4790,12 +4794,8 @@
         ],
         "activites": [
           {
-            "id": "groupe-scolaire",
-            "label": "Groupe Scolaire"
-          },
-          {
             "id": "archeologie",
-            "label": "Archeologie"
+            "label": "Archéologie"
           },
           {
             "id": "architecture",
@@ -4811,11 +4811,11 @@
           },
           {
             "id": "observation_animale",
-            "label": "Observation Animale"
+            "label": "Observation animale"
           },
           {
             "id": "shooting_photo",
-            "label": "Shooting Photo"
+            "label": "Photographie"
           },
           {
             "id": "rando",
@@ -4864,6 +4864,10 @@
           {
             "id": "groupes",
             "label": "Groupes"
+          },
+          {
+            "id": "groupe-scolaire",
+            "label": "Groupes scolaires"
           },
           {
             "id": "incentive",
@@ -4946,10 +4950,6 @@
         ],
         "activites": [
           {
-            "id": "groupe-scolaire",
-            "label": "Groupe Scolaire"
-          },
-          {
             "id": "architecture",
             "label": "Architecture"
           },
@@ -4975,7 +4975,7 @@
           },
           {
             "id": "equitation",
-            "label": "Equitation"
+            "label": "Équitation"
           },
           {
             "id": "resto",
@@ -4987,15 +4987,15 @@
           },
           {
             "id": "bateau",
-            "label": "Bateau"
+            "label": "Navigation"
           },
           {
             "id": "observation_animale",
-            "label": "Observation Animale"
+            "label": "Observation animale"
           },
           {
             "id": "train",
-            "label": "Train"
+            "label": "Petit train"
           },
           {
             "id": "rafting",
@@ -5011,7 +5011,7 @@
           },
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           }
         ]
       }
@@ -5044,12 +5044,20 @@
             "label": "Groupes"
           },
           {
+            "id": "groupe-scolaire",
+            "label": "Groupes scolaires"
+          },
+          {
             "id": "incentive",
             "label": "Incentive"
           },
           {
             "id": "individuel",
             "label": "En solo"
+          },
+          {
+            "id": "handicap",
+            "label": "PMR"
           }
         ],
         "prestations": [
@@ -5108,14 +5116,6 @@
         ],
         "activites": [
           {
-            "id": "groupe-scolaire",
-            "label": "Groupe Scolaire"
-          },
-          {
-            "id": "handicap",
-            "label": "Handicap"
-          },
-          {
             "id": "aventure",
             "label": "Aventure"
           },
@@ -5133,11 +5133,11 @@
           },
           {
             "id": "bateau",
-            "label": "Bateau"
+            "label": "Navigation"
           },
           {
             "id": "observation_animale",
-            "label": "Observation Animale"
+            "label": "Observation animale"
           },
           {
             "id": "rando",
@@ -5192,6 +5192,10 @@
           {
             "id": "individuel",
             "label": "En solo"
+          },
+          {
+            "id": "handicap",
+            "label": "PMR"
           }
         ],
         "prestations": [
@@ -5218,6 +5222,10 @@
           {
             "id": "circuit",
             "label": "Circuit"
+          },
+          {
+            "id": "concierge",
+            "label": "Conciergerie"
           },
           {
             "id": "eco_responsable",
@@ -5258,14 +5266,6 @@
         ],
         "activites": [
           {
-            "id": "handicap",
-            "label": "Handicap"
-          },
-          {
-            "id": "concierge",
-            "label": "Concierge"
-          },
-          {
             "id": "architecture",
             "label": "Architecture"
           },
@@ -5279,7 +5279,7 @@
           },
           {
             "id": "concert",
-            "label": "Concert"
+            "label": "Concerts"
           },
           {
             "id": "culture_patrimoine",
@@ -5299,11 +5299,11 @@
           },
           {
             "id": "bateau",
-            "label": "Bateau"
+            "label": "Navigation"
           },
           {
             "id": "observation_animale",
-            "label": "Observation Animale"
+            "label": "Observation animale"
           },
           {
             "id": "photo",
@@ -5343,11 +5343,11 @@
           },
           {
             "id": "video",
-            "label": "Video"
+            "label": "Vidéo"
           },
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "yoga",
@@ -5363,11 +5363,11 @@
           },
           {
             "id": "slow_tourisme",
-            "label": "Slow Tourisme"
+            "label": "Slow tourisme"
           },
           {
             "id": "viaferrata",
-            "label": "Viaferrata"
+            "label": "Via Ferrata"
           },
           {
             "id": "bus",
@@ -5383,7 +5383,7 @@
           },
           {
             "id": "oenologie",
-            "label": "Oenologie"
+            "label": "Œnologie"
           }
         ]
       }
@@ -5516,12 +5516,20 @@
             "label": "Groupes"
           },
           {
+            "id": "groupe-scolaire",
+            "label": "Groupes scolaires"
+          },
+          {
             "id": "incentive",
             "label": "Incentive"
           },
           {
             "id": "individuel",
             "label": "En solo"
+          },
+          {
+            "id": "handicap",
+            "label": "PMR"
           }
         ],
         "prestations": [
@@ -5572,14 +5580,6 @@
         ],
         "activites": [
           {
-            "id": "groupe-scolaire",
-            "label": "Groupe Scolaire"
-          },
-          {
-            "id": "handicap",
-            "label": "Handicap"
-          },
-          {
             "id": "aventure",
             "label": "Aventure"
           },
@@ -5629,7 +5629,7 @@
           },
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           }
         ]
       }
@@ -5887,7 +5887,7 @@
           },
           {
             "id": "peche",
-            "label": "Peche"
+            "label": "Pêche en mer"
           },
           {
             "id": "sejours_0",
@@ -5947,7 +5947,7 @@
           },
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           }
         ]
       }
@@ -6001,7 +6001,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           }
         ]
       }
@@ -6057,7 +6057,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "rando",
@@ -6125,7 +6125,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "aventure",
@@ -6205,7 +6205,7 @@
           },
           {
             "id": "observation_animale",
-            "label": "Observation Animale"
+            "label": "Observation animale"
           },
           {
             "id": "culture_patrimoine",
@@ -6213,7 +6213,7 @@
           },
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "photo",
@@ -6301,7 +6301,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "decouverte",
@@ -6309,7 +6309,7 @@
           },
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "croisiere",
@@ -6441,7 +6441,7 @@
           },
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "guide_prive",
@@ -6531,7 +6531,7 @@
           },
           {
             "id": "montgolfiere",
-            "label": "Montgolfiere"
+            "label": "Montgolfière"
           },
           {
             "id": "moto",
@@ -6616,6 +6616,10 @@
             "label": "Circuit"
           },
           {
+            "id": "concierge",
+            "label": "Conciergerie"
+          },
+          {
             "id": "eco_responsable",
             "label": "Éco-responsable"
           },
@@ -6650,10 +6654,6 @@
         ],
         "activites": [
           {
-            "id": "concierge",
-            "label": "Concierge"
-          },
-          {
             "id": "attractions",
             "label": "Attractions"
           },
@@ -6671,7 +6671,7 @@
           },
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "culture_patrimoine",
@@ -6691,11 +6691,11 @@
           },
           {
             "id": "bateau",
-            "label": "Bateau"
+            "label": "Navigation"
           },
           {
             "id": "observation_animale",
-            "label": "Observation Animale"
+            "label": "Observation animale"
           },
           {
             "id": "photo",
@@ -6723,7 +6723,7 @@
           },
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           }
         ]
       }
@@ -6865,7 +6865,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "4x4",
@@ -7096,7 +7096,7 @@
         "activites": [
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "aventure",
@@ -7205,6 +7205,10 @@
         ],
         "prestations": [
           {
+            "id": "concierge",
+            "label": "Conciergerie"
+          },
+          {
             "id": "autotour",
             "label": "Autotour"
           },
@@ -7227,10 +7231,6 @@
         ],
         "activites": [
           {
-            "id": "concierge",
-            "label": "Concierge"
-          },
-          {
             "id": "bus",
             "label": "Bus"
           },
@@ -7240,7 +7240,7 @@
           },
           {
             "id": "archeologie",
-            "label": "Archeologie"
+            "label": "Archéologie"
           },
           {
             "id": "culture_patrimoine",
@@ -7256,7 +7256,7 @@
           },
           {
             "id": "observation_animale",
-            "label": "Observation Animale"
+            "label": "Observation animale"
           },
           {
             "id": "plongee",
@@ -7268,7 +7268,7 @@
           },
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           }
         ]
       }
@@ -7320,7 +7320,7 @@
           },
           {
             "id": "equitation",
-            "label": "Equitation"
+            "label": "Équitation"
           },
           {
             "id": "rando",
@@ -7424,7 +7424,7 @@
         "activites": [
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "aventure",
@@ -7809,7 +7809,7 @@
         "activites": [
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "aventure",
@@ -7925,7 +7925,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           }
         ]
       }
@@ -8049,7 +8049,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "croisiere",
@@ -8114,6 +8114,10 @@
           {
             "id": "incentive",
             "label": "Incentive"
+          },
+          {
+            "id": "handicap",
+            "label": "PMR"
           }
         ],
         "prestations": [
@@ -8142,6 +8146,10 @@
             "label": "Assistance"
           },
           {
+            "id": "concierge",
+            "label": "Conciergerie"
+          },
+          {
             "id": "hotel",
             "label": "Hébergement"
           },
@@ -8164,16 +8172,8 @@
         ],
         "activites": [
           {
-            "id": "handicap",
-            "label": "Handicap"
-          },
-          {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
-          },
-          {
-            "id": "concierge",
-            "label": "Concierge"
+            "label": "Voyage de noces"
           },
           {
             "id": "culture",
@@ -8615,7 +8615,7 @@
           },
           {
             "id": "oenologie",
-            "label": "Oenologie"
+            "label": "Œnologie"
           },
           {
             "id": "sport",
@@ -8754,6 +8754,10 @@
             "label": "Groupes"
           },
           {
+            "id": "groupe-scolaire",
+            "label": "Groupes scolaires"
+          },
+          {
             "id": "incentive",
             "label": "Incentive"
           }
@@ -8802,10 +8806,6 @@
         ],
         "activites": [
           {
-            "id": "groupe-scolaire",
-            "label": "Groupe Scolaire"
-          },
-          {
             "id": "architecture",
             "label": "Architecture"
           },
@@ -8819,7 +8819,7 @@
           },
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "jardins",
@@ -8835,7 +8835,7 @@
           },
           {
             "id": "livre",
-            "label": "Livre"
+            "label": "Histoire"
           },
           {
             "id": "soiree2",
@@ -8843,7 +8843,7 @@
           },
           {
             "id": "concert",
-            "label": "Concert"
+            "label": "Concerts"
           },
           {
             "id": "culture",
@@ -8927,7 +8927,7 @@
           },
           {
             "id": "oenologie",
-            "label": "Oenologie"
+            "label": "Œnologie"
           },
           {
             "id": "sport",
@@ -8995,7 +8995,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           }
         ]
       }
@@ -9192,7 +9192,7 @@
           },
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           }
         ]
       }
@@ -9304,7 +9304,7 @@
           },
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "guide_prive",
@@ -9394,7 +9394,7 @@
           },
           {
             "id": "montgolfiere",
-            "label": "Montgolfiere"
+            "label": "Montgolfière"
           },
           {
             "id": "moto",
@@ -9472,7 +9472,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "4x4",
@@ -9571,6 +9571,10 @@
             "label": "City-break"
           },
           {
+            "id": "concierge",
+            "label": "Conciergerie"
+          },
+          {
             "id": "conference",
             "label": "Conférences"
           },
@@ -9617,12 +9621,8 @@
         ],
         "activites": [
           {
-            "id": "concierge",
-            "label": "Concierge"
-          },
-          {
             "id": "archeologie",
-            "label": "Archeologie"
+            "label": "Archéologie"
           },
           {
             "id": "architecture",
@@ -9718,7 +9718,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "decouverte",
@@ -9726,7 +9726,7 @@
           },
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "croisiere",
@@ -9818,7 +9818,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "decouverte",
@@ -9826,7 +9826,7 @@
           },
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "croisiere",
@@ -9964,7 +9964,7 @@
           },
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "guide_prive",
@@ -10054,7 +10054,7 @@
           },
           {
             "id": "montgolfiere",
-            "label": "Montgolfiere"
+            "label": "Montgolfière"
           },
           {
             "id": "moto",
@@ -10142,7 +10142,7 @@
         "activites": [
           {
             "id": "thematique",
-            "label": "Thematique"
+            "label": "Multi activités"
           },
           {
             "id": "ile",
@@ -10154,7 +10154,7 @@
           },
           {
             "id": "voyage_de_noce",
-            "label": "Voyage De Noce"
+            "label": "Voyage de noces"
           },
           {
             "id": "culture_patrimoine",
@@ -10166,7 +10166,7 @@
           },
           {
             "id": "bateau",
-            "label": "Bateau"
+            "label": "Navigation"
           },
           {
             "id": "resto",
@@ -10178,7 +10178,7 @@
           },
           {
             "id": "massage",
-            "label": "Massage"
+            "label": "Bien-être / Thalasso"
           }
         ]
       }
@@ -10232,11 +10232,11 @@
         "activites": [
           {
             "id": "kite",
-            "label": "Kite"
+            "label": "Kitesurf"
           },
           {
             "id": "peche",
-            "label": "Peche"
+            "label": "Pêche en mer"
           },
           {
             "id": "plongee",
