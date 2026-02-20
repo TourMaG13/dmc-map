@@ -423,20 +423,23 @@ def clean_destinations(destinations):
         "equateur-amazonie-galapagos": "Equateur",
         "toute l'islande": "Islande",
         "toute l islande": "Islande",
-        "circuits combinés turquiegrèce": "Grèce",
-        "circuits combines turquiegrece": "Grèce",
+        "circuits combines turquie": "Grèce",
+        "circuits combinés turquie": "Grèce",
         "turquiegrèce": "Grèce",
         "turquiegrece": "Grèce",
+        "turquie grèce": "Grèce",
+        "turquie grece": "Grèce",
         "cambodge dat": "Cambodge",
         "vietna": "Vietnam",
         "costa": "Costa Rica",
+        "usa": "Etats-Unis",
     }
 
     # Entrées à supprimer (régions, villes, bouts de phrase — pas des pays)
     BLACKLIST = {
         "baja california", "chiapas", "oaxaca", "yucatan", "quintana roo",
         "quitana roo", "mexico city", "londres", "london",
-        "sud-est et sud-ouest de l'angleterre", "sud-est et sud-ouest de l angleterre",
+        "sud-est", "sud-ouest", "angleterre",
         "pouilles", "polynésie", "polynesie",
         "europe de l'est", "europe de l est",
         "fjords", "glaciers",
@@ -444,9 +447,11 @@ def clean_destinations(destinations):
 
     cleaned = []
     for d in destinations:
-        d_lower = d.lower().strip()
+        # Normaliser les apostrophes typographiques → droites
+        d_norm = d.replace("\u2019", "'").replace("\u2018", "'").replace("\u00b4", "'")
+        d_lower = d_norm.lower().strip()
 
-        # Vérifier les corrections (match partiel aussi)
+        # Vérifier les corrections (match partiel)
         corrected = None
         for pattern, replacement in CORRECTIONS.items():
             if pattern in d_lower:
@@ -454,17 +459,24 @@ def clean_destinations(destinations):
                 break
 
         if corrected:
-            cleaned.append(corrected)
+            if corrected not in cleaned:
+                cleaned.append(corrected)
             continue
 
-        # Vérifier la blacklist (match partiel pour les phrases longues)
+        # Vérifier la blacklist (match partiel)
         is_blacklisted = False
         for bl in BLACKLIST:
-            if bl in d_lower or d_lower in bl:
+            if bl in d_lower:
                 is_blacklisted = True
                 break
-        # Aussi blacklister les entrées trop longues (probablement des phrases)
+        # Blacklister les entrées trop longues (probablement des phrases)
         if len(d) > 40:
+            is_blacklisted = True
+        # Blacklister les entrées avec des parenthèses (descriptions)
+        if "(" in d and ")" in d:
+            before_paren = d.split("(")[0].strip().rstrip(" ,;:")
+            if before_paren and len(before_paren) > 2 and before_paren not in cleaned:
+                cleaned.append(before_paren)
             is_blacklisted = True
 
         if not is_blacklisted:
