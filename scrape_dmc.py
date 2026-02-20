@@ -451,6 +451,43 @@ def extract_destinations(html):
     return destinations
 
 
+def normalize_destination(d):
+    """Normalise un nom de destination en Title Case avec gestion des petits mots."""
+    words = d.strip().split()
+    result = []
+    for i, w in enumerate(words):
+        wl = w.lower()
+        if i == 0:
+            result.append(w.capitalize())
+        elif wl in ('du', 'de', 'la', 'le', 'les', 'et', 'des', 'en', "l'", "d'"):
+            result.append(wl)
+        else:
+            result.append(w.capitalize())
+    return ' '.join(result)
+
+
+def extract_primary_destinations(title):
+    """
+    Extrait la/les destination(s) principale(s) depuis le og:title.
+    Le titre est souvent au format : "DMC [Pays] [Nom du DMC]"
+    Renvoie la liste des pays reconnus dans le titre.
+    """
+    if not title:
+        return []
+
+    title_lower = title.lower()
+    found = []
+    # Trier par longueur décroissante pour matcher les noms composés d'abord
+    sorted_keys = sorted(COUNTRY_COORDS.keys(), key=len, reverse=True)
+    remaining = title_lower
+    for key in sorted_keys:
+        if key in remaining:
+            found.append(key)
+            # Retirer le match pour éviter les doublons partiels
+            remaining = remaining.replace(key, ' ', 1)
+    return found
+
+
 def extract_dmc_data(html, url):
     """Extrait les données structurées d'une fiche DMC."""
     data = {"url": url}
@@ -461,28 +498,55 @@ def extract_dmc_data(html, url):
 
     # Description
     desc_match = re.search(r'og:description"\s*content="([^"]*)"', html)
-    data["description"] = desc_match.group(1).strip() if desc_match else ""
+    desc = desc_match.group(1).strip() if desc_match else ""
+    # Nettoyer : supprimer tout à partir de "DESTINATIONS :" si présent dans la description
+    desc = re.split(r'\s*DESTINATIONS\s*:', desc, flags=re.IGNORECASE)[0].strip()
+    # Supprimer aussi "Date de création" si ça traîne
+    desc = re.split(r'\s*Date de cr[ée]ation\s*:', desc, flags=re.IGNORECASE)[0].strip()
+    data["description"] = desc
 
     # Image
     img_match = re.search(r'og:image"\s*content="([^"]*)"', html)
     data["image"] = img_match.group(1).strip() if img_match else ""
 
-    # Destinations
-    destinations = extract_destinations(html)
-    data["destinations"] = destinations
+    # ---- DESTINATIONS ----
+    # 1. Toutes les destinations listées dans la fiche (pour filtrage/affichage)
+    all_destinations = extract_destinations(html)
+    data["destinations"] = [normalize_destination(d) for d in all_destinations]
 
-    # Coordonnées GPS
+    # 2. Destination(s) principale(s) = celle(s) de CETTE fiche spécifique
+    #    Extraites du og:title qui contient le nom du pays de la fiche
+    primary_raw = extract_primary_destinations(data["title"])
+
+    # Fallback: si rien trouvé dans le titre, essayer dans l'URL
+    if not primary_raw:
+        url_slug = url.split("/")[-1].lower()
+        sorted_keys = sorted(COUNTRY_COORDS.keys(), key=len, reverse=True)
+        for key in sorted_keys:
+            key_slug = key.replace(" ", "-").replace("'", "-")
+            if key_slug in url_slug:
+                primary_raw.append(key)
+                break
+
+    # Fallback final: si toujours rien, utiliser toutes les destinations
+    if not primary_raw:
+        primary_raw = [d.lower().strip() for d in all_destinations]
+
+    data["primary_destinations"] = [normalize_destination(d) for d in primary_raw]
+
+    # Coordonnées GPS = UNIQUEMENT les destinations principales (pour les marqueurs)
     coords_list = []
-    for dest in destinations:
+    for dest in primary_raw:
         lat, lng = get_coords(dest)
-        coords_list.append({"destination": dest, "lat": lat, "lng": lng})
+        norm_dest = normalize_destination(dest)
+        coords_list.append({"destination": norm_dest, "lat": lat, "lng": lng})
         if lat is None:
             print(f"  [WARN] Pas de coordonnées pour: '{dest}'")
     data["coordinates"] = coords_list
 
-    # Continents
+    # Continents (basés sur TOUTES les destinations pour le filtrage)
     continents = set()
-    for dest in destinations:
+    for dest in all_destinations:
         continent = get_continent(dest)
         if continent:
             continents.add(continent)
