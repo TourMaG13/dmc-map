@@ -411,6 +411,68 @@ def get_continent(destination):
     return None
 
 
+def clean_destinations(destinations):
+    """
+    Nettoie la liste de destinations :
+    - Corrige les entrées mal parsées vers le bon pays
+    - Supprime les entrées qui ne sont pas des pays/destinations valides
+    """
+    # Mapping de corrections : entrées mal parsées → bon pays
+    CORRECTIONS = {
+        "equateur - amazonie - galapagos": "Equateur",
+        "equateur-amazonie-galapagos": "Equateur",
+        "toute l'islande": "Islande",
+        "toute l islande": "Islande",
+        "circuits combinés turquiegrèce": "Grèce",
+        "circuits combines turquiegrece": "Grèce",
+        "turquiegrèce": "Grèce",
+        "turquiegrece": "Grèce",
+        "cambodge dat": "Cambodge",
+        "vietna": "Vietnam",
+        "costa": "Costa Rica",
+    }
+
+    # Entrées à supprimer (régions, villes, bouts de phrase — pas des pays)
+    BLACKLIST = {
+        "baja california", "chiapas", "oaxaca", "yucatan", "quintana roo",
+        "quitana roo", "mexico city", "londres", "london",
+        "sud-est et sud-ouest de l'angleterre", "sud-est et sud-ouest de l angleterre",
+        "pouilles", "polynésie", "polynesie",
+        "europe de l'est", "europe de l est",
+        "fjords", "glaciers",
+    }
+
+    cleaned = []
+    for d in destinations:
+        d_lower = d.lower().strip()
+
+        # Vérifier les corrections (match partiel aussi)
+        corrected = None
+        for pattern, replacement in CORRECTIONS.items():
+            if pattern in d_lower:
+                corrected = replacement
+                break
+
+        if corrected:
+            cleaned.append(corrected)
+            continue
+
+        # Vérifier la blacklist (match partiel pour les phrases longues)
+        is_blacklisted = False
+        for bl in BLACKLIST:
+            if bl in d_lower or d_lower in bl:
+                is_blacklisted = True
+                break
+        # Aussi blacklister les entrées trop longues (probablement des phrases)
+        if len(d) > 40:
+            is_blacklisted = True
+
+        if not is_blacklisted:
+            cleaned.append(d)
+
+    return cleaned
+
+
 def extract_destinations(html):
     """Extrait les destinations depuis une fiche DMC (plusieurs méthodes de fallback)."""
     destinations = []
@@ -613,7 +675,8 @@ def extract_dmc_data(html, url):
 
     # ---- DESTINATIONS ----
     # 1. Toutes les destinations listées dans la fiche (pour filtrage/affichage)
-    all_destinations = extract_destinations(html)
+    all_destinations_raw = extract_destinations(html)
+    all_destinations = clean_destinations(all_destinations_raw)
     normalized_all = []
     seen_dests = set()
     for d in all_destinations:
