@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carte des DMC - DestiMaG</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cyan: #2CB5C8;
+  --green: #5BBD6B;
+  --orange: #E8913A;
+  --dark: #1A2332;
+  --primary: #2CB5C8;
+  --primary-light: #35C9DD;
+  --primary-dark: #1E8A9A;
+  --bg: #F8FAFB;
+  --bg-card: #FFFFFF;
+  --border: #E2E8F0;
+  --border-light: #F1F5F9;
+  --text: #1E293B;
+  --text-light: #64748B;
+  --text-lighter: #94A3B8;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+  --radius: 8px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow:hidden;height:100vh}
+
+/* ===== EMBED ===== */
+.embed-container{position:relative;width:100%;height:400px;cursor:pointer;overflow:hidden;border-radius:var(--radius);background:var(--dark)}
+.embed-map{width:100%;height:100%;z-index:1}
+.embed-overlay{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(26,35,50,0.85),rgba(44,181,200,0.3));transition:opacity 0.3s}
+.embed-overlay h2{color:#fff;font-size:1.3rem;font-weight:700;margin-bottom:6px}
+.embed-overlay p{color:rgba(255,255,255,0.8);font-size:0.85rem}
+.embed-overlay .embed-btn{margin-top:16px;background:var(--cyan);color:#fff;border:none;padding:10px 28px;border-radius:6px;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.embed-overlay .embed-btn:hover{background:var(--primary-light);transform:translateY(-1px)}
+.embed-container:hover .embed-overlay{opacity:0.95}
+
+/* ===== MODAL ===== */
+.modal-backdrop{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.modal-backdrop.open{display:flex}
+.modal-content{background:var(--bg-card);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;width:96vw;height:94vh;max-width:1600px;box-shadow:var(--shadow-lg)}
+
+/* ===== TOPBAR ===== */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:var(--dark);color:#fff;flex-shrink:0}
+.topbar-left{display:flex;align-items:center;gap:10px;font-size:1rem;font-weight:700;letter-spacing:-0.3px}
+.topbar-count{background:var(--cyan);font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:4px}
+.btn-close{background:rgba(255,255,255,0.15);border:none;color:#fff;width:32px;height:32px;border-radius:6px;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+.btn-close:hover{background:rgba(255,255,255,0.25)}
+
+/* ===== LAYOUT ===== */
+.main-layout{display:flex;flex:1;overflow:hidden}
+
+/* ===== SIDEBAR ===== */
+.sidebar{width:380px;display:flex;flex-direction:column;border-right:1px solid var(--border);background:var(--bg-card);flex-shrink:0;overflow:hidden}
+.search-box{padding:12px 14px;border-bottom:1px solid var(--border)}
+.search-wrap{position:relative;display:flex;align-items:center}
+.search-wrap svg{position:absolute;left:10px;color:var(--text-lighter)}
+.search-wrap input{width:100%;padding:9px 12px 9px 34px;border:1px solid var(--border);border-radius:6px;font-size:0.85rem;font-family:inherit;background:var(--bg);transition:border 0.2s;outline:none}
+.search-wrap input:focus{border-color:var(--cyan)}
+
+/* Filtres */
+.filters-section{border-bottom:1px solid var(--border)}
+.filters-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:none;border:none;font-family:inherit;font-size:0.82rem;font-weight:600;color:var(--text);cursor:pointer}
+.filters-toggle:hover{background:var(--bg)}
+.filters-toggle svg{transition:transform 0.2s}
+.filters-toggle.open svg{transform:rotate(180deg)}
+.filters-body{display:none;padding:8px 14px 14px;max-height:55vh;overflow-y:auto}
+.filters-body.open{display:block}
+
+.filter-row{margin-bottom:10px}
+.filter-label{display:block;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;color:var(--text-light);margin-bottom:5px}
+.filter-select{width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:5px;font-size:0.82rem;font-family:inherit;background:#fff;outline:none;cursor:pointer}
+.filter-select:focus{border-color:var(--cyan)}
+
+.filter-category-label{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;color:var(--primary-dark);margin:12px 0 6px;padding-top:8px;border-top:1px solid var(--border-light)}
+.filter-category-label:first-of-type{border-top:none;margin-top:6px}
+
+/* Groupes de filtres repliables */
+.filter-group{margin-bottom:6px}
+.filter-group-header{display:flex;align-items:center;gap:6px;padding:5px 8px;background:var(--bg);border-radius:5px;cursor:pointer;font-size:0.75rem;font-weight:600;color:var(--text);transition:background 0.15s;user-select:none}
+.filter-group-header:hover{background:var(--border-light)}
+.filter-group-header svg{width:12px;height:12px;transition:transform 0.2s;flex-shrink:0;color:var(--text-lighter)}
+.filter-group-header.open svg{transform:rotate(90deg)}
+.filter-group-header .group-count{font-size:0.65rem;color:var(--text-lighter);font-weight:400;margin-left:auto}
+.filter-group-body{display:none;padding:6px 0 2px 8px}
+.filter-group-body.open{display:block}
+
+.filter-chips{display:flex;flex-wrap:wrap;gap:5px}
+.filter-chip{padding:4px 10px;border:1px solid var(--border);border-radius:14px;font-size:0.73rem;font-weight:500;color:var(--text-light);cursor:pointer;transition:all 0.15s;user-select:none}
+.filter-chip:hover{border-color:var(--cyan);color:var(--cyan)}
+.filter-chip.active{background:var(--cyan);color:#fff;border-color:var(--cyan)}
+
+.active-filters-count{display:inline-flex;align-items:center;justify-content:center;background:var(--orange);color:#fff;font-size:0.65rem;font-weight:700;width:18px;height:18px;border-radius:50%;margin-left:4px}
+
+.filters-actions{padding-top:8px;border-top:1px solid var(--border-light)}
+.btn-reset{width:100%;padding:7px;background:none;border:1px solid var(--border);border-radius:5px;font-size:0.78rem;font-family:inherit;color:var(--text-light);cursor:pointer;transition:all 0.15s}
+.btn-reset:hover{border-color:#EF4444;color:#EF4444;background:rgba(239,68,68,0.04)}
+
+/* Liste DMC */
+.dmc-list-header{padding:10px 14px;font-size:0.78rem;font-weight:600;color:var(--text-light);background:var(--bg);border-bottom:1px solid var(--border);flex-shrink:0}
+.dmc-list{flex:1;overflow-y:auto;padding:6px}
+.dmc-card{display:flex;gap:10px;padding:10px;border-radius:var(--radius);cursor:pointer;transition:all 0.15s;border:1px solid transparent;margin-bottom:4px}
+.dmc-card:hover{background:var(--bg);border-color:var(--border)}
+.dmc-card.active{background:rgba(44,181,200,0.06);border-color:var(--cyan)}
+.dmc-card-img{width:70px;height:52px;border-radius:5px;object-fit:cover;flex-shrink:0;background:var(--border)}
+.dmc-card-info{flex:1;min-width:0}
+.dmc-card-name{font-size:0.82rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dmc-card-dest{font-size:0.72rem;color:var(--text-light);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dmc-card-tags{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
+.dmc-card-tag{font-size:0.62rem;padding:1px 6px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text-light);white-space:nowrap}
+
+/* ===== MAP ===== */
+.map-panel{flex:1;position:relative;min-width:0}
+#mainMap{width:100%;height:100%;z-index:1}
+
+/* ===== DETAIL PANEL ===== */
+.detail-panel{position:absolute;top:0;right:0;width:400px;height:100%;background:var(--bg-card);z-index:1000;transform:translateX(100%);transition:transform 0.25s ease;box-shadow:-4px 0 20px rgba(0,0,0,0.1);display:flex;flex-direction:column;overflow:hidden}
+.detail-panel.open{transform:translateX(0)}
+.detail-header{position:relative;flex-shrink:0}
+.detail-header img{width:100%;height:220px;object-fit:cover;object-position:top center;display:block}
+.detail-header .detail-close{position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.5);color:#fff;border:none;width:30px;height:30px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.detail-body{flex:1;overflow-y:auto;padding:16px}
+.detail-title{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.detail-destinations{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.detail-dest-badge{padding:3px 10px;background:var(--cyan);color:#fff;border-radius:12px;font-size:0.72rem;font-weight:600}
+.detail-desc{font-size:0.82rem;color:var(--text-light);line-height:1.5;margin-bottom:14px}
+.detail-other-dests{font-size:0.75rem;color:var(--text-lighter);margin-bottom:10px;font-style:italic}
+.detail-date{font-size:0.75rem;color:var(--text-lighter);margin-bottom:14px}
+
+.detail-section-title{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin:14px 0 8px;padding-top:10px;border-top:1px solid var(--border-light)}
+.detail-section-title.clientele{color:var(--primary-dark)}
+.detail-section-title.prestations{color:#2D7A3A}
+.detail-section-title.activites{color:#B06520}
+
+/* Picto grid dans le detail */
+.detail-pictos{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.detail-picto{display:flex;flex-direction:column;align-items:center;width:64px;text-align:center}
+.detail-picto img{width:42px;height:42px;margin-bottom:3px}
+.detail-picto span{font-size:0.6rem;color:var(--text-light);line-height:1.2;word-break:break-word}
+
+.detail-link{display:inline-block;margin-top:16px;padding:10px 22px;background:var(--orange);color:#fff;text-decoration:none;border-radius:6px;font-size:0.85rem;font-weight:600;transition:all 0.2s;width:100%;text-align:center}
+.detail-link:hover{background:#D07A2A;transform:translateY(-1px)}
+
+/* No results */
+.no-results{padding:40px 20px;text-align:center;color:var(--text-light)}
+.no-results p{font-size:0.85rem;margin-top:8px}
+
+/* ===== LEAFLET OVERRIDES ===== */
+.custom-marker{width:12px;height:12px;background:var(--cyan);border:2.5px solid #fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.3);transition:transform 0.15s}
+.custom-marker:hover{transform:scale(1.3)}
+.leaflet-popup-content-wrapper{border-radius:8px!important;padding:0!important;box-shadow:var(--shadow-lg)!important}
+.leaflet-popup-content{margin:0!important;min-width:220px}
+.leaflet-popup-tip{display:none}
+.popup-inner{padding:12px 14px;font-family:'DM Sans',sans-serif}
+.popup-inner h3{font-size:0.88rem;font-weight:700;color:var(--text);margin-bottom:2px}
+.popup-inner .popup-dest{font-size:0.75rem;color:var(--text-light);margin-bottom:6px}
+.popup-btn{display:inline-block;background:var(--cyan);color:#fff;font-size:0.75rem;font-weight:600;padding:5px 12px;border-radius:4px;cursor:pointer;border:none;font-family:inherit}
+.popup-btn:hover{background:var(--primary-light)}
+
+/* Cluster fix: vertical centering */
+.marker-cluster-small,.marker-cluster-medium,.marker-cluster-large{background:rgba(44,181,200,0.15)!important}
+.marker-cluster-small div,.marker-cluster-medium div,.marker-cluster-large div{background:var(--cyan)!important;color:#fff!important;font-family:'DM Sans',sans-serif!important;font-weight:700!important;display:flex!important;align-items:center!important;justify-content:center!important;line-height:1!important}
+
+/* Scrollbar */
+.dmc-list::-webkit-scrollbar,.detail-panel::-webkit-scrollbar,.filters-body::-webkit-scrollbar{width:5px}
+.dmc-list::-webkit-scrollbar-track,.detail-panel::-webkit-scrollbar-track,.filters-body::-webkit-scrollbar-track{background:transparent}
+.dmc-list::-webkit-scrollbar-thumb,.detail-panel::-webkit-scrollbar-thumb,.filters-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+  .modal-content{inset:0;border-radius:0;width:100vw;height:100vh}
+  .main-layout{flex-direction:column}
+  .sidebar{width:100%;max-height:50vh;border-right:none;border-bottom:1px solid var(--border)}
+  .map-panel{min-height:50vh}
+  .detail-panel{width:100%;position:fixed;inset:0;z-index:10001;transform:translateY(100%);border-radius:0}
+  .detail-panel.open{transform:translateY(0)}
+  .embed-container{height:300px}
+  .embed-overlay h2{font-size:1.1rem}
+}
+@media(max-width:480px){
+  .topbar{padding:10px 14px}
+  .topbar-left{font-size:0.95rem}
+  .sidebar{max-height:45vh}
+}
+</style>
+</head>
+<body>
+
+<!-- EMBED -->
+<div class="embed-container" id="embedContainer" onclick="openModal()">
+  <div id="embedMap" class="embed-map"></div>
+  <div class="embed-overlay" id="embedOverlay">
+    <h2>🌍 Carte des DMC / Réceptifs</h2>
+    <p>Trouvez votre agence réceptive par destination et spécialité</p>
+    <button class="embed-btn">Explorer la carte</button>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="modal">
+ <div class="modal-content">
+  <div class="topbar">
+   <div class="topbar-left">
+    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+    Annuaire des DMC — DestiMaG
+    <span class="topbar-count" id="topbarCount"></span>
+   </div>
+   <button class="btn-close" onclick="closeModal()" title="Fermer">✕</button>
+  </div>
+  <div class="main-layout">
+   <div class="sidebar">
+    <div class="search-box">
+     <div class="search-wrap">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" id="searchInput" placeholder="Rechercher un DMC, un pays, une destination…" oninput="applyFilters()">
+     </div>
+    </div>
+    <div class="filters-section">
+     <button class="filters-toggle" id="filtersToggle" onclick="toggleFilters()">
+      <span>⚙ Filtres avancés <span class="active-filters-count" id="activeFiltersCount" style="display:none">0</span></span>
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+     </button>
+     <div class="filters-body" id="filtersBody">
+      <div class="filter-row">
+       <span class="filter-label">Zone géographique</span>
+       <select class="filter-select" id="filterContinent" onchange="applyFilters()"><option value="">Toutes les zones</option></select>
+      </div>
+      <div class="filter-row">
+       <span class="filter-label">Pays / Destination</span>
+       <select class="filter-select" id="filterCountry" onchange="applyFilters()"><option value="">Tous les pays</option></select>
+      </div>
+
+      <div class="filter-category-label" style="color:var(--primary-dark)">Clientèle</div>
+      <div class="filter-chips" id="chipsClientele"></div>
+
+      <div class="filter-category-label" style="color:#2D7A3A">Prestations</div>
+      <div id="groupsPrestations"></div>
+
+      <div class="filter-category-label" style="color:#B06520">Activités / Thématiques</div>
+      <div id="groupsActivites"></div>
+
+      <div class="filters-actions">
+       <button class="btn-reset" onclick="resetFilters()">✕ Réinitialiser tous les filtres</button>
+      </div>
+     </div>
+    </div>
+    <div class="dmc-list-header" id="dmcListHeader"></div>
+    <div class="dmc-list" id="dmcList"></div>
+   </div>
+   <div class="map-panel">
+    <div id="mainMap"></div>
+    <div class="detail-panel" id="detailPanel">
+     <div class="detail-header" id="detailHeader"></div>
+     <div class="detail-body" id="detailBody"></div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
+// =====================================================================
+// FIREBASE CONFIGURATION
+// =====================================================================
+firebase.initializeApp({
+  apiKey: "AIzaSyDZ4T1d0YiuxDb116xx8uFHfW9k__vh4FE",
+  authDomain: "destimap-e901b.firebaseapp.com",
+  projectId: "destimap-e901b",
+  storageBucket: "destimap-e901b.firebasestorage.app",
+  messagingSenderId: "903190091312",
+  appId: "1:903190091312:web:410bdeef59aafa451ffff5"
+});
+const db = firebase.firestore();
+const PICTO_BASE = 'https://www.tourmag.com/docs/FicheDMC/picto_';
+
+// Nettoyage des textes résiduels du scraping
+function cleanDest(d) {
+  if (!d) return '';
+  let c = d.replace(/[\\/""«»\u201c\u201d]/g, '').replace(/\.{2,}/g, '').trim();
+  if (c.length < 2 || /^Date\b/i.test(c)) return '';
+  return c;
+}
+
+// Normalise les accents pour comparaison (utilisé pour dédoublonner)
+function normalizeForCompare(s) {
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+}
+
+// =====================================================================
+// REGROUPEMENTS
+// =====================================================================
+const PRESTATION_GROUPS = {
+  "MICE & Business": ["conference", "congres", "meeting", "team_building", "mice", "incentive"],
+  "Type de voyage": ["circuit", "city", "autotour", "sur_mesure", "luxe"],
+  "Éco & Responsable": ["eco_responsable", "slow_tourisme", "tourisme_responsable2", "nature"],
+  "Hébergement & Transport": ["hotel", "transferts", "vtc", "concierge"],
+  "Accompagnement": ["acceuil", "assistance", "adaptabilite", "visite_guidee"],
+  "Autres prestations": ["passion", "creativite", "efficacite", "medical"]
+};
+
+const ACTIVITE_GROUPS = {
+  "Randonnée & Montagne": ["rando", "trekking", "trail", "escalade", "escalade-rando", "raquettes", "viaferrata", "montagne", "rando-contee"],
+  "Sports nautiques": ["plongee", "snorkeling", "surf", "kite", "canoe", "rafting", "peche", "bateau", "char-a-voile"],
+  "Culture & Patrimoine": ["culture", "culture_patrimoine", "archeologie", "architecture", "histoire", "livre", "decouverte", "village"],
+  "Gastronomie & Terroir": ["resto", "oenologie", "vendanges", "permaculture"],
+  "Nature & Animaux": ["safari2", "observation_animale", "insecte", "aventure", "jardin"],
+  "Sport & Plein air": ["sport", "velo", "golf", "ski", "ski-de-fond", "biathlon", "equitation", "accrobranche"],
+  "Bien-être & Spirituel": ["massage", "yoga", "spirituel"],
+  "Événements & Loisirs": ["carnaval", "concert", "feu_d_artifice", "noel", "nouvel_an", "illuminations", "casino", "soiree_gala", "attractions"],
+  "Divers": ["photo", "shooting_photo", "video", "montgolfiere", "liguistique", "mode", "manuel", "genealogie", "surpris", "thematique", "cadeau", "peinture", "source-eau-chaude", "avion-2", "train", "traineau", "voyage", "excursions", "ane", "astronomie", "druide", "voyage_de_noce"]
+};
+
+let allDMC = [];
+let filteredDMC = [];
+let mainMap, embedMapInstance, markerClusterGroup;
+let markers = [];
+let activeDMC = null;
+
+// =====================================================================
+// CHARGEMENT DEPUIS FIRESTORE
+// =====================================================================
+async function loadData() {
+  try {
+    const snap = await db.collection('dmc').get();
+    allDMC = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    filteredDMC = [...allDMC];
+    buildFilters();
+    renderList();
+    renderMarkers();
+    updateCount();
+    initEmbedMap();
+  } catch(e) {
+    console.error('Erreur chargement données DMC:', e);
+    document.getElementById('dmcList').innerHTML = '<div class="no-results"><p>Erreur de chargement des données.</p></div>';
+  }
+}
+
+// =====================================================================
+// FILTRES DYNAMIQUES
+// =====================================================================
+function buildFilters() {
+  const continents = new Set();
+  const countryMap = new Map(); // key=normalized, value=display name (with accents)
+  const foundTags = { clientele: new Map(), prestations: new Map(), activites: new Map() };
+
+  allDMC.forEach(dmc => {
+    (dmc.continents || []).forEach(c => continents.add(c));
+    (dmc.destinations || []).forEach(d => {
+      let clean = cleanDest(d);
+      if (clean) {
+        let key = normalizeForCompare(clean);
+        // Garder la version avec accents si disponible (plus longue ou avec accents)
+        if (!countryMap.has(key) || clean.length > countryMap.get(key).length) {
+          countryMap.set(key, clean);
+        }
+      }
+    });
+    ['clientele', 'prestations', 'activites'].forEach(cat => {
+      (dmc.tags[cat] || []).forEach(t => foundTags[cat].set(t.id, t.label));
+    });
+  });
+
+  // Selects
+  const selC = document.getElementById('filterContinent');
+  [...continents].sort().forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; selC.appendChild(o); });
+  const selP = document.getElementById('filterCountry');
+  const countryList = [...countryMap.values()].sort((a,b) => a.localeCompare(b,'fr'));
+  countryList.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; selP.appendChild(o); });
+
+  // Clientèle (pas de sous-groupes, assez peu)
+  buildChipsFlat('chipsClientele', foundTags.clientele);
+
+  // Prestations groupées
+  buildGroupedChips('groupsPrestations', PRESTATION_GROUPS, foundTags.prestations);
+
+  // Activités groupées
+  buildGroupedChips('groupsActivites', ACTIVITE_GROUPS, foundTags.activites);
+}
+
+function buildChipsFlat(containerId, tagMap) {
+  const container = document.getElementById(containerId);
+  [...tagMap.entries()].sort((a,b) => a[1].localeCompare(b[1],'fr')).forEach(([id, label]) => {
+    const chip = document.createElement('div');
+    chip.className = 'filter-chip';
+    chip.dataset.tagId = id;
+    chip.textContent = label;
+    chip.onclick = () => { chip.classList.toggle('active'); applyFilters(); };
+    container.appendChild(chip);
+  });
+}
+
+function buildGroupedChips(containerId, groupDef, tagMap) {
+  const container = document.getElementById(containerId);
+  Object.entries(groupDef).forEach(([groupName, tagIds]) => {
+    // Filtrer : ne garder que les tags qui existent dans les données, dédupliquer par label
+    const seenLabels = new Set();
+    const existing = [];
+    tagIds.forEach(id => {
+      if (tagMap.has(id)) {
+        const label = tagMap.get(id);
+        if (!seenLabels.has(label.toLowerCase())) {
+          seenLabels.add(label.toLowerCase());
+          existing.push(id);
+        }
+      }
+    });
+    if (existing.length === 0) return;
+
+    const group = document.createElement('div');
+    group.className = 'filter-group';
+
+    const header = document.createElement('div');
+    header.className = 'filter-group-header';
+    header.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 6 15 12 9 18"/></svg>
+      <span>${groupName}</span>
+      <span class="group-count">${existing.length}</span>`;
+    header.onclick = () => {
+      header.classList.toggle('open');
+      body.classList.toggle('open');
+    };
+
+    const body = document.createElement('div');
+    body.className = 'filter-group-body';
+    const chips = document.createElement('div');
+    chips.className = 'filter-chips';
+
+    existing.forEach(id => {
+      const label = tagMap.get(id);
+      const chip = document.createElement('div');
+      chip.className = 'filter-chip';
+      chip.dataset.tagId = id;
+      chip.textContent = label;
+      chip.onclick = (e) => { e.stopPropagation(); chip.classList.toggle('active'); applyFilters(); };
+      chips.appendChild(chip);
+    });
+
+    body.appendChild(chips);
+    group.appendChild(header);
+    group.appendChild(body);
+    container.appendChild(group);
+  });
+}
+
+// =====================================================================
+// APPLICATION DES FILTRES
+// =====================================================================
+function applyFilters() {
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+  const continent = document.getElementById('filterContinent').value;
+  const country = document.getElementById('filterCountry').value;
+
+  const activeChips = [];
+  document.querySelectorAll('.filter-chip.active').forEach(c => activeChips.push(c.dataset.tagId));
+
+  filteredDMC = allDMC.filter(dmc => {
+    if (search) {
+      const hay = [dmc.title, dmc.description, ...(dmc.destinations||[]), ...(dmc.continents||[])].join(' ').toLowerCase();
+      if (!hay.includes(search)) return false;
+    }
+    if (continent && !(dmc.continents||[]).includes(continent)) return false;
+    if (country) {
+      const countryNorm = normalizeForCompare(country);
+      const dmcDests = (dmc.destinations||[]).map(d => normalizeForCompare(d));
+      if (!dmcDests.includes(countryNorm)) return false;
+    }
+
+    if (activeChips.length > 0) {
+      const allDmcTags = [
+        ...(dmc.tags.clientele||[]).map(t=>t.id),
+        ...(dmc.tags.prestations||[]).map(t=>t.id),
+        ...(dmc.tags.activites||[]).map(t=>t.id)
+      ];
+      if (!activeChips.every(id => allDmcTags.includes(id))) return false;
+    }
+    return true;
+  });
+
+  renderList();
+  renderMarkers();
+  updateCount();
+  updateActiveFiltersCount();
+}
+
+function updateActiveFiltersCount() {
+  let count = 0;
+  if (document.getElementById('filterContinent').value) count++;
+  if (document.getElementById('filterCountry').value) count++;
+  document.querySelectorAll('.filter-chip.active').forEach(() => count++);
+  const badge = document.getElementById('activeFiltersCount');
+  if (count > 0) { badge.style.display = ''; badge.textContent = count; }
+  else { badge.style.display = 'none'; }
+}
+
+function resetFilters() {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('filterContinent').value = '';
+  document.getElementById('filterCountry').value = '';
+  document.querySelectorAll('.filter-chip.active').forEach(c => c.classList.remove('active'));
+  applyFilters();
+}
+
+function toggleFilters() {
+  document.getElementById('filtersToggle').classList.toggle('open');
+  document.getElementById('filtersBody').classList.toggle('open');
+}
+
+// =====================================================================
+// LISTE
+// =====================================================================
+function renderList() {
+  const header = document.getElementById('dmcListHeader');
+  const list = document.getElementById('dmcList');
+  header.textContent = `${filteredDMC.length} DMC / réceptif${filteredDMC.length > 1 ? 's' : ''} trouvé${filteredDMC.length > 1 ? 's' : ''}`;
+
+  if (filteredDMC.length === 0) {
+    list.innerHTML = '<div class="no-results"><p>Aucun DMC ne correspond à vos critères.</p><p>Essayez de modifier vos filtres.</p></div>';
+    return;
+  }
+
+  list.innerHTML = filteredDMC.map(dmc => {
+    const dests = (dmc.destinations || []).map(d => d.replace(/[\\/""«»]/g, '').replace(/\.{2,}/g, '').trim()).filter(d => d.length > 1 && !/^Date\b/i.test(d));
+    const destStr = dests.join(', ');
+    const topTags = [
+      ...(dmc.tags.clientele || []).slice(0, 2),
+      ...(dmc.tags.prestations || []).slice(0, 2)
+    ].map(t => `<span class="dmc-card-tag">${t.label}</span>`).join('');
+    const imgSrc = dmc.image || '';
+    const safeUrl = dmc.url.replace(/'/g, "\\'");
+    return `<div class="dmc-card" data-url="${dmc.url}" onclick="selectDMC('${safeUrl}')">
+      ${imgSrc ? `<img class="dmc-card-img" src="${imgSrc}" alt="" loading="lazy" onerror="this.style.display='none'">` : '<div class="dmc-card-img"></div>'}
+      <div class="dmc-card-info">
+        <div class="dmc-card-name">${dmc.title}</div>
+        <div class="dmc-card-dest">${destStr}</div>
+        <div class="dmc-card-tags">${topTags}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function updateCount() {
+  const el = document.getElementById('topbarCount');
+  if (el) el.textContent = filteredDMC.length;
+}
+
+// =====================================================================
+// CARTE
+// =====================================================================
+function initMainMap() {
+  mainMap = L.map('mainMap', { zoomControl: true, scrollWheelZoom: true }).setView([25, 10], 2);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© OpenStreetMap © CARTO', maxZoom: 18
+  }).addTo(mainMap);
+  markerClusterGroup = L.markerClusterGroup({
+    maxClusterRadius: 45,
+    spiderfyOnMaxZoom: true,
+    showCoverageOnHover: false,
+    iconCreateFunction: function(cluster) {
+      const count = cluster.getChildCount();
+      let size = 'small';
+      if (count > 20) size = 'large';
+      else if (count > 5) size = 'medium';
+      return L.divIcon({
+        html: '<div>' + count + '</div>',
+        className: 'marker-cluster marker-cluster-' + size,
+        iconSize: L.point(36, 36)
+      });
+    }
+  });
+  mainMap.addLayer(markerClusterGroup);
+}
+
+function renderMarkers() {
+  if (!mainMap) return;
+  markerClusterGroup.clearLayers();
+  markers = [];
+  const tempMarkers = [];
+  filteredDMC.forEach(dmc => {
+    (dmc.coordinates || []).forEach(coord => {
+      if (coord.lat == null || coord.lng == null) return;
+      const icon = L.divIcon({ className: 'custom-marker', iconSize: [12, 12], iconAnchor: [6, 6] });
+      const marker = L.marker([coord.lat, coord.lng], { icon });
+      const safeUrl = dmc.url.replace(/'/g, "\\'");
+      const cleanDest = (coord.destination || '').replace(/[\\/]/g, '').trim();
+      marker.bindPopup(`<div class="popup-inner">
+        <h3>${dmc.title}</h3>
+        <div class="popup-dest">${cleanDest}</div>
+        <button class="popup-btn" onclick="selectDMC('${safeUrl}')">Voir la fiche</button>
+      </div>`, { offset: [0, -4] });
+      marker.dmcUrl = dmc.url;
+      tempMarkers.push(marker);
+    });
+  });
+  markerClusterGroup.addLayers(tempMarkers);
+  markers = tempMarkers;
+}
+
+// =====================================================================
+// EMBED MAP
+// =====================================================================
+function initEmbedMap() {
+  embedMapInstance = L.map('embedMap', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, touchZoom: false, keyboard: false, attributionControl: false
+  }).setView([30, 10], 2);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(embedMapInstance);
+  allDMC.forEach(dmc => {
+    (dmc.coordinates || []).forEach(coord => {
+      if (coord.lat == null || coord.lng == null) return;
+      L.circleMarker([coord.lat, coord.lng], {
+        radius: 4, fillColor: '#2CB5C8', fillOpacity: 0.8, color: '#fff', weight: 1
+      }).addTo(embedMapInstance);
+    });
+  });
+}
+
+// =====================================================================
+// DETAIL PANEL avec PICTOS
+// =====================================================================
+function selectDMC(url) {
+  const dmc = allDMC.find(d => d.url === url);
+  if (!dmc) return;
+  activeDMC = dmc;
+
+  // Highlight dans la liste
+  document.querySelectorAll('.dmc-card').forEach(c => c.classList.remove('active'));
+  const card = document.querySelector(`.dmc-card[data-url="${url}"]`);
+  if (card) { card.classList.add('active'); card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+
+  // Zoom carte
+  const firstCoord = (dmc.coordinates || []).find(c => c.lat != null);
+  if (firstCoord && mainMap) mainMap.setView([firstCoord.lat, firstCoord.lng], 5, { animate: true });
+
+  // Remplir le panel
+  const panel = document.getElementById('detailPanel');
+  const header = document.getElementById('detailHeader');
+  const body = document.getElementById('detailBody');
+
+  header.innerHTML = `
+    ${dmc.image ? `<img src="${dmc.image}" alt="${dmc.title}" onerror="this.style.display='none'">` : '<div style="height:140px;background:var(--dark)"></div>'}
+    <button class="detail-close" onclick="closeDetail()">✕</button>`;
+
+  let html = `
+    <div class="detail-title">${dmc.title}</div>
+    <div class="detail-destinations">${(dmc.primary_destinations||dmc.destinations||[]).map(d => d.replace(/[\\/""«»]/g, '').replace(/\.{2,}/g, '').trim()).filter(d => d.length > 1 && !/^Date\b/i.test(d)).map(d => `<span class="detail-dest-badge">${d}</span>`).join('')}</div>
+    ${(dmc.destinations||[]).length > (dmc.primary_destinations||[]).length ? `<div class="detail-other-dests">Destinations couvertes : ${(dmc.destinations||[]).map(d => d.replace(/[\\/""«»]/g, '').replace(/\.{2,}/g, '').trim()).filter(d => d.length > 1 && !/^Date\b/i.test(d)).join(', ')}</div>` : ''}
+    <div class="detail-desc">${dmc.description}</div>`;
+
+  if (dmc.date_creation) html += `<div class="detail-date">📅 Créé en ${dmc.date_creation}</div>`;
+
+  const catConfig = [
+    { key: 'clientele', title: 'Clientèle', cssClass: 'clientele' },
+    { key: 'prestations', title: 'Prestations', cssClass: 'prestations' },
+    { key: 'activites', title: 'Activités / Thématiques', cssClass: 'activites' }
+  ];
+
+  catConfig.forEach(({ key, title, cssClass }) => {
+    const tags = dmc.tags[key] || [];
+    if (tags.length === 0) return;
+    html += `<div class="detail-section-title ${cssClass}">${title}</div><div class="detail-pictos">`;
+    tags.forEach(t => {
+      const pictoUrl = PICTO_BASE + t.id + '.png';
+      html += `<div class="detail-picto"><img src="${pictoUrl}" alt="${t.label}" onerror="this.style.display='none'"><span>${t.label}</span></div>`;
+    });
+    html += `</div>`;
+  });
+
+  html += `<a class="detail-link" href="${dmc.url}" target="_blank" rel="noopener">Voir la fiche complète sur TourMaG →</a>`;
+
+  body.innerHTML = html;
+  panel.classList.add('open');
+}
+
+function closeDetail() {
+  document.getElementById('detailPanel').classList.remove('open');
+  document.querySelectorAll('.dmc-card').forEach(c => c.classList.remove('active'));
+  activeDMC = null;
+}
+
+// =====================================================================
+// MODAL
+// =====================================================================
+function openModal() {
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (!mainMap) {
+    setTimeout(() => { initMainMap(); renderMarkers(); }, 100);
+  } else {
+    setTimeout(() => mainMap.invalidateSize(), 100);
+  }
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+  closeDetail();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// =====================================================================
+// INIT
+// =====================================================================
+loadData();
+</script>
+</body>
+</html>

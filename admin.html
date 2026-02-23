@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin DMC — DestiMaG</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<style>
+:root {
+  --cyan: #2CB5C8;
+  --green: #5BBD6B;
+  --orange: #E8913A;
+  --red: #E53E3E;
+  --dark: #1A2332;
+  --bg: #F1F5F9;
+  --bg-card: #FFFFFF;
+  --border: #E2E8F0;
+  --text: #1E293B;
+  --text-light: #64748B;
+  --text-lighter: #94A3B8;
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* ===== LOGIN ===== */
+.login-page{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--dark)}
+.login-box{background:var(--bg-card);border-radius:12px;padding:40px;width:380px;box-shadow:var(--shadow-md)}
+.login-box h1{font-size:1.3rem;font-weight:700;margin-bottom:6px;color:var(--text)}
+.login-box p{font-size:0.85rem;color:var(--text-light);margin-bottom:24px}
+.login-field{margin-bottom:14px}
+.login-field label{display:block;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.3px;color:var(--text-light);margin-bottom:4px}
+.login-field input{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:6px;font-size:0.9rem;font-family:inherit;outline:none;transition:border 0.2s}
+.login-field input:focus{border-color:var(--cyan)}
+.login-btn{width:100%;padding:11px;background:var(--cyan);color:#fff;border:none;border-radius:6px;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.2s;margin-top:6px}
+.login-btn:hover{background:#25A3B5}
+.login-error{color:var(--red);font-size:0.8rem;margin-top:10px;display:none}
+
+/* ===== TOPBAR ===== */
+.topbar{background:var(--dark);color:#fff;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar-left{display:flex;align-items:center;gap:12px;font-size:1rem;font-weight:700}
+.topbar-role{font-size:0.7rem;font-weight:600;padding:2px 10px;border-radius:10px;background:var(--cyan)}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.topbar-user{font-size:0.8rem;color:rgba(255,255,255,0.7)}
+.btn-logout{background:rgba(255,255,255,0.15);border:none;color:#fff;padding:6px 14px;border-radius:5px;font-size:0.8rem;cursor:pointer;font-family:inherit}
+.btn-logout:hover{background:rgba(255,255,255,0.25)}
+
+/* ===== LAYOUT ===== */
+.app{display:none}
+.container{max-width:1200px;margin:0 auto;padding:20px 24px}
+
+/* ===== TOOLBAR ===== */
+.toolbar{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.toolbar-search{flex:1;min-width:200px;position:relative}
+.toolbar-search input{width:100%;padding:9px 12px 9px 36px;border:1px solid var(--border);border-radius:6px;font-size:0.85rem;font-family:inherit;background:var(--bg-card);outline:none}
+.toolbar-search input:focus{border-color:var(--cyan)}
+.toolbar-search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text-lighter)}
+.toolbar-count{font-size:0.85rem;color:var(--text-light);font-weight:600;white-space:nowrap}
+.btn-add{background:var(--green);color:#fff;border:none;padding:9px 18px;border-radius:6px;font-size:0.85rem;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap}
+.btn-add:hover{background:#4CAF5C}
+.btn-import{background:var(--orange);color:#fff;border:none;padding:9px 18px;border-radius:6px;font-size:0.85rem;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap}
+.btn-import:hover{background:#D07A2A}
+
+/* ===== TABLE ===== */
+.table-wrap{background:var(--bg-card);border-radius:var(--radius);box-shadow:var(--shadow);overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;padding:10px 14px;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;color:var(--text-light);background:var(--bg);border-bottom:1px solid var(--border)}
+td{padding:10px 14px;font-size:0.85rem;border-bottom:1px solid var(--border);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover{background:rgba(44,181,200,0.03)}
+.td-img{width:60px;height:42px;border-radius:4px;object-fit:cover;background:var(--border)}
+.td-title{font-weight:600;max-width:250px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.td-dest{font-size:0.78rem;color:var(--text-light);max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.td-tags{display:flex;flex-wrap:wrap;gap:3px}
+.td-tag{font-size:0.65rem;padding:1px 6px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text-light);white-space:nowrap}
+.td-actions{display:flex;gap:6px}
+.btn-edit{background:var(--cyan);color:#fff;border:none;padding:5px 12px;border-radius:4px;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:inherit}
+.btn-edit:hover{background:#25A3B5}
+.btn-del{background:none;color:var(--red);border:1px solid var(--red);padding:5px 10px;border-radius:4px;font-size:0.75rem;cursor:pointer;font-family:inherit}
+.btn-del:hover{background:rgba(229,62,62,0.06)}
+
+/* ===== MODAL EDIT ===== */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;display:none;align-items:flex-start;justify-content:center;padding:30px;overflow-y:auto;backdrop-filter:blur(3px)}
+.modal-bg.open{display:flex}
+.modal{background:var(--bg-card);border-radius:12px;width:100%;max-width:720px;box-shadow:var(--shadow-md);margin-top:20px}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border)}
+.modal-header h2{font-size:1.05rem;font-weight:700}
+.modal-close{background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--text-light);padding:4px 8px}
+.modal-body{padding:20px;max-height:70vh;overflow-y:auto}
+.modal-footer{padding:14px 20px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end}
+.btn-save{background:var(--cyan);color:#fff;border:none;padding:9px 24px;border-radius:6px;font-size:0.85rem;font-weight:600;cursor:pointer;font-family:inherit}
+.btn-save:hover{background:#25A3B5}
+.btn-cancel{background:none;border:1px solid var(--border);padding:9px 18px;border-radius:6px;font-size:0.85rem;cursor:pointer;font-family:inherit;color:var(--text-light)}
+.btn-cancel:hover{background:var(--bg)}
+
+/* Form fields */
+.form-row{display:flex;gap:14px;margin-bottom:14px}
+.form-row.full{flex-direction:column}
+.form-field{flex:1;min-width:0}
+.form-field label{display:block;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.3px;color:var(--text-light);margin-bottom:4px}
+.form-field input,.form-field textarea,.form-field select{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:5px;font-size:0.85rem;font-family:inherit;outline:none;background:#fff}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:var(--cyan)}
+.form-field textarea{resize:vertical;min-height:80px}
+.form-field input[readonly]{background:var(--bg);color:var(--text-light)}
+
+.form-section{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin:18px 0 8px;padding-top:10px;border-top:1px solid var(--border)}
+.form-section.clientele{color:var(--cyan)}
+.form-section.prestations{color:var(--green)}
+.form-section.activites{color:var(--orange)}
+
+.form-chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.form-chip{padding:4px 10px;border:1px solid var(--border);border-radius:14px;font-size:0.73rem;font-weight:500;color:var(--text-light);cursor:pointer;transition:all 0.15s;user-select:none}
+.form-chip:hover{border-color:var(--cyan);color:var(--cyan)}
+.form-chip.active{background:var(--cyan);color:#fff;border-color:var(--cyan)}
+.form-chip.active.prestations{background:var(--green);border-color:var(--green)}
+.form-chip.active.activites{background:var(--orange);border-color:var(--orange)}
+
+/* Toast */
+.toast{position:fixed;bottom:20px;right:20px;padding:12px 20px;border-radius:8px;color:#fff;font-size:0.85rem;font-weight:600;z-index:300;transform:translateY(80px);opacity:0;transition:all 0.3s}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.success{background:var(--green)}
+.toast.error{background:var(--red)}
+
+/* Responsive */
+@media(max-width:768px){
+  .form-row{flex-direction:column}
+  .toolbar{flex-direction:column;align-items:stretch}
+  .toolbar-search{min-width:auto}
+  .container{padding:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== LOGIN PAGE ===== -->
+<div class="login-page" id="loginPage">
+  <div class="login-box">
+    <h1>🌍 Admin DMC — DestiMaG</h1>
+    <p>Connectez-vous pour gérer les fiches DMC</p>
+    <div class="login-field">
+      <label>Email</label>
+      <input type="email" id="loginEmail" placeholder="votre@email.com">
+    </div>
+    <div class="login-field">
+      <label>Mot de passe</label>
+      <input type="password" id="loginPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <button class="login-btn" onclick="doLogin()">Se connecter</button>
+    <div class="login-error" id="loginError"></div>
+  </div>
+</div>
+
+<!-- ===== APP ===== -->
+<div class="app" id="app">
+  <div class="topbar">
+    <div class="topbar-left">
+      🌍 Admin DMC — DestiMaG
+      <span class="topbar-role" id="topbarRole"></span>
+    </div>
+    <div class="topbar-right">
+      <span class="topbar-user" id="topbarUser"></span>
+      <button class="btn-logout" onclick="doLogout()">Déconnexion</button>
+    </div>
+  </div>
+  <div class="container">
+    <div class="toolbar">
+      <div class="toolbar-search">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Rechercher un DMC…" oninput="renderTable()">
+      </div>
+      <span class="toolbar-count" id="toolbarCount"></span>
+      <button class="btn-add" id="btnAdd" onclick="openNew()" style="display:none">+ Ajouter un DMC</button>
+      <button class="btn-import" id="btnImport" onclick="importFromJSON()" style="display:none">📥 Importer JSON</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Nom du DMC</th>
+            <th>Destinations</th>
+            <th>Continents</th>
+            <th>Tags</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL EDIT ===== -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modalTitle">Modifier le DMC</h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal()">Annuler</button>
+      <button class="btn-save" id="btnSave" onclick="saveDMC()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// =====================================================================
+// FIREBASE CONFIGURATION
+// =====================================================================
+firebase.initializeApp({
+  apiKey: "AIzaSyDZ4T1d0YiuxDb116xx8uFHfW9k__vh4FE",
+  authDomain: "destimap-e901b.firebaseapp.com",
+  projectId: "destimap-e901b",
+  storageBucket: "destimap-e901b.firebasestorage.app",
+  messagingSenderId: "903190091312",
+  appId: "1:903190091312:web:410bdeef59aafa451ffff5"
+});
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+// =====================================================================
+// RÔLES : UID → { role, dmcUrls }
+// role: "admin" | "dmc" | "lecteur"
+// dmcUrls: tableau d'URLs de fiches DMC (pour le rôle "dmc")
+// =====================================================================
+const USER_ROLES = {
+  "QRAHUQzp2SVLzCnuNgChKJ8WiW12": { role: "admin", label: "Admin TourMaG" },
+  // Ajoutez les comptes DMC ici :
+  // "uid_du_dmc": { role: "dmc", label: "Phoenix Voyages", dmcUrls: ["https://www.tourmag.com/Phoenix-Voyages-Receptif-Vietnam_a104390.html", "..."] },
+  // Ajoutez les lecteurs ici :
+  // "uid_lecteur": { role: "lecteur", label: "Lecteur" },
+};
+
+// =====================================================================
+// TAGS COMPLETS (pour le formulaire d'édition)
+// =====================================================================
+const ALL_TAGS = {
+  clientele: [
+    {id:"amoureux",label:"En couple"},{id:"association",label:"Association"},{id:"ce_cse",label:"CE / CSE"},
+    {id:"club",label:"Club"},{id:"famille",label:"En famille"},{id:"gay-friendly",label:"Gay friendly"},
+    {id:"groupe-scolaire",label:"Groupes scolaires"},{id:"groupes",label:"Groupes"},
+    {id:"handicap",label:"PMR"},{id:"incentive",label:"Incentive"},{id:"individuel",label:"En solo"},
+    {id:"seniors",label:"Seniors"}
+  ],
+  prestations: [
+    {id:"acceuil",label:"Accueil"},{id:"adaptabilite",label:"Adaptabilité"},{id:"assistance",label:"Assistance"},
+    {id:"autotour",label:"Autotour"},{id:"circuit",label:"Circuit"},{id:"city",label:"City-break"},
+    {id:"concierge",label:"Conciergerie"},{id:"conference",label:"Conférences"},{id:"congres",label:"Congrès"},
+    {id:"creativite",label:"Créativité"},{id:"eco_responsable",label:"Éco-responsable"},
+    {id:"efficacite",label:"Efficacité"},{id:"hotel",label:"Hébergement"},{id:"luxe",label:"Luxe"},
+    {id:"medical",label:"Médical"},{id:"meeting",label:"Meeting"},{id:"mice",label:"MICE"},
+    {id:"nature",label:"Nature"},{id:"passion",label:"Passion"},{id:"sur_mesure",label:"Sur-mesure"},
+    {id:"team_building",label:"Team-building"},{id:"transferts",label:"Transferts"},
+    {id:"visite_guidee",label:"Visite guidée"},{id:"vtc",label:"VTC"}
+  ],
+  activites: [
+    {id:"accrobranche",label:"Accrobranche"},{id:"ane",label:"Avec des ânes"},{id:"archeologie",label:"Archéologie"},
+    {id:"architecture",label:"Architecture"},{id:"astronomie",label:"Astronomie"},{id:"attractions",label:"Attractions"},
+    {id:"aventure",label:"Aventure"},{id:"avion-2",label:"Vol privatisé"},{id:"bateau",label:"Navigation"},
+    {id:"biathlon",label:"Biathlon"},{id:"cadeau",label:"Coffrets cadeaux"},{id:"canoe",label:"Canoë"},
+    {id:"canyoning",label:"Canyoning"},{id:"carnaval",label:"Carnaval"},{id:"casino",label:"Casino"},
+    {id:"char-a-voile",label:"Char à voile"},{id:"concert",label:"Concerts"},{id:"culture",label:"Culture"},
+    {id:"culture_patrimoine",label:"Culture et patrimoine"},{id:"decouverte",label:"Découverte"},
+    {id:"druide",label:"Rencontre druidique"},{id:"equitation",label:"Équitation"},
+    {id:"escalade",label:"Escalade"},{id:"escalade-rando",label:"Escalade-Rando"},
+    {id:"excursions",label:"Excursions"},{id:"genealogie",label:"Généalogie"},{id:"golf",label:"Golf"},
+    {id:"histoire",label:"Histoire"},{id:"insecte",label:"Entomologie"},{id:"kite",label:"Kitesurf"},
+    {id:"liguistique",label:"Linguistique"},{id:"livre",label:"Histoire"},{id:"manuel",label:"Artisanat"},
+    {id:"massage",label:"Bien-être / Thalasso"},{id:"mode",label:"Mode"},{id:"montagne",label:"Montagne"},
+    {id:"montgolfiere",label:"Montgolfière"},{id:"observation_animale",label:"Observation animale"},
+    {id:"oenologie",label:"Œnologie"},{id:"peche",label:"Pêche en mer"},{id:"peinture",label:"Aquarelle"},
+    {id:"permaculture",label:"Permaculture"},{id:"photo",label:"Photographie"},{id:"plongee",label:"Plongée"},
+    {id:"rafting",label:"Rafting"},{id:"rando",label:"Randonnée"},{id:"rando-contee",label:"Balade contée"},
+    {id:"raquettes",label:"Raquettes"},{id:"resto",label:"Gastronomie"},{id:"safari2",label:"Safari"},
+    {id:"ski",label:"Ski"},{id:"ski-de-fond",label:"Ski de randonnée"},{id:"slow_tourisme",label:"Slow tourisme"},
+    {id:"snorkeling",label:"Snorkeling"},{id:"soiree_gala",label:"Soirées de gala"},
+    {id:"source-eau-chaude",label:"Bains d'eaux chaudes"},{id:"spirituel",label:"Spirituel"},
+    {id:"sport",label:"Sport"},{id:"surf",label:"Surf"},{id:"surpris",label:"Insolite"},
+    {id:"thematique",label:"Multi activités"},{id:"tourisme_responsable2",label:"Tourisme responsable"},
+    {id:"trail",label:"Trail"},{id:"train",label:"Petit train"},{id:"traineau",label:"Mushing"},
+    {id:"trekking",label:"Trekking"},{id:"velo",label:"Vélo"},{id:"viaferrata",label:"Via Ferrata"},
+    {id:"video",label:"Vidéo"},{id:"village",label:"Village"},{id:"voyage",label:"Voyage"},
+    {id:"voyage_de_noce",label:"Voyage de noces"},{id:"yoga",label:"Yoga"}
+  ]
+};
+
+// =====================================================================
+// STATE
+// =====================================================================
+let currentUser = null;
+let currentRole = null;
+let allDMC = [];
+let editingId = null;
+
+// =====================================================================
+// AUTH
+// =====================================================================
+auth.onAuthStateChanged(user => {
+  if (user) {
+    currentUser = user;
+    const userInfo = USER_ROLES[user.uid];
+    if (!userInfo) {
+      showToast('Accès non autorisé. Contactez l\'administrateur.', 'error');
+      auth.signOut();
+      return;
+    }
+    currentRole = userInfo;
+    document.getElementById('loginPage').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    document.getElementById('topbarUser').textContent = user.email;
+    document.getElementById('topbarRole').textContent = userInfo.label;
+    // Admin buttons
+    if (userInfo.role === 'admin') {
+      document.getElementById('btnAdd').style.display = '';
+      document.getElementById('btnImport').style.display = '';
+    }
+    loadDMC();
+  } else {
+    currentUser = null;
+    currentRole = null;
+    document.getElementById('loginPage').style.display = '';
+    document.getElementById('app').style.display = 'none';
+  }
+});
+
+function doLogin() {
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass = document.getElementById('loginPass').value;
+  const errEl = document.getElementById('loginError');
+  errEl.style.display = 'none';
+  auth.signInWithEmailAndPassword(email, pass).catch(err => {
+    errEl.style.display = 'block';
+    errEl.textContent = 'Email ou mot de passe incorrect.';
+  });
+}
+
+function doLogout() {
+  auth.signOut();
+}
+
+// =====================================================================
+// LOAD DATA
+// =====================================================================
+async function loadDMC() {
+  try {
+    const snap = await db.collection('dmc').orderBy('title').get();
+    allDMC = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    renderTable();
+  } catch(e) {
+    console.error('Erreur chargement:', e);
+    showToast('Erreur de chargement des données', 'error');
+  }
+}
+
+// =====================================================================
+// TABLE RENDER
+// =====================================================================
+function renderTable() {
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+  let filtered = allDMC;
+
+  // Filtrage par rôle DMC : ne voir que ses fiches
+  if (currentRole.role === 'dmc' && currentRole.dmcUrls) {
+    filtered = filtered.filter(d => currentRole.dmcUrls.includes(d.url));
+  }
+
+  // Recherche
+  if (search) {
+    filtered = filtered.filter(d => {
+      const hay = [d.title, ...(d.destinations||[]), ...(d.primary_destinations||[])].join(' ').toLowerCase();
+      return hay.includes(search);
+    });
+  }
+
+  document.getElementById('toolbarCount').textContent = `${filtered.length} DMC`;
+
+  const tbody = document.getElementById('tableBody');
+  if (filtered.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--text-lighter)">Aucun DMC trouvé</td></tr>';
+    return;
+  }
+
+  const isReadonly = currentRole.role === 'lecteur';
+
+  tbody.innerHTML = filtered.map(dmc => {
+    const dests = (dmc.primary_destinations || dmc.destinations || []).slice(0, 3).join(', ');
+    const conts = (dmc.continents || []).join(', ');
+    const tags = [
+      ...(dmc.tags?.clientele || []).slice(0, 2),
+      ...(dmc.tags?.prestations || []).slice(0, 2)
+    ].map(t => `<span class="td-tag">${t.label}</span>`).join('');
+
+    const actions = isReadonly
+      ? `<button class="btn-edit" onclick="openEdit('${dmc.id}')">👁 Voir</button>`
+      : `<button class="btn-edit" onclick="openEdit('${dmc.id}')">✏️ Modifier</button>
+         ${currentRole.role === 'admin' ? `<button class="btn-del" onclick="deleteDMC('${dmc.id}','${(dmc.title||'').replace(/'/g,"\\'")}')">🗑</button>` : ''}`;
+
+    return `<tr>
+      <td>${dmc.image ? `<img class="td-img" src="${dmc.image}" onerror="this.style.display='none'">` : '<div class="td-img"></div>'}</td>
+      <td class="td-title">${dmc.title || '(sans titre)'}</td>
+      <td class="td-dest">${dests}</td>
+      <td class="td-dest">${conts}</td>
+      <td><div class="td-tags">${tags}</div></td>
+      <td><div class="td-actions">${actions}</div></td>
+    </tr>`;
+  }).join('');
+}
+
+// =====================================================================
+// MODAL : EDIT / NEW
+// =====================================================================
+function openEdit(id) {
+  const dmc = allDMC.find(d => d.id === id);
+  if (!dmc) return;
+  editingId = id;
+  document.getElementById('modalTitle').textContent = 'Modifier : ' + (dmc.title || '');
+  renderForm(dmc);
+  document.getElementById('modalBg').classList.add('open');
+
+  // Readonly pour lecteurs
+  if (currentRole.role === 'lecteur') {
+    document.getElementById('btnSave').style.display = 'none';
+    document.querySelectorAll('#modalBody input, #modalBody textarea, #modalBody select').forEach(el => el.setAttribute('readonly', true));
+    document.querySelectorAll('#modalBody .form-chip').forEach(el => el.style.pointerEvents = 'none');
+  } else {
+    document.getElementById('btnSave').style.display = '';
+    document.querySelectorAll('#modalBody input, #modalBody textarea, #modalBody select').forEach(el => el.removeAttribute('readonly'));
+  }
+}
+
+function openNew() {
+  editingId = null;
+  document.getElementById('modalTitle').textContent = 'Ajouter un DMC';
+  renderForm({});
+  document.getElementById('modalBg').classList.add('open');
+  document.getElementById('btnSave').style.display = '';
+}
+
+function closeModal() {
+  document.getElementById('modalBg').classList.remove('open');
+  editingId = null;
+}
+
+function renderForm(dmc) {
+  const body = document.getElementById('modalBody');
+  const currentTags = {
+    clientele: (dmc.tags?.clientele || []).map(t => t.id),
+    prestations: (dmc.tags?.prestations || []).map(t => t.id),
+    activites: (dmc.tags?.activites || []).map(t => t.id),
+  };
+
+  body.innerHTML = `
+    <div class="form-row">
+      <div class="form-field"><label>Titre</label><input type="text" id="fTitle" value="${esc(dmc.title||'')}"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-field"><label>URL fiche TourMaG</label><input type="text" id="fUrl" value="${esc(dmc.url||'')}" ${editingId ? 'readonly' : ''}></div>
+    </div>
+    <div class="form-row">
+      <div class="form-field"><label>Image (URL)</label><input type="text" id="fImage" value="${esc(dmc.image||'')}"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-field"><label>Description</label><textarea id="fDesc">${esc(dmc.description||'')}</textarea></div>
+    </div>
+    <div class="form-row">
+      <div class="form-field"><label>Destinations principales (séparées par des virgules)</label><input type="text" id="fPrimaryDest" value="${(dmc.primary_destinations||[]).join(', ')}"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-field"><label>Toutes les destinations (séparées par des virgules)</label><input type="text" id="fDest" value="${(dmc.destinations||[]).join(', ')}"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-field"><label>Continents (séparés par des virgules)</label><input type="text" id="fContinents" value="${(dmc.continents||[]).join(', ')}"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-field"><label>Date de création</label><input type="text" id="fDate" value="${esc(dmc.date_creation||'')}"></div>
+    </div>
+
+    <div class="form-section clientele">Clientèle</div>
+    <div class="form-chips" id="chipsClientele">
+      ${ALL_TAGS.clientele.map(t => `<div class="form-chip ${currentTags.clientele.includes(t.id)?'active':''}" data-cat="clientele" data-id="${t.id}" onclick="toggleFormChip(this)">${t.label}</div>`).join('')}
+    </div>
+
+    <div class="form-section prestations">Prestations</div>
+    <div class="form-chips" id="chipsPrestations">
+      ${ALL_TAGS.prestations.map(t => `<div class="form-chip ${currentTags.prestations.includes(t.id)?'active prestations':''}" data-cat="prestations" data-id="${t.id}" onclick="toggleFormChip(this)">${t.label}</div>`).join('')}
+    </div>
+
+    <div class="form-section activites">Activités / Thématiques</div>
+    <div class="form-chips" id="chipsActivites">
+      ${ALL_TAGS.activites.map(t => `<div class="form-chip ${currentTags.activites.includes(t.id)?'active activites':''}" data-cat="activites" data-id="${t.id}" onclick="toggleFormChip(this)">${t.label}</div>`).join('')}
+    </div>
+  `;
+}
+
+function toggleFormChip(el) {
+  if (currentRole.role === 'lecteur') return;
+  const cat = el.dataset.cat;
+  el.classList.toggle('active');
+  if (el.classList.contains('active') && cat !== 'clientele') {
+    el.classList.add(cat);
+  } else {
+    el.classList.remove(cat);
+  }
+}
+
+function esc(s) { return (s||'').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
+
+// =====================================================================
+// SAVE
+// =====================================================================
+async function saveDMC() {
+  const title = document.getElementById('fTitle').value.trim();
+  const url = document.getElementById('fUrl').value.trim();
+  if (!title) { showToast('Le titre est obligatoire', 'error'); return; }
+
+  const primaryDest = document.getElementById('fPrimaryDest').value.split(',').map(s => s.trim()).filter(Boolean);
+  const allDest = document.getElementById('fDest').value.split(',').map(s => s.trim()).filter(Boolean);
+  const continents = document.getElementById('fContinents').value.split(',').map(s => s.trim()).filter(Boolean);
+
+  // Collecter les tags
+  const tags = { clientele: [], prestations: [], activites: [] };
+  document.querySelectorAll('.form-chip.active').forEach(el => {
+    const cat = el.dataset.cat;
+    const id = el.dataset.id;
+    const label = el.textContent;
+    tags[cat].push({ id, label });
+  });
+
+  // Construire les coordonnées à partir des destinations principales
+  // (les coords seront recalculées côté carte)
+  const data = {
+    title,
+    url,
+    image: document.getElementById('fImage').value.trim(),
+    description: document.getElementById('fDesc').value.trim(),
+    primary_destinations: primaryDest,
+    destinations: allDest,
+    continents,
+    date_creation: document.getElementById('fDate').value.trim(),
+    tags,
+    updated_at: firebase.firestore.FieldValue.serverTimestamp(),
+    updated_by: currentUser.email,
+  };
+
+  try {
+    if (editingId) {
+      await db.collection('dmc').doc(editingId).update(data);
+      showToast('DMC mis à jour !', 'success');
+    } else {
+      data.created_at = firebase.firestore.FieldValue.serverTimestamp();
+      await db.collection('dmc').add(data);
+      showToast('DMC ajouté !', 'success');
+    }
+    closeModal();
+    await loadDMC();
+  } catch(e) {
+    console.error('Erreur sauvegarde:', e);
+    showToast('Erreur : ' + e.message, 'error');
+  }
+}
+
+// =====================================================================
+// DELETE
+// =====================================================================
+async function deleteDMC(id, title) {
+  if (!confirm(`Supprimer "${title}" ?`)) return;
+  try {
+    await db.collection('dmc').doc(id).delete();
+    showToast('DMC supprimé', 'success');
+    await loadDMC();
+  } catch(e) {
+    showToast('Erreur : ' + e.message, 'error');
+  }
+}
+
+// =====================================================================
+// IMPORT JSON (Admin only)
+// =====================================================================
+async function importFromJSON() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
+  input.onchange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const text = await file.text();
+      const json = JSON.parse(text);
+      const dmcArray = json.dmc || json;
+      if (!Array.isArray(dmcArray)) {
+        showToast('Format JSON invalide', 'error');
+        return;
+      }
+      if (!confirm(`Importer ${dmcArray.length} DMC dans Firestore ? Les fiches existantes avec la même URL ne seront PAS écrasées.`)) return;
+
+      let added = 0, skipped = 0;
+      // Récupérer les URLs existantes
+      const existingUrls = new Set(allDMC.map(d => d.url));
+
+      const batch_size = 450; // Firestore batch limit ~500
+      let batch = db.batch();
+      let count = 0;
+
+      for (const dmc of dmcArray) {
+        if (existingUrls.has(dmc.url)) {
+          skipped++;
+          continue;
+        }
+        const ref = db.collection('dmc').doc();
+        batch.set(ref, {
+          ...dmc,
+          created_at: firebase.firestore.FieldValue.serverTimestamp(),
+          updated_at: firebase.firestore.FieldValue.serverTimestamp(),
+          source: 'import',
+        });
+        added++;
+        count++;
+        if (count >= batch_size) {
+          await batch.commit();
+          batch = db.batch();
+          count = 0;
+        }
+      }
+      if (count > 0) await batch.commit();
+
+      showToast(`Import terminé : ${added} ajoutés, ${skipped} déjà existants`, 'success');
+      await loadDMC();
+    } catch(e) {
+      console.error('Erreur import:', e);
+      showToast('Erreur import : ' + e.message, 'error');
+    }
+  };
+  input.click();
+}
+
+// =====================================================================
+// TOAST
+// =====================================================================
+function showToast(msg, type='success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  setTimeout(() => t.className = 'toast', 3500);
+}
+</script>
+</body>
+</html>
