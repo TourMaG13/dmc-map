@@ -56,15 +56,18 @@ def main():
         if tag: ls.append({"id":doc.id,"title":d.get("title",""),"tag":tag})
     print(f"Found {len(ls)} DMCs")
     up = 0
-    for x in ls:
-        print(f"[{x[chr(39)+chr(116)+chr(105)+chr(116)+chr(108)+chr(101)+chr(39)]}] {x[chr(39)+chr(116)+chr(97)+chr(103)+chr(39)]}")
-        arts = fetch(x["tag"])
-        if arts:
-            print(f"  -> {len(arts)} articles")
-            db.collection("dmc").document(x["id"]).update({"latest_news":arts,"news_updated_at":firestore.SERVER_TIMESTAMP})
-            up += 1
-        else: print("  -> 0")
+   for x in ls:
+    print(f"[{x['title']}] {x['tag']}")
+    arts = fetch(x["tag"])
+    if arts:
+        print(f"  -> {len(arts)} articles")
+        db.collection("dmc").document(x["id"]).update({
+            "latest_news": arts,
+            "news_updated_at": firestore.SERVER_TIMESTAMP
+        })
+        up += 1
+    else:
+        print("  -> 0")
     print(f"Done {up}/{len(ls)}")
 
 if __name__=="__main__": main()
-if __name__ == "__main__": main()
