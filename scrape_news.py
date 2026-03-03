@@ -49,25 +49,34 @@ def fetch(tag):
 def main():
     print(f"RSS Fetcher - {datetime.now().isoformat()}")
     db = init_fb()
+
     ls = []
     for doc in db.collection("dmc").stream():
         d = doc.to_dict()
-        tag = d.get("tag_tourmag","").strip()
-        if tag: ls.append({"id":doc.id,"title":d.get("title",""),"tag":tag})
-    print(f"Found {len(ls)} DMCs")
-    up = 0
-   for x in ls:
-    print(f"[{x['title']}] {x['tag']}")
-    arts = fetch(x["tag"])
-    if arts:
-        print(f"  -> {len(arts)} articles")
-        db.collection("dmc").document(x["id"]).update({
-            "latest_news": arts,
-            "news_updated_at": firestore.SERVER_TIMESTAMP
-        })
-        up += 1
-    else:
-        print("  -> 0")
-    print(f"Done {up}/{len(ls)}")
+        tag = d.get("tag_tourmag", "").strip()
+        if tag:
+            ls.append({
+                "id": doc.id,
+                "title": d.get("title", ""),
+                "tag": tag
+            })
 
+    print(f"Found {len(ls)} DMCs")
+
+    up = 0
+    for x in ls:
+        print(f"[{x['title']}] {x['tag']}")
+        arts = fetch(x["tag"])
+
+        if arts:
+            print(f"  -> {len(arts)} articles")
+            db.collection("dmc").document(x["id"]).update({
+                "latest_news": arts,
+                "news_updated_at": firestore.SERVER_TIMESTAMP
+            })
+            up += 1
+        else:
+            print("  -> 0")
+
+    print(f"Done {up}/{len(ls)}")
 if __name__=="__main__": main()
