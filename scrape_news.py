@@ -5,67 +5,66 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 import requests
 
-RSS_URL = "https://www.tourmag.com/xml/syndication.rss?t={tag}"
-MAX_ARTICLES = 3
-HEADERS = {"User-Agent": "Mozilla/5.0"}
+RSS = "https://www.tourmag.com/xml/syndication.rss?t={tag}"
+MAX = 3
+HDR = {"User-Agent": "Mozilla/5.0"}
+IMG_RE = re.compile(r"<img[^>]+src=.([^ >]+)")
 
-def init_firebase():
+def init_fb():
     sa = os.environ.get("FIREBASE_SERVICE_ACCOUNT")
     cred = credentials.Certificate(json.loads(sa)) if sa else credentials.Certificate("service-account.json")
     firebase_admin.initialize_app(cred)
     return firestore.client()
 
-def fetch_rss(tag):
-    url = RSS_URL.format(tag=tag)
-    print(f"  RSS: {url}")
+def fetch(tag):
+    url = RSS.format(tag=tag)
     try:
-        resp = requests.get(url, headers=HEADERS, timeout=15)
-        resp.raise_for_status()
-        root = ET.fromstring(resp.content)
+        r = requests.get(url, headers=HDR, timeout=15)
+        r.raise_for_status()
+        root = ET.fromstring(r.content)
     except Exception as e:
-        print(f"  ERROR: {e}")
+        print(f"  ERR: {e}")
         return []
-    articles = []
-    for item in root.findall(".//item")[:MAX_ARTICLES]:
-        title = item.findtext("title", "").strip()
-        link = item.findtext("link", "").strip()
-        pub_date = item.findtext("pubDate", "").strip()
-        desc = item.findtext("description", "").strip()
-        image = ""
-        enc = item.find("enclosure")
-        if enc is not None: image = enc.get("url", "")
-        if not image:
-            m = re.search(r'<img[^>]+src=["']([^"']+)', desc)
-            if m: image = m.group(1)
-        excerpt = re.sub(r'<[^>]+>', '', desc).strip()[:200]
-        date_str = ""
-        if pub_date:
+    out = []
+    for it in root.findall(".//item")[:MAX]:
+        t = it.findtext("title","").strip()
+        lk = it.findtext("link","").strip()
+        pd = it.findtext("pubDate","").strip()
+        ds = it.findtext("description","").strip()
+        img = ""
+        enc = it.find("enclosure")
+        if enc is not None: img = enc.get("url","")
+        if not img:
+            m = IMG_RE.search(ds)
+            if m: img = m.group(1)
+        ex = re.sub(r"<[^>]+>","",ds).strip()[:200]
+        dt_s = ""
+        if pd:
             try:
-                dt = datetime.strptime(pub_date[:25].strip(), "%a, %d %b %Y %H:%M:%S")
-                date_str = dt.strftime("%d/%m/%Y")
+                dt_s = datetime.strptime(pd[:25].strip(),"%a, %d %b %Y %H:%M:%S").strftime("%d/%m/%Y")
             except ValueError: pass
-        if title and link:
-            articles.append({"title": title, "url": link, "image": image, "date": date_str, "excerpt": excerpt})
-    return articles
+        if t and lk: out.append({"title":t,"url":lk,"image":img,"date":dt_s,"excerpt":ex})
+    return out
 
 def main():
-    print(f"TourMag RSS - {datetime.now().isoformat()}")
-    db = init_firebase()
-    dmc_list = []
+    print(f"RSS Fetcher - {datetime.now().isoformat()}")
+    db = init_fb()
+    ls = []
     for doc in db.collection("dmc").stream():
-        data = doc.to_dict()
-        tag = data.get("tag_tourmag", "").strip()
-        if tag: dmc_list.append({"id": doc.id, "title": data.get("title", ""), "tag": tag})
-    print(f"Found {len(dmc_list)} DMCs with tag_tourmag")
-    updated = 0
-    for dmc in dmc_list:
-        print(f"[{dmc['title']}] tag={dmc['tag']}")
-        articles = fetch_rss(dmc["tag"])
-        if articles:
-            print(f"  -> {len(articles)} articles")
-            db.collection("dmc").document(dmc["id"]).update({"latest_news": articles, "news_updated_at": firestore.SERVER_TIMESTAMP})
-            updated += 1
-        else: print("  -> No articles")
-    print(f"Done. {updated}/{len(dmc_list)} updated.")
+        d = doc.to_dict()
+        tag = d.get("tag_tourmag","").strip()
+        if tag: ls.append({"id":doc.id,"title":d.get("title",""),"tag":tag})
+    print(f"Found {len(ls)} DMCs")
+    up = 0
+    for x in ls:
+        print(f"[{x[chr(39)+chr(116)+chr(105)+chr(116)+chr(108)+chr(101)+chr(39)]}] {x[chr(39)+chr(116)+chr(97)+chr(103)+chr(39)]}")
+        arts = fetch(x["tag"])
+        if arts:
+            print(f"  -> {len(arts)} articles")
+            db.collection("dmc").document(x["id"]).update({"latest_news":arts,"news_updated_at":firestore.SERVER_TIMESTAMP})
+            up += 1
+        else: print("  -> 0")
+    print(f"Done {up}/{len(ls)}")
 
+if __name__=="__main__": main()
 if __name__ == "__main__": main()
