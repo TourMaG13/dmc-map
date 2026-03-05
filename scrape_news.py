@@ -6,7 +6,7 @@ from firebase_admin import credentials, firestore
 import requests
 
 RSS = "https://www.tourmag.com/xml/syndication.rss?t={tag}"
-MAX = 3
+MAX = 20
 HDR = {"User-Agent": "Mozilla/5.0 Chrome/120.0.0.0"}
 IMG_RE = re.compile(r'<img[^>]+src=.([^ >"]+)')
 OG_RE = re.compile(r'<meta[^>]+property=.og:image.[^>]+content=.([^"\'>]+)')
@@ -67,12 +67,25 @@ def fetch(tag):
 def main():
     print(f"RSS Fetcher - {datetime.now().isoformat()}")
     db = init_fb()
+    tagged = set()
     ls = []
+    all_ids = []
     for doc in db.collection("dmc").stream():
         d = doc.to_dict()
+        all_ids.append({"id": doc.id, "has_tag": bool(d.get("tag_tourmag","").strip()), "has_news": bool(d.get("latest_news"))})
         tag = d.get("tag_tourmag","").strip()
-        if tag: ls.append({"id":doc.id,"title":d.get("title",""),"tag":tag})
-    print(f"Found {len(ls)} DMCs")
+        if tag:
+            ls.append({"id":doc.id,"title":d.get("title",""),"tag":tag})
+            tagged.add(doc.id)
+    print(f"Found {len(ls)} DMCs with tag")
+    # Clean DMCs that lost their tag but still have news
+    cleaned = 0
+    for item in all_ids:
+        if not item["has_tag"] and item["has_news"]:
+            db.collection("dmc").document(item["id"]).update({"latest_news": firestore.DELETE_FIELD, "news_updated_at": firestore.DELETE_FIELD})
+            cleaned += 1
+            print(f"  Cleaned news from {item[chr(105)+chr(100)]}")
+    if cleaned: print(f"Cleaned {cleaned} DMCs without tag")
     up = 0
     for x in ls:
         tag_val = x["tag"]
@@ -81,10 +94,9 @@ def main():
         arts = fetch(x["tag"])
         if arts:
             print(f"  -> {len(arts)} articles")
-            for a in arts: print(f"     img: {a[chr(105)+chr(109)+chr(97)+chr(103)+chr(101)][:80]}")
             db.collection("dmc").document(x["id"]).update({"latest_news":arts,"news_updated_at":firestore.SERVER_TIMESTAMP})
             up += 1
         else: print("  -> 0")
-    print(f"Done {up}/{len(ls)}")
+    print(f"Done {up}/{len(ls)} updated, {cleaned} cleaned")
 
 if __name__=="__main__": main()
