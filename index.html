@@ -742,7 +742,7 @@ function renderList() {
     } else {
       // Multi fiches — grouped with expand
       // Collect ALL unique destinations from all fiches in the group
-      const allGroupDests = [...new Set(dmcs.flatMap(d => [...(d.primary_destinations || []), ...(d.destinations || [])]))].sort((a,b) => a.localeCompare(b,'fr'));
+      const allGroupDests = [...new Set(dmcs.flatMap(d => [...(d.primary_destinations || []), ...(d.destinations || [])]))];
       const destStr = allGroupDests.join(', ');
       const gid = 'grp_' + groupName.replace(/\W/g, '_');
       html += `<div class="dmc-group">
@@ -755,8 +755,8 @@ function renderList() {
           <span class="dmc-group-count">${dmcs.length} fiches</span>
         </div>
         <div class="dmc-group-fiches" id="${gid}">`;
-      dmcs.sort((a,b) => ((a.primary_destinations||[])[0]||'').localeCompare((b.primary_destinations||[])[0]||'','fr')).forEach(dmc => {
-        const pd = (dmc.primary_destinations || []).sort((a,b) => a.localeCompare(b,'fr')).join(', ') || '?';
+      dmcs.forEach(dmc => {
+        const pd = (dmc.primary_destinations || []).join(', ') || '?';
         const safeUrl = dmc.url.replace(/'/g, "\\'");
         html += `<div class="dmc-group-fiche" onclick="event.stopPropagation();selectDMC('${safeUrl}')">
           <span class="fiche-dest">📍 ${pd}</span>
@@ -1129,6 +1129,7 @@ function closeDetail() {
 function openModal() {
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
+  try { window.parent.postMessage({ type: 'dmc-map-open' }, '*'); } catch(e) {}
   if (!mainMap) {
     setTimeout(() => { initMainMap(); renderMarkers(); }, 100);
   } else {
@@ -1139,6 +1140,7 @@ function openModal() {
 function closeModal() {
   document.getElementById('modal').classList.remove('open');
   document.body.style.overflow = '';
+  try { window.parent.postMessage({ type: 'dmc-map-close' }, '*'); } catch(e) {}
   closeDetail();
 }
 
