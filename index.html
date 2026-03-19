@@ -78,7 +78,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);ove
 /* Filters popup - all devices */
 .filters-popup-backdrop{display:none;position:fixed;inset:0;z-index:10002;background:rgba(15,23,42,.5);backdrop-filter:blur(4px);align-items:center;justify-content:center}
 .filters-popup-backdrop.open{display:flex}
-.filters-popup{background:var(--bg-card);border-radius:12px;width:90vw;max-width:600px;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.2);overflow:hidden}
+.filters-popup{background:var(--bg-card);border-radius:12px;width:90vw;max-width:600px;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.2)}
 .filters-popup-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border);flex-shrink:0}
 .filters-popup-header span{font-size:1rem;font-weight:700;color:var(--text)}
 .filters-popup-header button{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:var(--bg-card);font-size:1.1rem;color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center}
@@ -276,16 +276,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);ove
 
 /* ===== MOBILE ===== */
 @media(max-width:768px){
-  .filters-popup{width:100vw;max-width:none;height:100vh;height:100dvh;max-height:none;border-radius:0}
-  .filters-popup .filters-popup-scroll{-webkit-overflow-scrolling:touch;touch-action:pan-y;overscroll-behavior:contain;padding-bottom:20px;flex:1;min-height:0}
-  .filters-popup .filters-popup-footer{position:sticky;bottom:0;z-index:1;box-shadow:0 -4px 12px rgba(0,0,0,.08)}
+  .filters-popup{width:100%;max-width:none;height:100%;max-height:100%;border-radius:0;display:flex;flex-direction:column;position:fixed;inset:0}
+  .filters-popup .filters-popup-header{flex-shrink:0}
+  .filters-popup .filters-popup-scroll{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;touch-action:pan-y;overscroll-behavior:contain;min-height:0}
+  .filters-popup .filters-popup-footer{flex-shrink:0;box-shadow:0 -4px 12px rgba(0,0,0,.08)}
   .modal-content{inset:0;border-radius:0;width:100vw;height:100vh;height:100dvh}
   .main-layout{flex-direction:column}
   .sidebar{width:100%;max-height:50vh;max-height:50dvh;border-right:none;border-bottom:1px solid var(--border)}
   .map-panel{min-height:50vh;min-height:50dvh}
-  .detail-panel{width:100%;position:fixed;inset:0;z-index:10001;transform:translateY(100%);border-radius:0;height:100%;height:100dvh}
+  .detail-panel{width:100%;position:fixed;inset:0;z-index:10001;transform:translateY(100%);border-radius:0;height:100%}
   .detail-panel.open{transform:translateY(0)}
-  .detail-panel .detail-body{-webkit-overflow-scrolling:touch;touch-action:pan-y;overscroll-behavior:contain;padding-bottom:80px}
+  .detail-panel .detail-body{-webkit-overflow-scrolling:touch;touch-action:pan-y;overscroll-behavior:contain;padding-bottom:80px;overflow-y:scroll}
   .embed-container{height:300px}
   .embed-overlay h2{font-size:1.1rem}
   .topbar{padding:10px 14px;position:sticky;top:0;z-index:100}
@@ -787,7 +788,7 @@ function updateCount() {
 // CARTE
 // =====================================================================
 function initMainMap() {
-  mainMap = L.map('mainMap', { zoomControl: true, scrollWheelZoom: true }).setView([25, 10], 2);
+  mainMap = L.map('mainMap', { zoomControl: true, scrollWheelZoom: true, closePopupOnClick: false, tap: false }).setView([25, 10], 2);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '© OpenStreetMap © CARTO | © TourMaG.com', maxZoom: 18
   }).addTo(mainMap);
@@ -808,6 +809,10 @@ function initMainMap() {
     }
   });
   mainMap.addLayer(markerClusterGroup);
+  // Desktop only: click on map closes popups
+  if (!('ontouchstart' in window)) {
+    mainMap.on('click', function() { mainMap.closePopup(); });
+  }
 }
 
 function renderMarkers() {
@@ -915,7 +920,7 @@ function renderMarkers() {
     marker.bindPopup(popupHtml, { offset: [0, -4], maxHeight: 450, className: point.entries.length >= 4 ? 'popup-wide-wrap' : '' });
     if (!('ontouchstart' in window)) {
       marker.on('mouseover', function() { if (this._closeTimeout) { clearTimeout(this._closeTimeout); this._closeTimeout = null; } this.openPopup(); });
-      marker.on('mouseout', function() { var m = this; m._closeTimeout = setTimeout(function() { m.closePopup(); }, 200); });
+      marker.on('mouseout', function() { var m = this; m._closeTimeout = setTimeout(function() { m.closePopup(); }, 400); });
       marker.on('popupopen', function() { var m = this; var popup = this.getPopup(); if (popup && popup.getElement()) { var el = popup.getElement(); el.addEventListener('mouseenter', function() { if (m._closeTimeout) { clearTimeout(m._closeTimeout); m._closeTimeout = null; } }); el.addEventListener('mouseleave', function() { m.closePopup(); }); } });
     }
     marker.dmcUrl = point.entries.length === 1 && point.entries[0].isPrimary ? point.entries[0].dmc.url : null;
