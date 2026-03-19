@@ -1269,6 +1269,14 @@ trackEvent('page_load', { entry: 'embed_view' });
 // =====================================================================
 loadData();
 
+// Tell parent iframe the embed height
+try {
+  var embedEl = document.getElementById('embedContainer');
+  if (embedEl) {
+    window.parent.postMessage({ type: 'dmc-map-resize', height: embedEl.offsetHeight }, '*');
+  }
+} catch(e) {}
+
 function openAllNews() {
   var news = window._currentDmcNews || [];
   var title = window._currentDmcTitle || '';
