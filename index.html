@@ -914,9 +914,11 @@ function renderMarkers() {
         </div></div>`;
     }
     marker.bindPopup(popupHtml, { offset: [0, -4], maxHeight: 450, className: point.entries.length >= 4 ? 'popup-wide-wrap' : '' });
-    marker.on('mouseover', function() { if (this._closeTimeout) { clearTimeout(this._closeTimeout); this._closeTimeout = null; } this.openPopup(); });
-    marker.on('mouseout', function() { var m = this; m._closeTimeout = setTimeout(function() { m.closePopup(); }, 200); });
-    marker.on('popupopen', function() { var m = this; var popup = this.getPopup(); if (popup && popup.getElement()) { var el = popup.getElement(); el.addEventListener('mouseenter', function() { if (m._closeTimeout) { clearTimeout(m._closeTimeout); m._closeTimeout = null; } }); el.addEventListener('mouseleave', function() { m.closePopup(); }); } });
+    if (!('ontouchstart' in window)) {
+  marker.on('mouseover', function() { if (this._closeTimeout) { clearTimeout(this._closeTimeout); this._closeTimeout = null; } this.openPopup(); });
+  marker.on('mouseout', function() { var m = this; m._closeTimeout = setTimeout(function() { m.closePopup(); }, 200); });
+  marker.on('popupopen', function() { var m = this; var popup = this.getPopup(); if (popup && popup.getElement()) { var el = popup.getElement(); el.addEventListener('mouseenter', function() { if (m._closeTimeout) { clearTimeout(m._closeTimeout); m._closeTimeout = null; } }); el.addEventListener('mouseleave', function() { m.closePopup(); }); } });
+}
     marker.dmcUrl = point.entries.length === 1 && point.entries[0].isPrimary ? point.entries[0].dmc.url : null;
     tempMarkers.push(marker);
     marker._isSponsored = hasSpon;
