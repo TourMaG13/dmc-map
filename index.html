@@ -742,7 +742,7 @@ function renderList() {
     } else {
       // Multi fiches — grouped with expand
       // Collect ALL unique destinations from all fiches in the group
-      const allGroupDests = [...new Set(dmcs.flatMap(d => [...(d.primary_destinations || []), ...(d.destinations || [])]))];
+const allGroupDests = [...new Set(dmcs.flatMap(d => [...(d.primary_destinations || []), ...(d.destinations || [])]))].sort((a,b) => a.localeCompare(b,'fr'));
       const destStr = allGroupDests.join(', ');
       const gid = 'grp_' + groupName.replace(/\W/g, '_');
       html += `<div class="dmc-group">
@@ -755,8 +755,8 @@ function renderList() {
           <span class="dmc-group-count">${dmcs.length} fiches</span>
         </div>
         <div class="dmc-group-fiches" id="${gid}">`;
-      dmcs.forEach(dmc => {
-        const pd = (dmc.primary_destinations || []).join(', ') || '?';
+    dmcs.sort((a,b) => ((a.primary_destinations||[])[0]||'').localeCompare((b.primary_destinations||[])[0]||'','fr')).forEach(dmc => {
+        const pd = (dmc.primary_destinations || []).sort((a,b) => a.localeCompare(b,'fr')).join(', ') || '?';
         const safeUrl = dmc.url.replace(/'/g, "\\'");
         html += `<div class="dmc-group-fiche" onclick="event.stopPropagation();selectDMC('${safeUrl}')">
           <span class="fiche-dest">📍 ${pd}</span>
