@@ -29,9 +29,22 @@
       container.innerHTML = '';
 
       // 1) Injecter les <style> et <link> du <head>
+      // Scope les styles pour ne pas polluer la page parent
       var styles = doc.querySelectorAll('head style, head link[rel="stylesheet"]');
       styles.forEach(function (el) {
         var clone = document.importNode(el, true);
+        // Pour les <style> inline, prefixer les selecteurs body/html
+        if (clone.tagName === 'STYLE') {
+          var css = clone.textContent;
+          // Remplacer body{ par #destimag-dmc-map{  pour eviter de polluer la page
+          css = css.replace(/\bbody\s*\{/g, '#destimag-dmc-map .destimag-dmc-wrapper{');
+          css = css.replace(/\bhtml\s*\{/g, '#destimag-dmc-map .destimag-dmc-wrapper{');
+          // Supprimer overflow:hidden et height:100vh qui bloquent le scroll parent
+          css = css.replace(/overflow\s*:\s*hidden/g, 'overflow:auto');
+          css = css.replace(/height\s*:\s*100vh/g, 'height:100%');
+          css = css.replace(/height\s*:\s*100dvh/g, 'height:100%');
+          clone.textContent = css;
+        }
         container.appendChild(clone);
       });
 
