@@ -8,9 +8,12 @@
     return;
   }
 
+  // Sauvegarder les styles du body AVANT injection
+  var savedBodyStyle = document.body.style.cssText;
+  var savedHtmlStyle = document.documentElement.style.cssText;
+
   var height = container.getAttribute('data-height') || '80vh';
   container.style.width = '100%';
-  container.style.height = height;
   container.style.margin = '0 auto';
   container.style.position = 'relative';
   container.style.overflow = 'hidden';
@@ -29,22 +32,9 @@
       container.innerHTML = '';
 
       // 1) Injecter les <style> et <link> du <head>
-      // Scope les styles pour ne pas polluer la page parent
       var styles = doc.querySelectorAll('head style, head link[rel="stylesheet"]');
       styles.forEach(function (el) {
         var clone = document.importNode(el, true);
-        // Pour les <style> inline, prefixer les selecteurs body/html
-        if (clone.tagName === 'STYLE') {
-          var css = clone.textContent;
-          // Remplacer body{ par #destimag-dmc-map{  pour eviter de polluer la page
-          css = css.replace(/\bbody\s*\{/g, '#destimag-dmc-map .destimag-dmc-wrapper{');
-          css = css.replace(/\bhtml\s*\{/g, '#destimag-dmc-map .destimag-dmc-wrapper{');
-          // Supprimer overflow:hidden et height:100vh qui bloquent le scroll parent
-          css = css.replace(/overflow\s*:\s*hidden/g, 'overflow:auto');
-          css = css.replace(/height\s*:\s*100vh/g, 'height:100%');
-          css = css.replace(/height\s*:\s*100dvh/g, 'height:100%');
-          clone.textContent = css;
-        }
         container.appendChild(clone);
       });
 
@@ -64,8 +54,7 @@
       var bodyContent = doc.body ? doc.body.innerHTML : doc.documentElement.innerHTML;
       var wrapper = document.createElement('div');
       wrapper.className = 'destimag-dmc-wrapper';
-      wrapper.style.width = '100%';
-      wrapper.style.height = '100%';
+      wrapper.style.cssText = 'width:100%;height:' + height + ';font-family:DM Sans,sans-serif;background:#F8FAFB;color:#1E293B;overflow:hidden;position:relative';
       wrapper.innerHTML = bodyContent;
       container.appendChild(wrapper);
 
@@ -93,13 +82,18 @@
 
       // 5) Charger les scripts sequentiellement
       function loadNextScript(index) {
-        if (index >= scriptsToLoad.length) return;
+        if (index >= scriptsToLoad.length) {
+          // Tous les scripts charges — restaurer body/html
+          restoreParentStyles();
+          return;
+        }
         var scriptInfo = scriptsToLoad[index];
         var script = document.createElement('script');
 
         if (scriptInfo.src) {
           script.src = scriptInfo.src;
           script.onload = function () {
+            restoreParentStyles();
             loadNextScript(index + 1);
           };
           script.onerror = function () {
@@ -113,8 +107,15 @@
         document.body.appendChild(script);
 
         if (!scriptInfo.src) {
+          restoreParentStyles();
           loadNextScript(index + 1);
         }
+      }
+
+      function restoreParentStyles() {
+        // Restaurer les styles du body parent que la carte a pu ecraser
+        document.body.style.cssText = savedBodyStyle;
+        document.documentElement.style.cssText = savedHtmlStyle;
       }
 
       // Retirer les <script> du wrapper (deja geres)
@@ -122,6 +123,23 @@
       injectedScripts.forEach(function (el) {
         el.remove();
       });
+
+      // Injecter un style correctif pour isoler la carte
+      var fixStyle = document.createElement('style');
+      fixStyle.textContent = '#destimag-dmc-map .destimag-dmc-wrapper{height:' + height + ';overflow:hidden;position:relative}' +
+        '#destimag-dmc-map .destimag-dmc-wrapper .main-container{height:100%}' +
+        '#destimag-dmc-map .destimag-dmc-wrapper .sidebar{height:100%;overflow-y:auto}' +
+        '#destimag-dmc-map .destimag-dmc-wrapper .detail-panel{height:100%;overflow-y:auto;padding:20px}' +
+        '#destimag-dmc-map .destimag-dmc-wrapper .embed-container{height:400px}';
+      container.appendChild(fixStyle);
+
+      // Observer le body pour re-restaurer si un script inline re-modifie le body
+      var bodyObserver = new MutationObserver(function() {
+        if (document.body.style.overflow === 'hidden' || document.body.style.height === '100vh') {
+          restoreParentStyles();
+        }
+      });
+      bodyObserver.observe(document.body, { attributes: true, attributeFilter: ['style'] });
 
       loadNextScript(0);
     })
