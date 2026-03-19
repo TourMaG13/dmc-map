@@ -39,5 +39,11 @@
       container.style.zIndex = '';
       document.body.style.overflow = '';
     }
+    if (e.data.type === 'dmc-map-resize' && e.data.height) {
+      embedHeight = e.data.height + 'px';
+      if (!container.style.position || container.style.position === '') {
+        container.style.height = embedHeight;
+      }
+    }
   });
 })();
