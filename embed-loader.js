@@ -4,16 +4,14 @@
     console.error('Carte DMC : element #destimag-dmc-map introuvable.');
     return;
   }
-
   var embedHeight = container.getAttribute('data-embed-height') || '400px';
   var fullHeight = container.getAttribute('data-full-height') || '100vh';
-  var src = 'https://tourmag13.github.io/dmc-map/index.html';
-
+  var size = container.getAttribute('data-size');
+  var src = 'https://tourmag13.github.io/dmc-map/index.html' + (size ? '?size=' + size : '');
   container.style.width = '100%';
   container.style.height = embedHeight;
   container.style.transition = 'height 0.3s ease';
   container.style.overflow = 'hidden';
-
   var iframe = document.createElement('iframe');
   iframe.src = src;
   iframe.style.cssText = 'width:100%;height:100%;border:none;display:block';
@@ -21,7 +19,6 @@
   iframe.setAttribute('title', 'Carte des DMC — DestiMaG');
   container.innerHTML = '';
   container.appendChild(iframe);
-
   // Ecouter les messages de la carte pour redimensionner
   window.addEventListener('message', function (e) {
     if (!e.data || !e.data.type) return;
