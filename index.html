@@ -437,11 +437,11 @@ const ACTIVITE_GROUPS = {
   "Sports nautiques": ["plongee", "snorkeling", "surf", "kite", "canoe", "rafting", "peche", "bateau", "char-a-voile"],
   "Culture & Patrimoine": ["culture", "culture_patrimoine", "archeologie", "architecture", "histoire", "livre", "decouverte", "village"],
   "Gastronomie & Terroir": ["resto", "oenologie", "vendanges", "permaculture"],
-  "Nature & Animaux": ["safari2", "observation_animale", "insecte", "aventure", "jardin"],
+  "Nature & Animaux": ["safari2", "observation_animale", "insecte", "aventure", "jardin", "preservation_animale"],
   "Sport & Plein air": ["sport", "velo", "golf", "ski", "ski-de-fond", "biathlon", "equitation", "accrobranche"],
   "Bien-être & Spirituel": ["massage", "yoga", "spirituel"],
-  "Événements & Loisirs": ["carnaval", "concert", "feu_d_artifice", "noel", "nouvel_an", "illuminations", "casino", "soiree_gala", "attractions"],
-  "Divers": ["photo", "shooting_photo", "video", "montgolfiere", "liguistique", "mode", "manuel", "genealogie", "surpris", "thematique", "cadeau", "peinture", "source-eau-chaude", "avion-2", "train", "traineau", "voyage", "excursions", "ane", "astronomie", "druide", "voyage_de_noce"]
+  "Événements & Loisirs": ["carnaval", "concert", "feu_d_artifice", "noel", "nouvel_an", "illuminations", "casino", "soiree_gala", "attractions", "musique"],
+  "Divers": ["photo", "shooting_photo", "video", "montgolfiere", "liguistique", "mode", "manuel", "genealogie", "surpris", "thematique", "cadeau", "peinture", "source-eau-chaude", "avion-2", "train", "train2", "traineau", "voyage", "excursions", "ane", "astronomie", "druide", "voyage_de_noce", "terre"]
 };
 
 let allDMC = [];
@@ -820,6 +820,31 @@ function initMainMap() {
   }
 }
 
+// Find the closest fiche (with isPrimary somewhere) for an orphan destination point
+function findClosestFicheUrl(orphanLat, orphanLng, groupName) {
+  // Collect all fiches in this group that have at least one primary destination
+  const groupDMCs = allDMC.filter(d => getGroupName(d.title || '') === groupName);
+  let bestUrl = null;
+  let bestDist = Infinity;
+  groupDMCs.forEach(dmc => {
+    // Check if this fiche has primary destinations with known coordinates
+    const primaries = (dmc.primary_destinations || []);
+    if (primaries.length === 0) return;
+    primaries.forEach(dest => {
+      const coord = GEO[dest.toLowerCase().trim()];
+      if (!coord) return;
+      const dLat = coord[0] - orphanLat;
+      const dLng = coord[1] - orphanLng;
+      const dist = dLat * dLat + dLng * dLng; // Squared distance is fine for comparison
+      if (dist < bestDist) {
+        bestDist = dist;
+        bestUrl = dmc.url;
+      }
+    });
+  });
+  return bestUrl;
+}
+
 function renderMarkers() {
   if (!mainMap) return;
   markerClusterGroup.clearLayers();
@@ -893,15 +918,26 @@ function renderMarkers() {
             </div>
           </div></div>`;
       } else {
-        popupHtml = `<div class="popup-inner">
-          <div class="popup-header-d"><div class="popup-dest">${point.dest || ''}</div></div>
-          <div class="popup-list-d">
-            <div class="popup-mini${dmc.sponsored?' sponsored':''}">
-              ${logoHtml}
-              <span class="popup-name">${e.group}</span>
-              
-            </div>
-          </div></div>`;
+        const fallbackUrl = findClosestFicheUrl(point.lat, point.lng, e.group);
+        if (fallbackUrl) {
+          popupHtml = `<div class="popup-inner">
+            <div class="popup-header-d"><div class="popup-dest">${point.dest || ''}</div></div>
+            <div class="popup-list-d">
+              <div class="popup-mini popup-clickable${dmc.sponsored?' sponsored':''}" data-dmc-url="${encodeURIComponent(fallbackUrl)}" style="cursor:pointer">
+                ${logoHtml}
+                <span class="popup-name">${e.group}</span>
+              </div>
+            </div></div>`;
+        } else {
+          popupHtml = `<div class="popup-inner">
+            <div class="popup-header-d"><div class="popup-dest">${point.dest || ''}</div></div>
+            <div class="popup-list-d">
+              <div class="popup-mini${dmc.sponsored?' sponsored':''}">
+                ${logoHtml}
+                <span class="popup-name">${e.group}</span>
+              </div>
+            </div></div>`;
+        }
       }
     } else {
       const useGrid = point.entries.length >= 4;
@@ -917,6 +953,10 @@ function renderMarkers() {
           if (e.isPrimary) {
             return '<div class="popup-mini popup-clickable' + (dmc.sponsored?' sponsored':'') + '" data-dmc-url="' + encodeURIComponent(dmc.url) + '" style="cursor:pointer">' + logoH + '<span class="popup-name">' + e.group + '</span></div>';
           } else {
+            var fbUrl = findClosestFicheUrl(point.lat, point.lng, e.group);
+            if (fbUrl) {
+              return '<div class="popup-mini popup-clickable' + (dmc.sponsored?' sponsored':'') + '" data-dmc-url="' + encodeURIComponent(fbUrl) + '" style="cursor:pointer">' + logoH + '<span class="popup-name">' + e.group + '</span></div>';
+            }
             return '<div class="popup-mini' + (dmc.sponsored?' sponsored':'') + '">' + logoH + '<span class="popup-name">' + e.group + '</span></div>';
           }
         }).join('')}
