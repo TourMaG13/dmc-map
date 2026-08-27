@@ -888,8 +888,8 @@ function updateCount() {
 // =====================================================================
 function initMainMap() {
   mainMap = L.map('mainMap', { zoomControl: true, scrollWheelZoom: true, closePopupOnClick: false, tap: false }).setView([25, 10], 2);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '© OpenStreetMap © CARTO | © TourMaG.com', maxZoom: 18
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles © Esri | © TourMaG.com', maxZoom: 18
   }).addTo(mainMap);
   markerClusterGroup = L.markerClusterGroup({
     maxClusterRadius: 45,
@@ -1082,7 +1082,7 @@ function initEmbedMap() {
     zoomControl: false, dragging: false, scrollWheelZoom: false,
     doubleClickZoom: false, touchZoom: false, keyboard: false, attributionControl: false
   }).setView([30, 10], 2);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(embedMapInstance);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}', { maxZoom: 8 }).addTo(embedMapInstance);
   let dotIdx = 0;
   allDMC.forEach(dmc => {
     (dmc.coordinates || []).forEach(coord => {
