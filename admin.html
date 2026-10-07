@@ -221,7 +221,7 @@ tr:last-child td{border-bottom:none}tr:hover{background:rgba(14,165,233,.02)}tr.
 </div>
 <div class="app" id="app">
   <div class="topbar"><div class="topbar-left">🌍 DestiMaG — DMC <span class="topbar-badge" id="topbarRole"></span></div><div class="topbar-right"><span class="topbar-user" id="topbarUser"></span><button class="btn-logout" onclick="doLogout()">Déconnexion</button></div></div>
-  <div class="tabs"><div class="tab active" onclick="switchTab('fiches')">📋 Fiches</div><div class="tab" id="tabStats" onclick="switchTab('stats')" style="display:none">📊 Analytics</div><div class="tab" id="tabUsers" onclick="switchTab('users')" style="display:none">👥 Utilisateurs</div></div>
+  <div class="tabs"><div class="tab active" onclick="switchTab('fiches')">📋 Fiches</div><div class="tab" id="tabStats" onclick="switchTab('stats')" style="display:none">📊 Analytics</div><div class="tab" id="tabUsers" onclick="switchTab('users')" style="display:none">👥 Utilisateurs</div><div class="tab" id="tabBanners" onclick="switchTab('banners')" style="display:none">📢 Régie pub</div></div>
   <div class="tab-panel active" id="panelFiches"><div class="container">
     <div class="kpi-grid" id="quickStats"></div>
     <div class="toolbar">
@@ -262,11 +262,18 @@ tr:last-child td{border-bottom:none}tr:hover{background:rgba(14,165,233,.02)}tr.
       </ol>
     </div>
   </div></div>
+  <!-- BANNERS -->
+  <div class="tab-panel" id="panelBanners"><div class="container">
+    <div class="toolbar"><h3 style="flex:1;font-size:1rem">📢 Régie publicitaire</h3><button class="btn btn-green" onclick="openBannerNew()">+ Nouvelle campagne</button></div>
+    <div class="table-wrap"><table><thead><tr><th>Campagne</th><th>Début</th><th>Fin</th><th>Statut</th><th>Diffusion</th><th>Actions</th></tr></thead><tbody id="bannersTableBody"></tbody></table></div>
+  </div></div>
 </div>
 <button class="btn-top" id="btnTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Haut</button>
 <div class="modal-bg" id="modalBg"><div class="modal"><div class="modal-header"><h2 id="modalTitle"></h2><button class="modal-close" onclick="closeModal()">✕</button></div><div class="modal-body" id="modalBody"></div><div class="modal-footer"><button class="btn btn-ghost" onclick="closeModal()">Annuler</button><button class="btn btn-cyan" id="btnSave" onclick="saveDMC()">Enregistrer</button></div></div></div>
 <!-- User modal -->
 <div class="modal-bg" id="userModalBg"><div class="modal"><div class="modal-header"><h2 id="userModalTitle">Utilisateur</h2><button class="modal-close" onclick="closeUserModal()">✕</button></div><div class="modal-body" id="userModalBody"></div><div class="modal-footer"><button class="btn btn-ghost" onclick="closeUserModal()">Annuler</button><button class="btn btn-cyan" onclick="saveUser()">Enregistrer</button></div></div></div>
+<!-- Banner modal -->
+<div class="modal-bg" id="bannerModalBg" onclick="if(event.target===this)closeBannerModal()"><div class="modal" style="max-width:820px"><div class="modal-header"><h2 id="bannerModalTitle">Campagne</h2><button class="modal-close" onclick="closeBannerModal()">✕</button></div><div class="modal-body" id="bannerModalBody"></div><div class="modal-footer"><button class="btn btn-ghost" onclick="closeBannerModal()">Annuler</button><button class="btn btn-cyan" onclick="saveBanner()">Enregistrer</button></div></div></div>
 <div class="confirm-bg" id="confirmBg"><div class="confirm-box"><p id="confirmMsg"></p><div class="confirm-btns"><button class="btn btn-ghost" onclick="closeConfirm()">Annuler</button><button class="btn btn-red" id="confirmYes">Confirmer</button></div></div></div>
 <div class="preview-bg" id="previewBg" onclick="if(event.target===this)closePreview()"><div class="preview-card" id="previewCard"></div></div>
 <div class="toast" id="toast"></div>
@@ -281,7 +288,7 @@ const ALL_FIELDS=[
   {id:'continents',l:'Continents'},{id:'tags',l:'Tags (clientèle, prestations, activités)'},
   {id:'date_creation',l:'Date de création'},{id:'status',l:'Statut (publié/brouillon)'},{id:'sponsored',l:'Sponsoring'},{id:'event',l:'Encart événement'}
 ];
-const TAG_GROUPS={clientele:{"Clientèle":[{id:"amoureux",l:"En couple"},{id:"association",l:"Association"},{id:"ce_cse",l:"CE / CSE"},{id:"club",l:"Club"},{id:"famille",l:"En famille"},{id:"fit",l:"FIT"},{id:"gay-friendly",l:"Gay friendly"},{id:"gir",l:"GIR"},{id:"groupe-scolaire",l:"Groupes scolaires"},{id:"groupes",l:"Groupes"},{id:"handicap",l:"PMR"},{id:"incentive",l:"Incentive"},{id:"individuel",l:"En solo"},{id:"seniors",l:"Seniors"}]},prestations:{"Accompagnement":[{id:"acceuil",l:"Accueil"},{id:"adaptabilite",l:"Adaptabilité"},{id:"assistance",l:"Assistance"},{id:"visite_guidee",l:"Visite guidée"}],"Éco & Responsable":[{id:"eco_responsable",l:"Éco-responsable"},{id:"nature",l:"Nature"},{id:"slow_tourisme",l:"Slow tourisme"},{id:"tourisme_responsable2",l:"Tourisme responsable"}],"Hébergement & Transport":[{id:"concierge",l:"Conciergerie"},{id:"hotel",l:"Hébergement"},{id:"transferts",l:"Transferts"},{id:"vtc",l:"VTC"}],"MICE & Business":[{id:"conference",l:"Conférences"},{id:"congres",l:"Congrès"},{id:"meeting",l:"Meeting"},{id:"mice",l:"MICE"},{id:"team_building",l:"Team-building"}],"Type de voyage":[{id:"autotour",l:"Autotour"},{id:"circuit",l:"Circuit"},{id:"city",l:"City-break"},{id:"combines",l:"Combinés"},{id:"luxe",l:"Luxe"},{id:"sur_mesure",l:"Sur-mesure"}],"Autres prestations":[{id:"creativite",l:"Créativité"},{id:"efficacite",l:"Efficacité"},{id:"medical",l:"Médical"},{id:"passion",l:"Passion"}]},activites:{"Bien-être & Spirituel":[{id:"massage",l:"Bien-être"},{id:"spirituel",l:"Spirituel"},{id:"yoga",l:"Yoga"}],"Culture & Patrimoine":[{id:"archeologie",l:"Archéologie"},{id:"architecture",l:"Architecture"},{id:"culture",l:"Culture"},{id:"culture_patrimoine",l:"Culture et patrimoine"},{id:"decouverte",l:"Découverte"},{id:"histoire",l:"Histoire"},{id:"village",l:"Village"}],"Événements & Loisirs":[{id:"attractions",l:"Attractions"},{id:"carnaval",l:"Carnaval"},{id:"casino",l:"Casino"},{id:"concert",l:"Concerts"},{id:"feu_d_artifice",l:"Feu d'artifice"},{id:"illuminations",l:"Illuminations"},{id:"noel",l:"Noël"},{id:"nouvel_an",l:"Nouvel an"},{id:"soiree_gala",l:"Soirées de gala"}],"Gastronomie & Terroir":[{id:"resto",l:"Gastronomie"},{id:"oenologie",l:"Œnologie"},{id:"permaculture",l:"Permaculture"},{id:"vendanges",l:"Vendanges"}],"Nature & Animaux":[{id:"aventure",l:"Aventure"},{id:"insecte",l:"Entomologie"},{id:"jardin",l:"Jardin"},{id:"observation_animale",l:"Observation animale"},{id:"safari2",l:"Safari"}],"Randonnée & Montagne":[{id:"rando-contee",l:"Balade contée"},{id:"escalade",l:"Escalade"},{id:"escalade-rando",l:"Escalade-Rando"},{id:"montagne",l:"Montagne"},{id:"rando",l:"Randonnée"},{id:"raquettes",l:"Raquettes"},{id:"trail",l:"Trail"},{id:"trekking",l:"Trekking"},{id:"viaferrata",l:"Via Ferrata"}],"Sport & Plein air":[{id:"accrobranche",l:"Accrobranche"},{id:"biathlon",l:"Biathlon"},{id:"equitation",l:"Équitation"},{id:"golf",l:"Golf"},{id:"ski",l:"Ski"},{id:"ski-de-fond",l:"Ski de rando"},{id:"sport",l:"Sport"},{id:"velo",l:"Vélo"}],"Sports nautiques":[{id:"canoe",l:"Canoë"},{id:"char-a-voile",l:"Char à voile"},{id:"kite",l:"Kitesurf"},{id:"bateau",l:"Navigation"},{id:"peche",l:"Pêche"},{id:"plongee",l:"Plongée"},{id:"rafting",l:"Rafting"},{id:"snorkeling",l:"Snorkeling"},{id:"surf",l:"Surf"}],"Divers":[{id:"peinture",l:"Aquarelle"},{id:"manuel",l:"Artisanat"},{id:"astronomie",l:"Astronomie"},{id:"ane",l:"Avec des ânes"},{id:"source-eau-chaude",l:"Bains d'eaux chaudes"},{id:"cadeau",l:"Coffrets cadeaux"},{id:"excursions",l:"Excursions"},{id:"genealogie",l:"Généalogie"},{id:"surpris",l:"Insolite"},{id:"liguistique",l:"Linguistique"},{id:"mode",l:"Mode"},{id:"montgolfiere",l:"Montgolfière"},{id:"thematique",l:"Multi activités"},{id:"traineau",l:"Mushing"},{id:"train",l:"Petit train"},{id:"photo",l:"Photographie"},{id:"druide",l:"Rencontre druidique"},{id:"video",l:"Vidéo"},{id:"avion-2",l:"Vol privatisé"},{id:"voyage",l:"Voyage"},{id:"voyage_de_noce",l:"Voyage de noces"}]}};
+const TAG_GROUPS={clientele:{"Clientèle":[{id:"amoureux",l:"En couple"},{id:"association",l:"Association"},{id:"ce_cse",l:"CE / CSE"},{id:"club",l:"Club"},{id:"famille",l:"En famille"},{id:"fit",l:"FIT"},{id:"gay-friendly",l:"Gay friendly"},{id:"gir",l:"GIR"},{id:"groupe-scolaire",l:"Groupes scolaires"},{id:"groupes",l:"Groupes"},{id:"handicap",l:"PMR"},{id:"incentive",l:"Incentive"},{id:"individuel",l:"En solo"},{id:"seniors",l:"Seniors"}]},prestations:{"Accompagnement":[{id:"acceuil",l:"Accueil"},{id:"adaptabilite",l:"Adaptabilité"},{id:"assistance",l:"Assistance"},{id:"visite_guidee",l:"Visite guidée"}],"Éco & Responsable":[{id:"eco_responsable",l:"Éco-responsable"},{id:"nature",l:"Nature"},{id:"slow_tourisme",l:"Slow tourisme"},{id:"tourisme_responsable2",l:"Tourisme responsable"}],"Hébergement & Transport":[{id:"concierge",l:"Conciergerie"},{id:"hotel",l:"Hébergement"},{id:"transferts",l:"Transferts"},{id:"vtc",l:"VTC"}],"MICE & Business":[{id:"conference",l:"Conférences"},{id:"congres",l:"Congrès"},{id:"meeting",l:"Meeting"},{id:"mice",l:"MICE"},{id:"team_building",l:"Team-building"}],"Type de voyage":[{id:"autotour",l:"Autotour"},{id:"circuit",l:"Circuit"},{id:"city",l:"City-break"},{id:"combines",l:"Combinés"},{id:"luxe",l:"Luxe"},{id:"sur_mesure",l:"Sur-mesure"}],"Autres prestations":[{id:"creativite",l:"Créativité"},{id:"efficacite",l:"Efficacité"},{id:"medical",l:"Médical"},{id:"passion",l:"Passion"}]},activites:{"Bien-être & Spirituel":[{id:"massage",l:"Bien-être"},{id:"spirituel",l:"Spirituel"},{id:"yoga",l:"Yoga"}],"Culture & Patrimoine":[{id:"archeologie",l:"Archéologie"},{id:"architecture",l:"Architecture"},{id:"culture",l:"Culture"},{id:"culture_patrimoine",l:"Culture et patrimoine"},{id:"decouverte",l:"Découverte"},{id:"histoire",l:"Histoire"},{id:"village",l:"Village"}],"Événements & Loisirs":[{id:"attractions",l:"Attractions"},{id:"carnaval",l:"Carnaval"},{id:"casino",l:"Casino"},{id:"concert",l:"Concerts"},{id:"feu_d_artifice",l:"Feu d'artifice"},{id:"illuminations",l:"Illuminations"},{id:"noel",l:"Noël"},{id:"nouvel_an",l:"Nouvel an"},{id:"soiree_gala",l:"Soirées de gala"},{id:"musique",l:"Musique"}],"Gastronomie & Terroir":[{id:"resto",l:"Gastronomie"},{id:"oenologie",l:"Œnologie"},{id:"permaculture",l:"Permaculture"},{id:"vendanges",l:"Vendanges"}],"Nature & Animaux":[{id:"aventure",l:"Aventure"},{id:"insecte",l:"Entomologie"},{id:"jardin",l:"Jardin"},{id:"observation_animale",l:"Observation animale"},{id:"preservation_animale",l:"Préservation animale"},{id:"safari2",l:"Safari"}],"Randonnée & Montagne":[{id:"rando-contee",l:"Balade contée"},{id:"escalade",l:"Escalade"},{id:"escalade-rando",l:"Escalade-Rando"},{id:"montagne",l:"Montagne"},{id:"rando",l:"Randonnée"},{id:"raquettes",l:"Raquettes"},{id:"trail",l:"Trail"},{id:"trekking",l:"Trekking"},{id:"viaferrata",l:"Via Ferrata"}],"Sport & Plein air":[{id:"accrobranche",l:"Accrobranche"},{id:"biathlon",l:"Biathlon"},{id:"equitation",l:"Équitation"},{id:"golf",l:"Golf"},{id:"ski",l:"Ski"},{id:"ski-de-fond",l:"Ski de rando"},{id:"sport",l:"Sport"},{id:"velo",l:"Vélo"}],"Sports nautiques":[{id:"canoe",l:"Canoë"},{id:"char-a-voile",l:"Char à voile"},{id:"kite",l:"Kitesurf"},{id:"bateau",l:"Navigation"},{id:"peche",l:"Pêche"},{id:"plongee",l:"Plongée"},{id:"rafting",l:"Rafting"},{id:"snorkeling",l:"Snorkeling"},{id:"surf",l:"Surf"}],"Divers":[{id:"peinture",l:"Aquarelle"},{id:"manuel",l:"Artisanat"},{id:"astronomie",l:"Astronomie"},{id:"ane",l:"Avec des ânes"},{id:"source-eau-chaude",l:"Bains d'eaux chaudes"},{id:"cadeau",l:"Coffrets cadeaux"},{id:"excursions",l:"Excursions"},{id:"genealogie",l:"Généalogie"},{id:"surpris",l:"Insolite"},{id:"liguistique",l:"Linguistique"},{id:"mode",l:"Mode"},{id:"montgolfiere",l:"Montgolfière"},{id:"thematique",l:"Multi activités"},{id:"traineau",l:"Mushing"},{id:"train",l:"Petit train"},{id:"train2",l:"Trains Suisses"},{id:"photo",l:"Photographie"},{id:"terre",l:"Programme multi-pays"},{id:"druide",l:"Rencontre druidique"},{id:"video",l:"Vidéo"},{id:"avion-2",l:"Vol privatisé"},{id:"voyage",l:"Voyage"},{id:"voyage_de_noce",l:"Voyage de noces"}]}};
 let currentUser=null,currentRole=null,allDMC=[],allUsers=[],editingId=null,editingUserId=null,charts={};
 
 function togglePassword(){const i=document.getElementById('loginPass'),b=i.nextElementSibling;if(i.type==='password'){i.type='text';b.textContent='🙈'}else{i.type='password';b.textContent='👁'}}
@@ -296,19 +303,22 @@ auth.onAuthStateChanged(async u=>{if(u){currentUser=u;
   // Reset all admin elements
   document.getElementById('tabUsers').style.display='none';
   document.getElementById('tabStats').style.display='none';
+  document.getElementById('tabBanners').style.display='none';
   ['btnAdd','btnImport','btnExport'].forEach(id=>document.getElementById(id).style.display='none');
-  if(info.role==='admin'){['btnAdd','btnImport','btnExport'].forEach(id=>document.getElementById(id).style.display='');document.getElementById('tabUsers').style.display='';document.getElementById('tabStats').style.display=''}
+  if(info.role==='admin'){['btnAdd','btnImport','btnExport'].forEach(id=>document.getElementById(id).style.display='');document.getElementById('tabUsers').style.display='';document.getElementById('tabStats').style.display='';document.getElementById('tabBanners').style.display=''}
   loadDMC()}else{document.getElementById('loginPage').style.display='';document.getElementById('app').style.display='none'}});
 function doLogin(){const e=document.getElementById('loginEmail').value.trim(),p=document.getElementById('loginPass').value,err=document.getElementById('loginError');err.style.display='none';auth.signInWithEmailAndPassword(e,p).catch(()=>{err.style.display='block';err.textContent='Email ou mot de passe incorrect.'})}
 function doLogout(){auth.signOut()}
 function switchTab(n){
-  if(n==='users'&&currentRole.role!=='admin')return;
-  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',(n==='fiches'&&i===0)||(n==='stats'&&i===1)||(n==='users'&&i===2)));
+  if((n==='users'||n==='banners')&&currentRole.role!=='admin')return;
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',(n==='fiches'&&i===0)||(n==='stats'&&i===1)||(n==='users'&&i===2)||(n==='banners'&&i===3)));
   document.getElementById('panelFiches').classList.toggle('active',n==='fiches');
   document.getElementById('panelStats').classList.toggle('active',n==='stats');
   document.getElementById('panelUsers').classList.toggle('active',n==='users');
+  document.getElementById('panelBanners').classList.toggle('active',n==='banners');
   if(n==='stats'&&!document.getElementById('statsDateFrom').value)setRange('30d');
   if(n==='users')loadUsers();
+  if(n==='banners')loadBanners();
 }
 async function loadDMC(){try{const snap=await db.collection('dmc').orderBy('title').get();allDMC=snap.docs.map(d=>({id:d.id,...d.data()}));const conts=new Set();allDMC.forEach(d=>(d.continents||[]).forEach(c=>conts.add(c)));const sel=document.getElementById('filterContinent');sel.innerHTML='<option value="">Continent</option>';[...conts].sort().forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;sel.appendChild(o)});renderQuickStats();renderTable()}catch(e){console.error(e);showToast('Erreur chargement','error')}}
 function renderQuickStats(){if(currentRole.role!=='admin'){document.getElementById('quickStats').style.display='none';return}const t=allDMC.length,p=allDMC.filter(d=>d.status!=='draft').length,dr=t-p,cs=new Set();allDMC.forEach(d=>(d.primary_destinations||d.destinations||[]).forEach(c=>cs.add(c)));document.getElementById('quickStats').innerHTML=`<div class="kpi cy"><div class="kpi-icon">📋</div><div class="kpi-value">${t}</div><div class="kpi-label">DMC total</div></div><div class="kpi gr"><div class="kpi-icon">✅</div><div class="kpi-value">${p}</div><div class="kpi-label">Publiés</div></div><div class="kpi or"><div class="kpi-icon">📝</div><div class="kpi-value">${dr}</div><div class="kpi-label">Brouillons</div></div><div class="kpi pu"><div class="kpi-icon">🌍</div><div class="kpi-value">${cs.size}</div><div class="kpi-label">Destinations</div></div>`}
@@ -370,7 +380,7 @@ function openEdit(id){switchTab('fiches');const d=allDMC.find(x=>x.id===id);if(!
 function openNew(){editingId=null;document.getElementById('modalTitle').textContent='Ajouter un DMC';renderForm({status:'published'});document.getElementById('modalBg').classList.add('open');document.getElementById('btnSave').style.display=''}
 function closeModal(){document.getElementById('modalBg').classList.remove('open');editingId=null}
 
-const ALL_COUNTRIES=["Afghanistan","Afrique du Sud","Albanie","Algérie","Allemagne","Amazonie","Andorre","Angola","Arabie Saoudite","Argentine","Arménie","Australie","Autriche","Azerbaïdjan","Açores","Bahamas","Bangladesh","Belgique","Belize","Bhoutan","Biélorussie","Birmanie","Bolivie","Bosnie-Herzégovine","Botswana","Brésil","Brunei","Bulgarie","Burkina Faso","Cambodge","Cameroun","Canada","Cap Vert","Chili","Chine","Chypre","Colombie","Corée du Nord","Corée du Sud","Costa Rica","Croatie","Crète","Cuba","Danemark","Dominique","Ecosse","Egypte","Émirats Arabes Unis","Equateur","Espagne","Estonie","États-Unis","Ethiopie","Fidji","Finlande","France","Gabon","Géorgie","Ghana","Grèce","Guatemala","Guinée","Guinée-Bissau","Guyane","Guyane française","Honduras","Hongrie","Île Maurice","Île de la Réunion","Iles Baléares","Iles Canaries","Inde","Indonésie","Irak","Iran","Irlande","Islande","Israël","Italie","Jamaïque","Japon","Jordanie","Kazakhstan","Kenya","Kirghizistan","Kosovo","Koweït","La Réunion","Laos","Lettonie","Liban","Libéria","Lituanie","Luxembourg","Macédoine du Nord","Madagascar","Madère","Malaisie","Maldives","Mali","Malte","Maroc","Maurice","Mauritanie","Mexique","Moldavie","Mongolie","Monténégro","Mozambique","Myanmar","Namibie","Népal","Nicaragua","Nigéria","Norvège","Nouvelle-Calédonie","Nouvelle-Zélande","Oman","Ouganda","Ouzbékistan","Pakistan","Palestine","Panama","Papouasie","Paraguay","Pays-Bas","Pérou","Philippines","Pologne","Polynésie Française","Portugal","Pouilles","Qatar","République Dominicaine","République Tchèque","Roumanie","Royaume-Uni","Russie","Rwanda","Sardaigne","Sénégal","Serbie","Seychelles","Sicile","Sierra Leone","Singapour","Slovaquie","Slovénie","Somalie","Soudan","Sri Lanka","Suède","Suisse","Tadjikistan","Tahiti","Taïwan","Tanzanie","Tchad","Thaïlande","Togo","Tunisie","Turkménistan","Turquie","Ukraine","Uruguay","Venezuela","Vietnam","Yémen","Zambie","Zanzibar","Zimbabwe"];
+const ALL_COUNTRIES=["Afghanistan","Afrique du Sud","Albanie","Algérie","Allemagne","Amazonie","Andorre","Angola","Arabie Saoudite","Argentine","Arménie","Australie","Autriche","Azerbaïdjan","Açores","Bahamas","Bangladesh","Belgique","Belize","Bénin","Bhoutan","Biélorussie","Birmanie","Bolivie","Bosnie-Herzégovine","Botswana","Brésil","Brunei","Bulgarie","Burkina Faso","Cambodge","Cameroun","Canada","Cap Vert","Chili","Chine","Chypre","Colombie","Corée du Nord","Corée du Sud","Costa Rica","Côte d'Ivoire","Croatie","Crète","Cuba","Danemark","Dominique","Ecosse","Egypte","Émirats Arabes Unis","Equateur","Espagne","Estonie","États-Unis","Ethiopie","Fidji","Finlande","France","Gabon","Gambie","Géorgie","Ghana","Grèce","Guatemala","Guinée","Guinée-Bissau","Guyane","Guyane française","Honduras","Hongrie","Île Maurice","Île de la Réunion","Iles Baléares","Iles Canaries","Inde","Indonésie","Irak","Iran","Irlande","Islande","Israël","Italie","Jamaïque","Japon","Jordanie","Kazakhstan","Kenya","Kirghizistan","Kosovo","Koweït","La Réunion","Laos","Lettonie","Liban","Libéria","Lituanie","Luxembourg","Macédoine du Nord","Madagascar","Madère","Malaisie","Maldives","Mali","Malte","Maroc","Maurice","Mauritanie","Mexique","Moldavie","Mongolie","Monténégro","Mozambique","Myanmar","Namibie","Népal","Nicaragua","Nigéria","Norvège","Nouvelle-Calédonie","Nouvelle-Zélande","Oman","Ouganda","Ouzbékistan","Pakistan","Palestine","Panama","Papouasie","Paraguay","Pays-Bas","Pérou","Philippines","Pologne","Polynésie Française","Portugal","Pouilles","Qatar","République Dominicaine","République Tchèque","Roumanie","Royaume-Uni","Russie","Rwanda","Sardaigne","Sénégal","Serbie","Seychelles","Sicile","Sierra Leone","Singapour","Slovaquie","Slovénie","Somalie","Soudan","Sri Lanka","Suède","Suisse","Tadjikistan","Tahiti","Taïwan","Tanzanie","Tchad","Thaïlande","Togo","Tunisie","Turkménistan","Turquie","Ukraine","Uruguay","Venezuela","Vietnam","Yémen","Zambie","Zanzibar","Zimbabwe"];
 const ALL_CONTINENTS=["Afrique","Amériques","Asie","Europe","Moyen-Orient","Océan Indien","Océanie"];
 
 function renderForm(dmc){
@@ -438,6 +448,7 @@ function renderForm(dmc){
   h+=`<div class="form-row"><div class="form-field"><label>Date de création</label><input type="text" id="fDate" value="${esc(dmc.date_creation||'')}"></div></div>`;
 
   // Accordion tags
+  h+=`<div style="margin:18px 0 10px;padding:10px 14px;background:var(--bg);border-radius:8px;border:1px solid var(--border)"><label style="display:block;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.3px;color:var(--text-light);margin-bottom:5px">🔍 Rechercher un picto</label><input type="text" id="pictoSearch" placeholder="Ex : safari, vélo, yoga…" oninput="filterPictos()" style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:5px;font-size:.85rem;font-family:inherit;outline:none;background:#fff"></div>`;
   const cats=[{key:'clientele',title:'👥 CLIENTÈLE',css:'clientele',color:'var(--cyan)'},{key:'prestations',title:'⚙️ PRESTATIONS',css:'prestations',color:'var(--green)'},{key:'activites',title:'🎯 ACTIVITÉS / THÉMATIQUES',css:'activites',color:'var(--orange)'}];
   cats.forEach(({key,title,css,color})=>{
     const active=Array.from(ct[key]);
@@ -454,6 +465,26 @@ function renderForm(dmc){
 function toggleAccordion(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('open')}
 function filterChecks(input,gridId){const q=input.value.toLowerCase();document.querySelectorAll('#'+gridId+' .form-check-item').forEach(el=>{el.style.display=el.textContent.toLowerCase().includes(q)?'':'none'})}
 function toggleChip(el){if(currentRole.role==='lecteur')return;const cat=el.dataset.cat;el.classList.toggle('active');if(el.classList.contains('active')&&cat!=='clientele')el.classList.add(cat);else el.classList.remove('prestations','activites')}
+function filterPictos(){
+  const q=(document.getElementById('pictoSearch').value||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  document.querySelectorAll('.form-picto-chip').forEach(c=>{
+    if(!q){c.style.display='';return}
+    const label=c.querySelector('span').textContent.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    const id=(c.dataset.id||'').toLowerCase();
+    c.style.display=(label.includes(q)||id.includes(q))?'':'none';
+  });
+  // Hide empty tag groups and accordions
+  document.querySelectorAll('.form-tag-group').forEach(g=>{
+    const visible=g.querySelectorAll('.form-picto-chip:not([style*="display: none"])');
+    g.style.display=visible.length?'':'none';
+  });
+  document.querySelectorAll('.form-accordion').forEach(acc=>{
+    const visible=acc.querySelectorAll('.form-picto-chip:not([style*="display: none"])');
+    acc.style.display=visible.length?'':'none';
+    // Auto-open accordions when searching
+    if(q&&visible.length){acc.querySelector('.form-accordion-header').classList.add('open');acc.querySelector('.form-accordion-body').classList.add('open')}
+  });
+}
 function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')}
 async function saveDMC(){
   const title=document.getElementById('fTitle').value.trim();if(!title){showToast('Titre obligatoire','error');return}
@@ -717,6 +748,140 @@ async function deleteUser(uid,label){
 }
 
 function showToast(msg,type='success'){const t=document.getElementById('toast');t.textContent=msg;t.className='toast show '+type;setTimeout(()=>t.className='toast',3500)}
+
+// =====================================================================
+// BANNERS (Régie pub)
+// =====================================================================
+let allBanners=[], editingBannerId=null;
+
+async function loadBanners(){
+  try{
+    const snap=await db.collection('banners').orderBy('date_start','desc').get();
+    allBanners=snap.docs.map(d=>({id:d.id,...d.data()}));
+    renderBannersTable();
+  }catch(e){showToast('Erreur chargement bannières','error')}
+}
+
+function renderBannersTable(){
+  const tb=document.getElementById('bannersTableBody');
+  if(!allBanners.length){tb.innerHTML='<tr><td colspan="6" style="text-align:center;padding:50px;color:var(--text-lighter)">Aucune campagne</td></tr>';return}
+  const today=new Date().toISOString().slice(0,10);
+  tb.innerHTML=allBanners.map(b=>{
+    const isLive=b.active && b.date_start<=today && b.date_end>=today;
+    const isPast=b.date_end<today;
+    const isFuture=b.date_start>today;
+    let statusHtml=b.active?'<span style="color:var(--green);font-weight:700">✅ Actif</span>':'<span style="color:var(--text-lighter)">⏸ Inactif</span>';
+    let diffusionHtml='';
+    if(isLive) diffusionHtml='<span style="background:var(--green);color:#fff;padding:2px 10px;border-radius:20px;font-size:.72rem;font-weight:700">🟢 En cours</span>';
+    else if(isPast) diffusionHtml='<span style="color:var(--text-lighter);font-size:.78rem">Terminée</span>';
+    else if(isFuture) diffusionHtml='<span style="color:var(--orange);font-size:.78rem;font-weight:600">⏳ Programmée</span>';
+    else diffusionHtml='<span style="color:var(--text-lighter);font-size:.78rem">—</span>';
+    return `<tr>
+      <td style="font-weight:600">${esc(b.campaign_name||'Sans nom')}</td>
+      <td style="font-size:.82rem">${b.date_start||'—'}</td>
+      <td style="font-size:.82rem">${b.date_end||'—'}</td>
+      <td>${statusHtml}</td>
+      <td>${diffusionHtml}</td>
+      <td><div style="display:flex;gap:6px">
+        <button class="btn btn-cyan" style="padding:5px 12px;font-size:.75rem" onclick="openBannerEdit('${b.id}')">✏️</button>
+        <button class="btn btn-ghost" style="padding:5px 12px;font-size:.75rem" onclick="toggleBannerActive('${b.id}',${!b.active})">${b.active?'⏸':'▶️'}</button>
+        <button class="btn btn-red" style="padding:5px 10px;font-size:.75rem" onclick="deleteBanner('${b.id}','${esc(b.campaign_name||'')}')">🗑</button>
+      </div></td>
+    </tr>`;
+  }).join('');
+}
+
+function openBannerNew(){
+  editingBannerId=null;
+  document.getElementById('bannerModalTitle').textContent='Nouvelle campagne';
+  renderBannerForm({});
+  document.getElementById('bannerModalBg').classList.add('open');
+}
+
+function openBannerEdit(id){
+  const b=allBanners.find(x=>x.id===id);
+  if(!b)return;
+  editingBannerId=id;
+  document.getElementById('bannerModalTitle').textContent='Modifier : '+b.campaign_name;
+  renderBannerForm(b);
+  document.getElementById('bannerModalBg').classList.add('open');
+}
+
+function closeBannerModal(){
+  document.getElementById('bannerModalBg').classList.remove('open');
+  editingBannerId=null;
+}
+
+function renderBannerForm(b){
+  const body=document.getElementById('bannerModalBody');
+  body.innerHTML=`
+    <div class="form-row"><div class="form-field"><label>Nom de la campagne</label><input type="text" id="bName" value="${esc(b.campaign_name||'')}"></div></div>
+    <div class="form-row">
+      <div class="form-field"><label>Date de début</label><input type="date" id="bStart" value="${b.date_start||''}"></div>
+      <div class="form-field"><label>Date de fin</label><input type="date" id="bEnd" value="${b.date_end||''}"></div>
+    </div>
+    <div class="form-row"><div class="form-field"><label style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="bActive" ${b.active?'checked':''} style="accent-color:var(--green);width:16px;height:16px"> Campagne active</label></div></div>
+    <div style="border-top:1px solid var(--border);margin:16px 0;padding-top:16px">
+      <div class="form-field" style="margin-bottom:14px">
+        <label>🖥️ Code HTML — Desktop (1920×250)</label>
+        <div style="font-size:.72rem;color:var(--text-lighter);margin-bottom:4px">Collez le contenu du fichier .txt fourni par la régie</div>
+        <textarea id="bHtmlDesktop" style="min-height:120px;font-family:monospace;font-size:.78rem" oninput="previewBanner('desktop')">${esc(b.html_desktop||'')}</textarea>
+      </div>
+      <div style="margin-bottom:14px;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg)">
+        <div style="font-size:.7rem;font-weight:700;color:var(--text-light);margin-bottom:6px">APERÇU DESKTOP</div>
+        <div id="bPreviewDesktop" style="max-width:100%;overflow:hidden;border-radius:4px;background:#fff">${b.html_desktop||'<p style="text-align:center;padding:20px;color:var(--text-lighter);font-size:.8rem">Collez le code pour voir l\'aperçu</p>'}</div>
+      </div>
+      <div class="form-field" style="margin-bottom:14px">
+        <label>📱 Code HTML — Mobile (728×90)</label>
+        <div style="font-size:.72rem;color:var(--text-lighter);margin-bottom:4px">Collez le contenu du fichier .txt pour le format mobile</div>
+        <textarea id="bHtmlMobile" style="min-height:100px;font-family:monospace;font-size:.78rem" oninput="previewBanner('mobile')">${esc(b.html_mobile||'')}</textarea>
+      </div>
+      <div style="padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg)">
+        <div style="font-size:.7rem;font-weight:700;color:var(--text-light);margin-bottom:6px">APERÇU MOBILE</div>
+        <div id="bPreviewMobile" style="max-width:400px;overflow:hidden;border-radius:4px;background:#fff">${b.html_mobile||'<p style="text-align:center;padding:16px;color:var(--text-lighter);font-size:.8rem">Collez le code pour voir l\'aperçu</p>'}</div>
+      </div>
+    </div>`;
+}
+
+function previewBanner(type){
+  const html=document.getElementById(type==='desktop'?'bHtmlDesktop':'bHtmlMobile').value;
+  const target=document.getElementById(type==='desktop'?'bPreviewDesktop':'bPreviewMobile');
+  if(html.trim()){target.innerHTML=html}
+  else{target.innerHTML='<p style="text-align:center;padding:16px;color:var(--text-lighter);font-size:.8rem">Collez le code pour voir l\'aperçu</p>'}
+}
+
+async function saveBanner(){
+  const name=document.getElementById('bName').value.trim();
+  if(!name){showToast('Nom de campagne obligatoire','error');return}
+  const start=document.getElementById('bStart').value;
+  const end=document.getElementById('bEnd').value;
+  if(!start||!end){showToast('Dates obligatoires','error');return}
+  if(end<start){showToast('La date de fin doit être après la date de début','error');return}
+  const data={
+    campaign_name:name,
+    date_start:start,
+    date_end:end,
+    active:document.getElementById('bActive').checked,
+    html_desktop:document.getElementById('bHtmlDesktop').value,
+    html_mobile:document.getElementById('bHtmlMobile').value,
+    updated_at:firebase.firestore.FieldValue.serverTimestamp(),
+    updated_by:currentUser.email
+  };
+  try{
+    if(editingBannerId){await db.collection('banners').doc(editingBannerId).update(data);showToast('Campagne mise à jour','success')}
+    else{data.created_at=firebase.firestore.FieldValue.serverTimestamp();await db.collection('banners').add(data);showToast('Campagne créée','success')}
+    closeBannerModal();await loadBanners();
+  }catch(e){showToast('Erreur: '+e.message,'error')}
+}
+
+async function toggleBannerActive(id,newState){
+  try{await db.collection('banners').doc(id).update({active:newState,updated_at:firebase.firestore.FieldValue.serverTimestamp()});showToast(newState?'Campagne activée':'Campagne désactivée','success');await loadBanners()}catch(e){showToast('Erreur: '+e.message,'error')}
+}
+
+async function deleteBanner(id,name){
+  if(!confirm('Supprimer la campagne "'+name+'" ?'))return;
+  try{await db.collection('banners').doc(id).delete();showToast('Campagne supprimée','success');await loadBanners()}catch(e){showToast('Erreur: '+e.message,'error')}
+}
 window.addEventListener('scroll',()=>{const btn=document.getElementById('btnTop');if(window.scrollY>400)btn.classList.add('visible');else btn.classList.remove('visible')});
 function toggleActMenu(id){const el=document.getElementById('actMore_'+id);document.querySelectorAll('.act-more.open').forEach(m=>{if(m!==el)m.classList.remove('open')});el.classList.toggle('open')}
 document.addEventListener('click',()=>{document.querySelectorAll('.act-more.open').forEach(m=>m.classList.remove('open'))});
