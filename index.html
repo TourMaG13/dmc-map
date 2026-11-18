@@ -530,6 +530,12 @@ async function loadData() {
     updateCount();
     initEmbedMap();
     loadBanner();
+    // Auto-ouverture de la modale via paramètre ?auto=1
+    // (propagé par embed-loader.js quand la page parente a ?openmap=1,
+    //  ex: lien cliqué depuis la newsletter)
+    if (new URLSearchParams(window.location.search).get('auto') === '1') {
+      openModal();
+    }
   } catch(e) {
     console.error('Erreur chargement données DMC:', e);
     document.getElementById('dmcList').innerHTML = '<div class="no-results"><p>Erreur de chargement des données.</p></div>';
