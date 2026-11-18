@@ -8,7 +8,14 @@
     var embedHeight = container.getAttribute('data-embed-height') || container.getAttribute('data-height') || '400px';
     var fullHeight = container.getAttribute('data-full-height') || '100vh';
     var size = container.getAttribute('data-size');
-    var src = 'https://tourmag13.github.io/dmc-map/index.html' + (size ? '?size=' + size : '');
+    // Détection ouverture automatique via paramètre ?openmap=1 sur la page parente
+    // (ex: lien newsletter → https://www.tourmag.com/ta-page/?openmap=1)
+    var parentParams = new URLSearchParams(window.location.search);
+    var autoOpen = parentParams.get('openmap') === '1' || parentParams.get('openmap') === 'true';
+    var queryParts = [];
+    if (size) queryParts.push('size=' + size);
+    if (autoOpen) queryParts.push('auto=1');
+    var src = 'https://tourmag13.github.io/dmc-map/index.html' + (queryParts.length ? '?' + queryParts.join('&') : '');
     container.style.width = '100%';
     container.style.height = embedHeight;
     container.style.transition = 'height 0.3s ease';
